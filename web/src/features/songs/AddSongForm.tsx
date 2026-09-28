@@ -4,6 +4,7 @@ import { SONG_GENRES } from '../../types/song'
 import { validateCustomSongInput, type CustomSongInput } from '../../services/songLibrary'
 import { buildSongLookupLinks } from '../../services/webLookup'
 import LookupOnlineLinks from '../library/LookupOnlineLinks'
+import { useLocale } from '../../hooks/useLocale'
 
 const TUNING_PRESETS = [
   'Standard (EADGBE)',
@@ -101,6 +102,7 @@ export default function AddSongForm({
   onSubmit: (input: CustomSongInput) => void
   onDelete?: () => void
 }) {
+  const { t } = useLocale()
   const [form, setForm] = useState<FormState>(() => (initial ? songToForm(initial) : blankForm()))
   const [errors, setErrors] = useState<string[]>([])
 
@@ -125,43 +127,43 @@ export default function AddSongForm({
       <section className="panel flex flex-col gap-4 p-5">
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Song title
+            {t('songs.songTitleLabel')}
           </label>
           <input
             className={inputClass}
             value={form.title}
             onChange={(e) => update('title', e.target.value)}
-            placeholder="e.g. Landslide"
+            placeholder={t('songs.songTitlePlaceholder')}
             maxLength={100}
           />
         </div>
 
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Artist
+            {t('songs.artistLabel')}
           </label>
           <input
             className={inputClass}
             value={form.artist}
             onChange={(e) => update('artist', e.target.value)}
-            placeholder="e.g. Fleetwood Mac"
+            placeholder={t('songs.artistPlaceholder')}
             maxLength={80}
           />
         </div>
 
         <div>
           <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Get the tab / chords
+            {t('songs.getTabChords')}
           </p>
           <LookupOnlineLinks
             links={buildSongLookupLinks(form.title, form.artist)}
-            emptyHint="Type a title above to get Songsterr / Ultimate Guitar / YouTube links here."
+            emptyHint={t('songs.lookupEmptyHint')}
           />
         </div>
 
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Genre
+            {t('songs.genreLabel')}
           </label>
           <select
             className={inputClass}
@@ -178,13 +180,13 @@ export default function AddSongForm({
       </section>
 
       <section className="panel flex flex-col gap-4 p-5">
-        <RatingSlider label="Difficulty" value={form.difficulty} onChange={(v) => update('difficulty', v)} />
+        <RatingSlider label={t('songs.difficultyLabel')} value={form.difficulty} onChange={(v) => update('difficulty', v)} />
       </section>
 
       <section className="panel flex flex-col gap-4 p-5">
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Tuning
+            {t('songs.tuningLabel')}
           </label>
           <div className="mb-2 flex flex-wrap gap-2">
             {TUNING_PRESETS.map((preset) => (
@@ -213,7 +215,7 @@ export default function AddSongForm({
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-              Capo fret (optional)
+              {t('songs.capoLabel')}
             </label>
             <input
               type="number"
@@ -222,18 +224,18 @@ export default function AddSongForm({
               className={inputClass}
               value={form.capo}
               onChange={(e) => update('capo', e.target.value)}
-              placeholder="e.g. 2"
+              placeholder={t('songs.capoPlaceholder')}
             />
           </div>
           <div>
             <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-              Key (optional)
+              {t('songs.keyLabel')}
             </label>
             <input
               className={inputClass}
               value={form.keySignature}
               onChange={(e) => update('keySignature', e.target.value)}
-              placeholder="e.g. G major"
+              placeholder={t('songs.keyPlaceholder')}
             />
           </div>
         </div>
@@ -242,26 +244,26 @@ export default function AddSongForm({
       <section className="panel flex flex-col gap-4 p-5">
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Practice notes — what to focus on, in your own words
+            {t('songs.practiceNotesLabel')}
           </label>
           <textarea
             className={inputClass}
             rows={3}
             value={form.practiceNotes}
             onChange={(e) => update('practiceNotes', e.target.value)}
-            placeholder="e.g. Steady down-up strumming, watch the chord change on beat 3…"
+            placeholder={t('songs.practiceNotesPlaceholder')}
           />
         </div>
 
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Tags — comma separated (optional)
+            {t('songs.tagsLabel')}
           </label>
           <input
             className={inputClass}
             value={form.tagsRaw}
             onChange={(e) => update('tagsRaw', e.target.value)}
-            placeholder="fingerpicking, capo, 90s"
+            placeholder={t('songs.tagsPlaceholder')}
           />
         </div>
       </section>
@@ -278,14 +280,14 @@ export default function AddSongForm({
 
       <div className="flex flex-wrap items-center gap-3">
         <button type="submit" className="btn-primary">
-          {initial ? 'Save changes' : '+ Add to songs'}
+          {initial ? t('songs.saveChanges') : t('songs.addToSongsButton')}
         </button>
         <button type="button" className="btn-secondary" onClick={onCancel}>
-          Cancel
+          {t('common.cancel')}
         </button>
         {onDelete && (
           <button type="button" className="btn-ghost ml-auto !text-ember-400" onClick={onDelete}>
-            Delete song
+            {t('songs.deleteSong')}
           </button>
         )}
       </div>

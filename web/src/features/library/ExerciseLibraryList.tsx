@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react'
 import type { Exercise, ExerciseCategory } from '../../types/exercise'
-import { EXERCISE_CATEGORY_LABELS } from '../../types/exercise'
-import CategoryBadge from '../../components/practice/CategoryBadge'
+import CategoryBadge, { CATEGORY_LABEL_KEYS } from '../../components/practice/CategoryBadge'
 import ExerciseTagBadge from '../../components/practice/ExerciseTagBadge'
+import { useLocale } from '../../hooks/useLocale'
 
 const CATEGORY_FILTERS: (ExerciseCategory | 'all')[] = [
   'all',
@@ -22,6 +22,7 @@ export default function ExerciseLibraryList({
   exercises: Exercise[]
   onEdit: (exercise: Exercise) => void
 }) {
+  const { t } = useLocale()
   const [category, setCategory] = useState<ExerciseCategory | 'all'>('all')
   const [query, setQuery] = useState('')
 
@@ -38,7 +39,7 @@ export default function ExerciseLibraryList({
     <div className="flex flex-col gap-4">
       <input
         className="w-full rounded-lg border border-ink-600 bg-ink-900/60 px-3 py-2 text-sm text-parchment-100 placeholder:text-parchment-500/50 focus:border-ember-500 focus:outline-none"
-        placeholder="Search by name or tag…"
+        placeholder={t('library.searchPlaceholder')}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
@@ -55,13 +56,15 @@ export default function ExerciseLibraryList({
                 : 'chip !text-parchment-400/70 hover:!text-parchment-200'
             }
           >
-            {c === 'all' ? 'All' : EXERCISE_CATEGORY_LABELS[c]}
+            {c === 'all' ? t('library.allCategories') : t(CATEGORY_LABEL_KEYS[c])}
           </button>
         ))}
       </div>
 
       <p className="text-xs text-parchment-400/60">
-        {filtered.length} exercise{filtered.length === 1 ? '' : 's'}
+        {filtered.length === 1
+          ? t('library.exerciseCountOne', { count: filtered.length })
+          : t('library.exerciseCountOther', { count: filtered.length })}
       </p>
 
       <div className="flex flex-col gap-2">
@@ -77,23 +80,25 @@ export default function ExerciseLibraryList({
                 <p className="truncate font-display text-base font-medium tracking-wide text-parchment-100">
                   {exercise.name}
                 </p>
-                {exercise.isCustom && <span className="chip !py-0 !text-[10px]">Custom</span>}
+                {exercise.isCustom && <span className="chip !py-0 !text-[10px]">{t('library.customBadge')}</span>}
               </div>
               <div className="mt-1 flex flex-wrap items-center gap-2">
                 <CategoryBadge category={exercise.category} />
                 <ExerciseTagBadge exercise={exercise} />
                 <span className="text-xs text-parchment-400/60">
-                  {exercise.recommendedDuration} min · difficulty {exercise.difficulty}/5
+                  {t('library.durationDifficulty', { minutes: exercise.recommendedDuration, difficulty: exercise.difficulty })}
                 </span>
               </div>
             </div>
-            <span className="shrink-0 text-parchment-400/50">{exercise.isCustom ? 'Edit ›' : 'View ›'}</span>
+            <span className="shrink-0 text-parchment-400/50">
+              {exercise.isCustom ? t('library.editArrow') : t('library.viewArrow')}
+            </span>
           </button>
         ))}
 
         {filtered.length === 0 && (
           <p className="panel px-4 py-6 text-center text-sm text-parchment-400/70">
-            No exercises match that search.
+            {t('library.noExercisesMatch')}
           </p>
         )}
       </div>

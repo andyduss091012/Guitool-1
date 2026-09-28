@@ -2,6 +2,21 @@ import { useEffect, useRef, useState } from 'react'
 import { useMetronomeEngine } from './useMetronomeEngine'
 import { DEFAULT_TIME_SIGNATURE, TIME_SIGNATURES } from './timeSignatures'
 import { NOTE_SUBDIVISIONS } from './noteSubdivisions'
+import { useLocale } from '../../hooks/useLocale'
+import type { TranslationKey } from '../../i18n/translations'
+
+/**
+ * `NOTE_SUBDIVISIONS` (in `noteSubdivisions.ts`, outside this feature's file
+ * list) carries fixed English display labels used for both rendering and
+ * internal identity (`id`). This maps each preset's `id` to a translation
+ * key so the label shown here is localized without touching that file.
+ */
+const NOTE_SUBDIVISION_LABEL_KEYS: Record<string, TranslationKey> = {
+  quarter: 'metronome.subdivision.quarter',
+  eighth: 'metronome.subdivision.eighth',
+  'eighth-triplet': 'metronome.subdivision.eighthTriplet',
+  sixteenth: 'metronome.subdivision.sixteenth',
+}
 
 const BPM_STEP_SMALL = 1
 const BPM_STEP_LARGE = 5
@@ -21,11 +36,12 @@ function BeatDots({
   currentSubBeat: number
   accentEnabled: boolean
 }) {
+  const { t } = useLocale()
   return (
     <div
       className="flex flex-wrap items-center justify-center gap-3"
       role="img"
-      aria-label={`Beat ${currentBeat + 1} of ${beats}`}
+      aria-label={t('metronome.beatAriaLabel', { current: currentBeat + 1, total: beats })}
     >
       {Array.from({ length: beats }).map((_, i) => (
         <div key={i} className="flex items-center gap-1">
@@ -59,9 +75,10 @@ function BeatDots({
 }
 
 export default function Metronome() {
+  const { t } = useLocale()
   const engine = useMetronomeEngine(100)
   const [signatureLabel, setSignatureLabel] = useState(DEFAULT_TIME_SIGNATURE.label)
-  const [tapHint, setTapHint] = useState('Tap a few times to set the tempo')
+  const [tapHint, setTapHint] = useState(t('metronome.tapHintInitial'))
   const tapHintTimeout = useRef<number | null>(null)
 
   // Manual BPM entry. Kept as its own string state (rather than reading
@@ -121,23 +138,23 @@ export default function Metronome() {
 
   const handleTap = () => {
     engine.registerTap()
-    setTapHint('Tap again to refine, or keep playing')
+    setTapHint(t('metronome.tapHintRefine'))
     if (tapHintTimeout.current) window.clearTimeout(tapHintTimeout.current)
-    tapHintTimeout.current = window.setTimeout(() => setTapHint('Tap a few times to set the tempo'), 3000)
+    tapHintTimeout.current = window.setTimeout(() => setTapHint(t('metronome.tapHintInitial')), 3000)
   }
 
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <p className="label-eyebrow">Phase 2 — Guitar Tools</p>
+        <p className="label-eyebrow">{t('metronome.phase')}</p>
         <h1 className="mt-1 flex items-center gap-2 text-3xl font-semibold text-parchment-100">
-          <span aria-hidden>🥁</span> Metronome
+          <span aria-hidden>🥁</span> {t('nav.metronome')}
         </h1>
       </div>
 
       {/* Time signature */}
       <div className="flex flex-col gap-2">
-        <p className="text-[11px] uppercase tracking-widest2 text-parchment-400/50">Time signature</p>
+        <p className="text-[11px] uppercase tracking-widest2 text-parchment-400/50">{t('metronome.timeSignatureLabel')}</p>
         <div className="flex flex-wrap gap-2">
           {TIME_SIGNATURES.map((sig) => (
             <button
@@ -158,7 +175,7 @@ export default function Metronome() {
 
       {/* Note value / subdivision */}
       <div className="flex flex-col gap-2">
-        <p className="text-[11px] uppercase tracking-widest2 text-parchment-400/50">Note value</p>
+        <p className="text-[11px] uppercase tracking-widest2 text-parchment-400/50">{t('metronome.noteValueLabel')}</p>
         <div className="flex flex-wrap gap-2">
           {NOTE_SUBDIVISIONS.map((note) => (
             <button
@@ -174,7 +191,7 @@ export default function Metronome() {
               <span aria-hidden className="text-sm">
                 {note.shortLabel}
               </span>
-              {note.label}
+              {t(NOTE_SUBDIVISION_LABEL_KEYS[note.id] ?? 'metronome.subdivision.quarter')}
             </button>
           ))}
         </div>
@@ -185,7 +202,7 @@ export default function Metronome() {
           <p className="font-mono text-6xl font-semibold tabular-nums text-parchment-100 sm:text-7xl">
             {engine.bpm}
           </p>
-          <p className="mt-1 text-xs uppercase tracking-widest2 text-parchment-400/60">BPM</p>
+          <p className="mt-1 text-xs uppercase tracking-widest2 text-parchment-400/60">{t('metronome.bpmUnit')}</p>
         </div>
 
         <BeatDots
@@ -201,7 +218,7 @@ export default function Metronome() {
             type="button"
             className="btn-secondary !px-3"
             onClick={() => engine.setBpm(engine.bpm - BPM_STEP_SMALL)}
-            aria-label="Decrease tempo"
+            aria-label={t('metronome.decreaseTempo')}
           >
             −
           </button>
@@ -212,13 +229,13 @@ export default function Metronome() {
             value={engine.bpm}
             onChange={(e) => engine.setBpm(Number(e.target.value))}
             className="flex-1 accent-ember-500"
-            aria-label="Tempo in beats per minute"
+            aria-label={t('metronome.tempoSliderLabel')}
           />
           <button
             type="button"
             className="btn-secondary !px-3"
             onClick={() => engine.setBpm(engine.bpm + BPM_STEP_SMALL)}
-            aria-label="Increase tempo"
+            aria-label={t('metronome.increaseTempo')}
           >
             +
           </button>
@@ -226,7 +243,7 @@ export default function Metronome() {
 
         <div className="flex items-center gap-2">
           <label htmlFor="bpm-input" className="text-xs uppercase tracking-wide text-parchment-400/60">
-            Set BPM
+            {t('metronome.setBpmLabel')}
           </label>
           <input
             id="bpm-input"
@@ -251,12 +268,12 @@ export default function Metronome() {
         </div>
 
         <button type="button" className="btn-primary w-full max-w-sm text-lg" onClick={engine.toggle}>
-          {engine.isPlaying ? '■ Stop' : '▶ Start'}
+          {engine.isPlaying ? t('metronome.stop') : t('metronome.start')}
         </button>
 
         <div className="flex flex-col items-center gap-1.5">
           <button type="button" className="btn-secondary" onClick={handleTap}>
-            👆 Tap Tempo
+            {t('metronome.tapTempo')}
           </button>
           <p className="text-xs text-parchment-400/60">{tapHint}</p>
         </div>
@@ -265,7 +282,7 @@ export default function Metronome() {
       <section className="panel flex flex-col gap-5 p-5">
         <div className="flex items-center justify-between gap-4">
           <label htmlFor="volume" className="label-eyebrow shrink-0">
-            Volume
+            {t('metronome.volumeLabel')}
           </label>
           <input
             id="volume"
@@ -281,7 +298,7 @@ export default function Metronome() {
 
         <div className="flex items-center justify-between">
           <label htmlFor="accent" className="label-eyebrow">
-            Accent beat 1
+            {t('metronome.accentBeatLabel')}
           </label>
           <button
             id="accent"
@@ -308,9 +325,10 @@ export default function Metronome() {
       </section>
 
       <p className="text-center text-xs text-parchment-400/50">
-        Keyboard: <span className="text-parchment-300/70">Space</span> start/stop ·{' '}
-        <span className="text-parchment-300/70">↑ / ↓</span> tempo (hold Shift for ±5) ·{' '}
-        <span className="text-parchment-300/70">T</span> tap tempo
+        {t('metronome.keyboardHintPrefix')} <span className="text-parchment-300/70">Space</span>{' '}
+        {t('metronome.keyboardStartStopSuffix')} · <span className="text-parchment-300/70">↑ / ↓</span>{' '}
+        {t('metronome.keyboardTempoSuffix')} · <span className="text-parchment-300/70">T</span>{' '}
+        {t('metronome.keyboardTapTempoSuffix')}
       </p>
     </div>
   )

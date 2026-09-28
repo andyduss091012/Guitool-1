@@ -2,6 +2,7 @@ import type { PracticeSession } from '../../types/session'
 import type { Exercise } from '../../types/exercise'
 import { formatHoursMinutes } from '../../utils/time'
 import { sessionMeaningfulSeconds } from '../../services/progressService'
+import { useLocale } from '../../hooks/useLocale'
 
 export default function SessionSummary({
   session,
@@ -12,6 +13,7 @@ export default function SessionSummary({
   getExercise: (id: string) => Exercise | undefined
   onDone: () => void
 }) {
+  const { t } = useLocale()
   const totalSeconds = sessionMeaningfulSeconds(session)
   const completedCount = session.exercises.filter((e) => e.completed).length
 
@@ -21,14 +23,14 @@ export default function SessionSummary({
         🎉
       </div>
       <div>
-        <p className="label-eyebrow">Session complete</p>
-        <h1 className="mt-1 text-3xl font-semibold text-parchment-100">Nice playing.</h1>
+        <p className="label-eyebrow">{t('practice.sessionComplete')}</p>
+        <h1 className="mt-1 text-3xl font-semibold text-parchment-100">{t('practice.nicePlaying')}</h1>
       </div>
 
       <div className="panel-raised w-full max-w-sm px-5 py-5">
         <p className="font-display text-3xl font-semibold text-brass-300">{formatHoursMinutes(totalSeconds)}</p>
         <p className="mt-1 text-sm text-parchment-400/70">
-          {completedCount} of {session.exercises.length} exercises completed
+          {t('practice.exercisesCompleted', { completed: completedCount, total: session.exercises.length })}
         </p>
       </div>
 
@@ -40,7 +42,7 @@ export default function SessionSummary({
             <div key={se.exerciseId} className="panel flex items-center justify-between px-4 py-3">
               <span className="text-left text-sm text-parchment-200">{exercise.name}</span>
               <span className="text-xs text-parchment-400/70">
-                {se.skipped ? 'Skipped' : `${Math.round(se.elapsedSeconds / 60)} min`}
+                {se.skipped ? t('practice.skipped') : t('common.minutesAbbrev', { minutes: Math.round(se.elapsedSeconds / 60) })}
               </span>
             </div>
           )
@@ -48,7 +50,7 @@ export default function SessionSummary({
       </div>
 
       <button className="btn-primary" onClick={onDone}>
-        Back to Dashboard
+        {t('practice.backToDashboard')}
       </button>
     </div>
   )

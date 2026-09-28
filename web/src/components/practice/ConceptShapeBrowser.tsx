@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { MusicConcept } from '../../types/musicConcept'
 import FretShapeDiagram from './FretShapeDiagram'
+import { useLocale } from '../../hooks/useLocale'
 
 /**
  * Shows one `MusicConcept` (see `types/musicConcept.ts`) and lets the user
@@ -12,6 +13,7 @@ import FretShapeDiagram from './FretShapeDiagram'
  * one to pick from.
  */
 export default function ConceptShapeBrowser({ concept }: { concept: MusicConcept }) {
+  const { t } = useLocale()
   const shapes = concept.shapes ?? []
   const [index, setIndex] = useState(0)
   const active = shapes[Math.min(index, shapes.length - 1)]
@@ -20,7 +22,7 @@ export default function ConceptShapeBrowser({ concept }: { concept: MusicConcept
     return (
       <div className="panel flex flex-col gap-2 px-4 py-4">
         <ConceptHeader concept={concept} />
-        <p className="text-xs text-parchment-400/60">No diagram for this one yet.</p>
+        <p className="text-xs text-parchment-400/60">{t('practice.noDiagramYet')}</p>
       </div>
     )
   }
@@ -60,7 +62,7 @@ export default function ConceptShapeBrowser({ concept }: { concept: MusicConcept
             disabled={index === 0}
             onClick={() => setIndex((i) => Math.max(0, i - 1))}
           >
-            ‹ Previous shape
+            {t('practice.previousShape')}
           </button>
           <span className="text-xs text-parchment-400/60">
             {index + 1} / {shapes.length}
@@ -71,7 +73,7 @@ export default function ConceptShapeBrowser({ concept }: { concept: MusicConcept
             disabled={index === shapes.length - 1}
             onClick={() => setIndex((i) => Math.min(shapes.length - 1, i + 1))}
           >
-            Next shape ›
+            {t('practice.nextShape')}
           </button>
         </div>
       )}

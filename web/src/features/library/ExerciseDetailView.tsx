@@ -5,6 +5,7 @@ import ExerciseTagBadge from '../../components/practice/ExerciseTagBadge'
 import FretboardDiagram from '../../components/practice/FretboardDiagram'
 import MiniMusicTab from '../../components/practice/MiniMusicTab'
 import LookupOnlineLinks from './LookupOnlineLinks'
+import { useLocale } from '../../hooks/useLocale'
 
 export default function ExerciseDetailView({
   exercise,
@@ -15,10 +16,11 @@ export default function ExerciseDetailView({
   onBack: () => void
   onDuplicate: () => void
 }) {
+  const { t } = useLocale()
   return (
     <div className="flex flex-col gap-6">
       <button className="btn-ghost self-start" onClick={onBack}>
-        ‹ Back to library
+        {t('library.backToLibrary')}
       </button>
 
       <section className="panel-raised flex flex-col gap-4 p-6">
@@ -30,13 +32,13 @@ export default function ExerciseDetailView({
         <p className="text-sm text-parchment-300">{exercise.description}</p>
 
         <div className="flex flex-wrap gap-2 text-xs text-parchment-400/70">
-          <span className="chip">Difficulty {exercise.difficulty}/5</span>
-          <span className="chip">Importance {exercise.importance}/5</span>
-          <span className="chip">Usefulness {exercise.usefulness}/5</span>
-          <span className="chip">{exercise.recommendedDuration} min</span>
+          <span className="chip">{t('library.difficultyValue', { value: exercise.difficulty })}</span>
+          <span className="chip">{t('library.importanceValue', { value: exercise.importance })}</span>
+          <span className="chip">{t('library.usefulnessValue', { value: exercise.usefulness })}</span>
+          <span className="chip">{t('common.minutesAbbrev', { minutes: exercise.recommendedDuration })}</span>
           {exercise.recommendedBpm && (
             <span className="chip">
-              {exercise.recommendedBpm.min}–{exercise.recommendedBpm.max} BPM
+              {t('library.bpmRange', { min: exercise.recommendedBpm.min, max: exercise.recommendedBpm.max })}
             </span>
           )}
         </div>
@@ -44,7 +46,7 @@ export default function ExerciseDetailView({
         {exercise.conceptIds && exercise.conceptIds.length > 0 ? (
           <div className="flex flex-col gap-3">
             <p className="text-xs font-semibold uppercase tracking-wide text-parchment-400/70">
-              {exercise.conceptIds.length > 1 ? 'Shapes covered by this exercise' : 'Shapes'}
+              {exercise.conceptIds.length > 1 ? t('library.shapesMultiple') : t('library.shapesSingle')}
             </p>
             {exercise.conceptIds.map((conceptId) => (
               <MiniMusicTab key={conceptId} conceptId={conceptId} />
@@ -53,7 +55,7 @@ export default function ExerciseDetailView({
         ) : (
           exercise.diagram && (
             <div className="panel flex flex-col gap-3 px-4 py-4">
-              <p className="text-xs font-semibold uppercase tracking-wide text-parchment-400/70">Fret positions</p>
+              <p className="text-xs font-semibold uppercase tracking-wide text-parchment-400/70">{t('practice.fretPositions')}</p>
               <FretboardDiagram diagram={exercise.diagram} />
             </div>
           )
@@ -70,7 +72,7 @@ export default function ExerciseDetailView({
 
         {exercise.tips && exercise.tips.length > 0 && (
           <div>
-            <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-parchment-400/70">Tips</p>
+            <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-parchment-400/70">{t('practice.tips')}</p>
             <ul className="flex flex-col gap-1.5">
               {exercise.tips.map((tip, i) => (
                 <li key={i} className="flex gap-2 text-sm text-parchment-300">
@@ -85,7 +87,7 @@ export default function ExerciseDetailView({
         {exercise.commonMistakes && exercise.commonMistakes.length > 0 && (
           <div>
             <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-parchment-400/70">
-              Watch out for
+              {t('practice.watchOutFor')}
             </p>
             <ul className="flex flex-col gap-1.5">
               {exercise.commonMistakes.map((m, i) => (
@@ -100,18 +102,16 @@ export default function ExerciseDetailView({
 
         <div>
           <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-parchment-400/70">
-            Read more about it
+            {t('library.readMoreAboutIt')}
           </p>
           <LookupOnlineLinks links={buildLookupLinks(exercise.name)} />
         </div>
       </section>
 
       <div className="panel flex flex-col gap-2 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-parchment-300">
-          This is one of Guitool's built-in exercises, so it can't be edited or removed directly.
-        </p>
+        <p className="text-sm text-parchment-300">{t('library.builtInNotice')}</p>
         <button className="btn-secondary shrink-0" onClick={onDuplicate}>
-          Duplicate & customize
+          {t('library.duplicateAndCustomize')}
         </button>
       </div>
     </div>

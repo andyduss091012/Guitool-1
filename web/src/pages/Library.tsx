@@ -5,6 +5,7 @@ import type { CustomExerciseInput } from '../services/exerciseLibrary'
 import ExerciseLibraryList from '../features/library/ExerciseLibraryList'
 import AddExerciseForm from '../features/library/AddExerciseForm'
 import ExerciseDetailView from '../features/library/ExerciseDetailView'
+import { useLocale } from '../hooks/useLocale'
 
 type View =
   | { mode: 'list' }
@@ -13,6 +14,7 @@ type View =
   | { mode: 'edit'; exercise: Exercise }
 
 export default function Library() {
+  const { t } = useLocale()
   const { exercises, addCustomExercise, editCustomExercise, removeCustomExercise } = useGuitool()
   const [view, setView] = useState<View>({ mode: 'list' })
 
@@ -39,11 +41,11 @@ export default function Library() {
     return (
       <div className="flex flex-col gap-6">
         <button className="btn-ghost self-start" onClick={() => setView({ mode: 'list' })}>
-          ‹ Back to library
+          {t('library.backToLibrary')}
         </button>
         <div>
-          <p className="label-eyebrow">New exercise</p>
-          <h1 className="mt-1 text-3xl font-semibold text-parchment-100">Add to your library</h1>
+          <p className="label-eyebrow">{t('library.newExercise')}</p>
+          <h1 className="mt-1 text-3xl font-semibold text-parchment-100">{t('library.addToLibraryHeading')}</h1>
         </div>
         <AddExerciseForm
           initial={view.duplicateFrom}
@@ -58,10 +60,10 @@ export default function Library() {
     return (
       <div className="flex flex-col gap-6">
         <button className="btn-ghost self-start" onClick={() => setView({ mode: 'list' })}>
-          ‹ Back to library
+          {t('library.backToLibrary')}
         </button>
         <div>
-          <p className="label-eyebrow">Custom exercise</p>
+          <p className="label-eyebrow">{t('library.customExercise')}</p>
           <h1 className="mt-1 text-3xl font-semibold text-parchment-100">{view.exercise.name}</h1>
         </div>
         <AddExerciseForm
@@ -88,18 +90,15 @@ export default function Library() {
     <div className="flex flex-col gap-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="label-eyebrow">Library</p>
-          <h1 className="mt-1 text-3xl font-semibold text-parchment-100">Your exercises</h1>
+          <p className="label-eyebrow">{t('library.libraryLabel')}</p>
+          <h1 className="mt-1 text-3xl font-semibold text-parchment-100">{t('library.yourExercises')}</h1>
         </div>
         <button className="btn-primary shrink-0" onClick={() => setView({ mode: 'add' })}>
-          + Add Exercise
+          {t('library.addExercise')}
         </button>
       </div>
 
-      <p className="text-sm text-parchment-400/70">
-        Exercises you add here join the built-in library and can show up in your daily practice sessions,
-        just like any other exercise.
-      </p>
+      <p className="text-sm text-parchment-400/70">{t('library.addedExercisesNote')}</p>
 
       <ExerciseLibraryList exercises={exercises} onEdit={handleSelect} />
     </div>

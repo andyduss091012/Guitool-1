@@ -1,4 +1,5 @@
 import type { FretboardDiagram as FretboardDiagramData, StringNumber } from '../../types/exercise'
+import { useLocale } from '../../hooks/useLocale'
 
 /**
  * Renders a fret-position diagram — an original, generated SVG computed from
@@ -30,6 +31,7 @@ export default function FretboardDiagram({ diagram }: { diagram: FretboardDiagra
 }
 
 function ScaleDiagram({ diagram }: { diagram: FretboardDiagramData }) {
+  const { t } = useLocale()
   const { startFret, fretCount, notes, caption } = diagram
   const leftLabelWidth = 22
   const fretWidth = 52
@@ -53,7 +55,7 @@ function ScaleDiagram({ diagram }: { diagram: FretboardDiagramData }) {
         width={width}
         height={height}
         role="img"
-        aria-label={caption ?? 'Fretboard scale diagram'}
+        aria-label={caption ?? t('fretboardDiagram.scaleDiagramLabel')}
       >
         {/* string lines */}
         {([1, 2, 3, 4, 5, 6] as StringNumber[]).map((s) => (
@@ -135,6 +137,7 @@ function ScaleDiagram({ diagram }: { diagram: FretboardDiagramData }) {
 }
 
 function ChordDiagram({ diagram }: { diagram: FretboardDiagramData }) {
+  const { t } = useLocale()
   const { startFret, fretCount, notes, mutedStrings = [], caption } = diagram
   const topMarkerHeight = 20
   const leftPad = 24
@@ -163,7 +166,7 @@ function ChordDiagram({ diagram }: { diagram: FretboardDiagramData }) {
         width={width}
         height={height}
         role="img"
-        aria-label={caption ?? 'Chord fret diagram'}
+        aria-label={caption ?? t('fretboardDiagram.chordDiagramLabel')}
       >
         {startFret > 1 && (
           <text
@@ -253,15 +256,16 @@ function ChordDiagram({ diagram }: { diagram: FretboardDiagramData }) {
 }
 
 function Legend() {
+  const { t } = useLocale()
   return (
     <div className="flex flex-wrap items-center justify-center gap-3 text-[10px] text-parchment-400/60">
       <span className="flex items-center gap-1">
-        <span className="inline-block h-2.5 w-2.5 rounded-full bg-brass-500" /> Root note
+        <span className="inline-block h-2.5 w-2.5 rounded-full bg-brass-500" /> {t('fretboardDiagram.rootNote')}
       </span>
       <span className="flex items-center gap-1">
-        <span className="inline-block h-2.5 w-2.5 rounded-full bg-ember-500" /> Note
+        <span className="inline-block h-2.5 w-2.5 rounded-full bg-ember-500" /> {t('fretboardDiagram.note')}
       </span>
-      <span>Number = suggested finger (1 = index … 4 = pinky)</span>
+      <span>{t('fretboardDiagram.fingerCaption')}</span>
     </div>
   )
 }

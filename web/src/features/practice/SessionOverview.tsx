@@ -1,6 +1,7 @@
 import type { PracticeSession } from '../../types/session'
 import type { Exercise } from '../../types/exercise'
 import ExercisePreviewCard from '../../components/practice/ExercisePreviewCard'
+import { useLocale } from '../../hooks/useLocale'
 
 export default function SessionOverview({
   session,
@@ -11,12 +12,13 @@ export default function SessionOverview({
   getExercise: (id: string) => Exercise | undefined
   onStart: () => void
 }) {
+  const { t } = useLocale()
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <p className="label-eyebrow">Today's Practice</p>
+        <p className="label-eyebrow">{t('practice.todaysPractice')}</p>
         <h1 className="mt-1 text-3xl font-semibold text-parchment-100">
-          {session.totalPlannedMinutes} minutes
+          {t('practice.totalMinutes', { minutes: session.totalPlannedMinutes })}
         </h1>
       </div>
 
@@ -36,12 +38,12 @@ export default function SessionOverview({
       </div>
 
       <div className="panel flex items-center justify-between px-4 py-3">
-        <span className="label-eyebrow">Total</span>
+        <span className="label-eyebrow">{t('practice.total')}</span>
         <span className="font-display text-lg text-parchment-100">{session.totalPlannedMinutes}:00</span>
       </div>
 
       <button className="btn-primary" onClick={onStart}>
-        ▶ Start Practice
+        {t('practice.startPractice')}
       </button>
     </div>
   )

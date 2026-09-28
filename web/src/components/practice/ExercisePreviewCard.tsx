@@ -1,6 +1,7 @@
 import type { Exercise } from '../../types/exercise'
 import CategoryBadge from './CategoryBadge'
 import ExerciseTagBadge from './ExerciseTagBadge'
+import { useLocale } from '../../hooks/useLocale'
 
 interface ExercisePreviewCardProps {
   index: number
@@ -21,6 +22,7 @@ export default function ExercisePreviewCard({
   active,
   onClick,
 }: ExercisePreviewCardProps) {
+  const { t } = useLocale()
   return (
     <button
       type="button"
@@ -47,10 +49,12 @@ export default function ExercisePreviewCard({
         <div className="mt-1 flex flex-wrap items-center gap-2">
           <CategoryBadge category={exercise.category} />
           <ExerciseTagBadge exercise={exercise} />
-          {skipped && <span className="text-xs text-parchment-400/60">Skipped</span>}
+          {skipped && <span className="text-xs text-parchment-400/60">{t('practice.skipped')}</span>}
         </div>
       </div>
-      <span className="shrink-0 font-display text-sm tabular-nums text-parchment-300">{minutes} min</span>
+      <span className="shrink-0 font-display text-sm tabular-nums text-parchment-300">
+        {t('common.minutesAbbrev', { minutes })}
+      </span>
     </button>
   )
 }

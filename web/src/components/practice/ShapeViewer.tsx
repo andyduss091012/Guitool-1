@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState, type TouchEvent } from 'react'
 import type { MusicConcept } from '../../types/musicConcept'
 import { useShapeIndex } from '../../hooks/useShapeIndex'
+import { useLocale } from '../../hooks/useLocale'
 import FretShapeDiagram, { type DiagramLabelMode } from './FretShapeDiagram'
+import type { TranslationKey } from '../../i18n/translations'
 
-const LABEL_MODES: { mode: DiagramLabelMode; label: string }[] = [
-  { mode: 'finger', label: 'Fingers' },
-  { mode: 'note', label: 'Notes' },
-  { mode: 'interval', label: 'Intervals' },
+const LABEL_MODES: { mode: DiagramLabelMode; labelKey: TranslationKey }[] = [
+  { mode: 'finger', labelKey: 'shapeViewer.fingers' },
+  { mode: 'note', labelKey: 'shapeViewer.notes' },
+  { mode: 'interval', labelKey: 'shapeViewer.intervals' },
 ]
 
 const SWIPE_THRESHOLD_PX = 45
@@ -38,6 +40,7 @@ export default function ShapeViewer({
   onIndexChange?: (index: number) => void
   onClose: () => void
 }) {
+  const { t } = useLocale()
   const shapes = concept.shapes ?? []
   const { index, setIndex, next, prev, hasNext, hasPrev } = useShapeIndex(shapes.length, initialIndex)
   const active = shapes[index]
@@ -131,7 +134,7 @@ export default function ShapeViewer({
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
-        aria-label={`${concept.name} — shape viewer`}
+        aria-label={t('shapeViewer.dialogLabel', { name: concept.name })}
         tabIndex={-1}
         onClick={(e) => e.stopPropagation()}
         onTouchStart={handleTouchStart}
@@ -150,7 +153,7 @@ export default function ShapeViewer({
           <button
             type="button"
             onClick={onClose}
-            aria-label={`Close ${concept.name} shape viewer`}
+            aria-label={t('shapeViewer.closeLabel', { name: concept.name })}
             className="btn-ghost shrink-0 !p-2 text-lg leading-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brass-400"
           >
             ✕
@@ -158,13 +161,13 @@ export default function ShapeViewer({
         </div>
 
         {shapes.length > 1 && (
-          <div className="flex flex-wrap gap-1.5" role="group" aria-label={`${concept.name} shapes`}>
+          <div className="flex flex-wrap gap-1.5" role="group" aria-label={t('shapeViewer.shapesGroupLabel', { name: concept.name })}>
             {shapes.map((shape, i) => (
               <button
                 key={shape.id}
                 type="button"
                 aria-pressed={i === index}
-                aria-label={`Show shape ${i + 1} of ${shapes.length}: ${shape.label}`}
+                aria-label={t('shapeViewer.showShapeLabel', { current: i + 1, total: shapes.length, label: shape.label })}
                 onClick={() => setIndex(i)}
                 className={
                   (i === index
@@ -183,24 +186,27 @@ export default function ShapeViewer({
           <FretShapeDiagram shape={active} mode={mode} labelMode={labelMode} />
         </div>
 
-        <div className="flex items-center justify-center gap-1.5" role="group" aria-label="Note label style">
-          {LABEL_MODES.map(({ mode: m, label }) => (
-            <button
-              key={m}
-              type="button"
-              onClick={() => setLabelMode(m)}
-              aria-pressed={labelMode === m}
-              aria-label={`Show ${label.toLowerCase()} on the diagram`}
-              className={
-                (m === labelMode
-                  ? 'chip !border-brass-500/60 !bg-brass-500/15 !text-brass-300'
-                  : 'chip !text-parchment-400/70 hover:!text-parchment-200') +
-                ' focus-visible:outline focus-visible:outline-2 focus-visible:outline-brass-400'
-              }
-            >
-              {label}
-            </button>
-          ))}
+        <div className="flex items-center justify-center gap-1.5" role="group" aria-label={t('shapeViewer.noteLabelStyle')}>
+          {LABEL_MODES.map(({ mode: m, labelKey }) => {
+            const label = t(labelKey)
+            return (
+              <button
+                key={m}
+                type="button"
+                onClick={() => setLabelMode(m)}
+                aria-pressed={labelMode === m}
+                aria-label={t('shapeViewer.showOnDiagram', { label: label.toLowerCase() })}
+                className={
+                  (m === labelMode
+                    ? 'chip !border-brass-500/60 !bg-brass-500/15 !text-brass-300'
+                    : 'chip !text-parchment-400/70 hover:!text-parchment-200') +
+                  ' focus-visible:outline focus-visible:outline-2 focus-visible:outline-brass-400'
+                }
+              >
+                {label}
+              </button>
+            )
+          })}
         </div>
 
         {active.caption && <p className="text-center text-xs text-parchment-400/70">{active.caption}</p>}
@@ -212,26 +218,26 @@ export default function ShapeViewer({
               className="btn-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-brass-400"
               disabled={!hasPrev}
               onClick={prev}
-              aria-label="Previous shape"
+              aria-label={t('shapeViewer.previousShapeLabel')}
             >
-              ‹ Previous
+              {t('shapeViewer.previous')}
             </button>
             <span className="text-xs text-parchment-400/60" aria-live="polite">
-              Shape {index + 1} of {shapes.length}
+              {t('shapeViewer.shapeCounter', { current: index + 1, total: shapes.length })}
             </span>
             <button
               type="button"
               className="btn-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-brass-400"
               disabled={!hasNext}
               onClick={next}
-              aria-label="Next shape"
+              aria-label={t('shapeViewer.nextShapeLabel')}
             >
-              Next ›
+              {t('shapeViewer.next')}
             </button>
           </div>
         )}
 
-        <p className="text-center text-[10px] text-parchment-400/50 md:hidden">Swipe to change shapes</p>
+        <p className="text-center text-[10px] text-parchment-400/50 md:hidden">{t('shapeViewer.swipeHint')}</p>
       </div>
     </div>
   )

@@ -1,12 +1,14 @@
 import type { DayMinutes } from '../../services/progressStats'
 import { formatShortDay } from '../../utils/date'
+import { useLocale } from '../../hooks/useLocale'
 
 export default function WeekBarChart({ days }: { days: DayMinutes[] }) {
+  const { t } = useLocale()
   const max = Math.max(1, ...days.map((d) => d.minutes))
 
   return (
     <div>
-      <div className="flex items-end gap-2.5 sm:gap-3" role="img" aria-label="Practice minutes for the last 7 days">
+      <div className="flex items-end gap-2.5 sm:gap-3" role="img" aria-label={t('progress.weekChartAriaLabel')}>
         {days.map((d) => {
           const heightPct = Math.max(4, (d.minutes / max) * 100)
           const isToday = d.dateKey === days[days.length - 1].dateKey

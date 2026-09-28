@@ -4,8 +4,10 @@ import SessionOverview from '../features/practice/SessionOverview'
 import ActiveExercise from '../features/practice/ActiveExercise'
 import SessionSummary from '../features/practice/SessionSummary'
 import { playSessionCompleteChime } from '../utils/sound'
+import { useLocale } from '../hooks/useLocale'
 
 export default function Practice() {
+  const { t } = useLocale()
   const { state, getExercise, beginPractice, updateExercise, setCurrentExerciseIndex, finishSession, toggleFavorite } =
     useGuitool()
   const navigate = useNavigate()
@@ -14,9 +16,9 @@ export default function Practice() {
   if (!session) {
     return (
       <div className="flex flex-col items-center gap-4 py-16 text-center">
-        <p className="text-parchment-300">No session generated yet for today.</p>
+        <p className="text-parchment-300">{t('practice.noSessionYet')}</p>
         <button className="btn-primary" onClick={() => navigate('/')}>
-          Go to Dashboard
+          {t('practice.goToDashboard')}
         </button>
       </div>
     )
@@ -39,9 +41,9 @@ export default function Practice() {
   if (!exercise) {
     return (
       <div className="flex flex-col items-center gap-4 py-16 text-center">
-        <p className="text-parchment-300">This exercise is no longer in the library.</p>
+        <p className="text-parchment-300">{t('practice.exerciseNotFound')}</p>
         <button className="btn-primary" onClick={() => navigate('/')}>
-          Go to Dashboard
+          {t('practice.goToDashboard')}
         </button>
       </div>
     )

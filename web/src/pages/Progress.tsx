@@ -12,9 +12,11 @@ import {
   thisWeekSeconds,
 } from '../services/progressStats'
 import { formatHoursMinutes } from '../utils/time'
+import { useLocale } from '../hooks/useLocale'
 
 export default function Progress() {
   const { state, exercises } = useGuitool()
+  const { t } = useLocale()
   const { progress } = state
 
   const weekMinutes = useMemo(() => formatHoursMinutes(thisWeekSeconds(progress)), [progress])
@@ -29,8 +31,8 @@ export default function Progress() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <p className="label-eyebrow">Progress</p>
-        <h1 className="mt-1 text-3xl font-semibold text-parchment-100">How it's going</h1>
+        <p className="label-eyebrow">{t('nav.progress')}</p>
+        <h1 className="mt-1 text-3xl font-semibold text-parchment-100">{t('progress.headline')}</h1>
       </div>
 
       <section className="panel-raised flex flex-col gap-4 p-5">
@@ -39,66 +41,64 @@ export default function Progress() {
             🔥
           </span>
           <p className="font-display text-2xl font-semibold text-brass-300">
-            {progress.streak.current} day{progress.streak.current === 1 ? '' : 's'}
+            {t('progress.currentStreakDays', { count: progress.streak.current })}
           </p>
         </div>
         <p className="text-xs text-parchment-400/70">
-          Longest streak: {progress.streak.longest} day{progress.streak.longest === 1 ? '' : 's'}
+          {t('progress.longestStreakLabel', { count: progress.streak.longest })}
         </p>
       </section>
 
       {!hasAnyHistory ? (
-        <p className="panel px-4 py-6 text-center text-sm text-parchment-400/70">
-          Finish your first session and your stats will start showing up here.
-        </p>
+        <p className="panel px-4 py-6 text-center text-sm text-parchment-400/70">{t('progress.emptyState')}</p>
       ) : (
         <>
           <div className="grid grid-cols-2 gap-3">
-            <StatTile label="This Week" value={weekMinutes} />
-            <StatTile label="This Month" value={monthMinutes} />
-            <StatTile label="Sessions" value={String(progress.totalSessionsCompleted)} />
-            <StatTile label="Total Time" value={formatHoursMinutes(progress.totalPracticeSeconds)} />
+            <StatTile label={t('common.thisWeek')} value={weekMinutes} />
+            <StatTile label={t('common.thisMonth')} value={monthMinutes} />
+            <StatTile label={t('common.sessions')} value={String(progress.totalSessionsCompleted)} />
+            <StatTile label={t('common.totalTime')} value={formatHoursMinutes(progress.totalPracticeSeconds)} />
           </div>
 
           <section className="panel p-5">
-            <h2 className="label-eyebrow mb-4">Last 7 Days</h2>
+            <h2 className="label-eyebrow mb-4">{t('progress.last7Days')}</h2>
             <WeekBarChart days={days} />
           </section>
 
           <div className="grid gap-3 sm:grid-cols-2">
             <section className="panel px-4 py-4">
-              <p className="label-eyebrow mb-2">Most Practiced</p>
+              <p className="label-eyebrow mb-2">{t('progress.mostPracticed')}</p>
               {topExercise ? (
                 <>
                   <p className="font-display text-lg text-parchment-100">{topExercise.exercise.name}</p>
                   <p className="text-xs text-parchment-400/70">
-                    {formatHoursMinutes(topExercise.totalSeconds)} · {topExercise.timesPracticed} session
-                    {topExercise.timesPracticed === 1 ? '' : 's'}
+                    {formatHoursMinutes(topExercise.totalSeconds)} ·{' '}
+                    {t('progress.sessionsCount', { count: topExercise.timesPracticed })}
                   </p>
                 </>
               ) : (
-                <p className="text-sm text-parchment-400/70">Not enough data yet.</p>
+                <p className="text-sm text-parchment-400/70">{t('progress.notEnoughData')}</p>
               )}
             </section>
 
             <section className="panel px-4 py-4">
-              <p className="label-eyebrow mb-2">Needs Attention</p>
+              <p className="label-eyebrow mb-2">{t('progress.needsAttention')}</p>
               {attention ? (
                 <>
                   <p className="font-display text-lg text-parchment-100">{attention.exercise.name}</p>
                   <p className="text-xs text-parchment-400/70">
-                    Practiced {attention.timesPracticed} time{attention.timesPracticed === 1 ? '' : 's'} so far
+                    {t('progress.practicedTimesSoFar', { count: attention.timesPracticed })}
                   </p>
                 </>
               ) : (
-                <p className="text-sm text-parchment-400/70">Nothing flagged — keep it up!</p>
+                <p className="text-sm text-parchment-400/70">{t('progress.nothingFlagged')}</p>
               )}
             </section>
           </div>
 
           {favorites.length > 0 && (
             <section className="panel px-4 py-4">
-              <p className="label-eyebrow mb-2">Favorites</p>
+              <p className="label-eyebrow mb-2">{t('progress.favorites')}</p>
               <div className="flex flex-wrap gap-2">
                 {favorites.map((ex) => (
                   <span key={ex.id} className="chip gap-1">
@@ -113,7 +113,7 @@ export default function Progress() {
       )}
 
       <Link to="/library" className="btn-ghost self-start">
-        📚 Manage your exercise library
+        📚 {t('progress.manageLibrary')}
       </Link>
     </div>
   )

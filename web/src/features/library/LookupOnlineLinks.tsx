@@ -1,4 +1,5 @@
 import type { LookupLink } from '../../services/webLookup'
+import { useLocale } from '../../hooks/useLocale'
 
 /**
  * Convenience search links only — nothing is fetched or scraped by the app.
@@ -13,13 +14,14 @@ import type { LookupLink } from '../../services/webLookup'
  */
 export default function LookupOnlineLinks({
   links,
-  emptyHint = 'Type a name above to get quick research links here.',
+  emptyHint,
 }: {
   links: LookupLink[]
   emptyHint?: string
 }) {
+  const { t } = useLocale()
   if (links.length === 0) {
-    return <p className="text-xs text-parchment-400/60">{emptyHint}</p>
+    return <p className="text-xs text-parchment-400/60">{emptyHint ?? t('library.lookupEmptyHint')}</p>
   }
 
   return (
@@ -37,10 +39,7 @@ export default function LookupOnlineLinks({
           </a>
         ))}
       </div>
-      <p className="text-xs text-parchment-400/60">
-        Opens in a new tab. Use it for reference, then write your own notes below — don't paste
-        copyrighted text in.
-      </p>
+      <p className="text-xs text-parchment-400/60">{t('library.lookupNote')}</p>
     </div>
   )
 }

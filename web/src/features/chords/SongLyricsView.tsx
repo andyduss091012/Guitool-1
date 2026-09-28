@@ -4,6 +4,7 @@ import { DEMO_SONGS, chordsUsedIn, type DemoSong } from '../../data/demoSongs'
 import { findLibraryChordByName, type LibraryChord } from '../../data/chordLibrary'
 import { parseChordProLine } from '../../utils/chordpro'
 import ShapeViewer from '../../components/practice/ShapeViewer'
+import { useLocale } from '../../hooks/useLocale'
 
 function toConcept(chord: LibraryChord): ChordConcept {
   return {
@@ -26,6 +27,7 @@ function toConcept(chord: LibraryChord): ChordConcept {
  * play along" and "show me that shape" is one tap.
  */
 export default function SongLyricsView() {
+  const { t } = useLocale()
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [openChordName, setOpenChordName] = useState<string | null>(null)
   const song = selectedId ? DEMO_SONGS.find((s) => s.id === selectedId) : undefined
@@ -40,19 +42,19 @@ export default function SongLyricsView() {
   return (
     <div className="flex flex-col gap-6">
       <button className="btn-ghost self-start" onClick={() => setSelectedId(null)}>
-        ‹ Back to songs
+        {t('songsChords.backToSongs')}
       </button>
 
       <div>
-        <p className="label-eyebrow">Songs · Chords</p>
+        <p className="label-eyebrow">{t('songsChords.eyebrow')}</p>
         <h1 className="mt-1 text-3xl font-semibold text-parchment-100">{song.title}</h1>
         <p className="text-sm text-parchment-400/70">
-          {song.artist} · Key of {song.key}
+          {t('songsChords.artistKeyOf', { artist: song.artist, key: song.key })}
         </p>
       </div>
 
       {chordNames.length > 0 && (
-        <div className="flex flex-wrap gap-1.5" role="group" aria-label="Chords used in this song">
+        <div className="flex flex-wrap gap-1.5" role="group" aria-label={t('songsChords.chordsUsedInSong')}>
           {chordNames.map((name) => (
             <button key={name} type="button" onClick={() => setOpenChordName(name)} className="chip">
               {name}
@@ -101,6 +103,7 @@ function LyricLine({ line, onSelectChord }: { line: string; onSelectChord: (name
 }
 
 function SongPicker({ songs, onSelect }: { songs: DemoSong[]; onSelect: (id: string) => void }) {
+  const { t } = useLocale()
   return (
     <div className="flex flex-col gap-3">
       {songs.map((song) => (
@@ -114,7 +117,7 @@ function SongPicker({ songs, onSelect }: { songs: DemoSong[]; onSelect: (id: str
             <p className="font-display text-base font-medium tracking-wide text-parchment-100">{song.title}</p>
             <p className="text-xs text-parchment-400/70">{song.artist}</p>
           </div>
-          <span className="chip shrink-0">Key of {song.key}</span>
+          <span className="chip shrink-0">{t('songsChords.keyOf', { key: song.key })}</span>
         </button>
       ))}
     </div>

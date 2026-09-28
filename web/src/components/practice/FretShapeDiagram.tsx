@@ -1,5 +1,7 @@
 import type { FretPositionRole, FretShape, StringNumber } from '../../types/musicConcept'
 import { noteNameAtPosition } from '../../utils/fretboardNotes'
+import { useLocale } from '../../hooks/useLocale'
+import type { TranslationKey } from '../../i18n/translations'
 
 /**
  * Renders one `FretShape` from the music-concept content model (see
@@ -264,28 +266,28 @@ function ChordLayout({ shape, labelMode }: { shape: FretShape; labelMode: Diagra
   )
 }
 
-const LABEL_MODE_CAPTION: Record<DiagramLabelMode, string> = {
-  finger: 'Number = suggested finger',
-  note: 'Letter = note name',
-  interval: 'Number = scale degree / chord tone',
-}
-
 function Legend({ labelMode }: { labelMode: DiagramLabelMode }) {
+  const { t } = useLocale()
+  const captionKey: Record<DiagramLabelMode, TranslationKey> = {
+    finger: 'fretShapeDiagram.fingerCaption',
+    note: 'fretShapeDiagram.noteCaption',
+    interval: 'fretShapeDiagram.intervalCaption',
+  }
   return (
     <div className="flex flex-wrap items-center justify-center gap-3 text-[10px] text-parchment-400/60">
       <span className="flex items-center gap-1">
-        <span className="inline-block h-2.5 w-2.5 rounded-full bg-brass-500" /> Root
+        <span className="inline-block h-2.5 w-2.5 rounded-full bg-brass-500" /> {t('fretShapeDiagram.root')}
       </span>
       <span className="flex items-center gap-1">
-        <span className="inline-block h-2.5 w-2.5 rounded-full bg-ember-300" /> 3rd
+        <span className="inline-block h-2.5 w-2.5 rounded-full bg-ember-300" /> {t('fretShapeDiagram.third')}
       </span>
       <span className="flex items-center gap-1">
-        <span className="inline-block h-2.5 w-2.5 rounded-full bg-ember-600" /> 5th
+        <span className="inline-block h-2.5 w-2.5 rounded-full bg-ember-600" /> {t('fretShapeDiagram.fifth')}
       </span>
       <span className="flex items-center gap-1">
-        <span className="inline-block h-2.5 w-2.5 rounded-full bg-ember-500" /> Note
+        <span className="inline-block h-2.5 w-2.5 rounded-full bg-ember-500" /> {t('fretShapeDiagram.note')}
       </span>
-      <span>{LABEL_MODE_CAPTION[labelMode]}</span>
+      <span>{t(captionKey[labelMode])}</span>
     </div>
   )
 }

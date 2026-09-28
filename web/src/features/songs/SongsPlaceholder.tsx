@@ -1,4 +1,5 @@
 import ComingSoon from '../../components/ui/ComingSoon'
+import { useLocale } from '../../hooks/useLocale'
 
 /**
  * Placeholder for the Phase 3 song library. This app does not scrape or
@@ -7,17 +8,14 @@ import ComingSoon from '../../components/ui/ComingSoon'
  * folder, or use mock/local song data for demo purposes only.
  */
 export default function SongsPlaceholder() {
+  const { t } = useLocale()
   return (
     <ComingSoon
       icon="📜"
-      phase="Phase 3 — Song Learning"
-      title="Songs"
-      description="A song-learning workspace: search for songs, break them into sections, and turn any section into a focused practice session."
-      bullets={[
-        'Song search with difficulty, tuning, capo and BPM at a glance.',
-        'Section breakdown (intro, verse, solo…) feeding Song Practice Mode.',
-        'Built to plug in a licensed tab/chord data source later — no copyrighted content is scraped or stored.',
-      ]}
+      phase={t('songs.placeholderPhase')}
+      title={t('songs.placeholderTitle')}
+      description={t('songs.placeholderDescription')}
+      bullets={[t('songs.placeholderBullet1'), t('songs.placeholderBullet2'), t('songs.placeholderBullet3')]}
     />
   )
 }

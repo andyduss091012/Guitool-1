@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { ChordConcept } from '../../types/musicConcept'
 import { CHORD_LIBRARY_BY_ROOT, type LibraryChord } from '../../data/chordLibrary'
 import ShapeViewer from '../../components/practice/ShapeViewer'
+import { useLocale } from '../../hooks/useLocale'
 
 function toConcept(chord: LibraryChord): ChordConcept {
   return {
@@ -23,6 +24,7 @@ function toConcept(chord: LibraryChord): ChordConcept {
  * positions in the existing `ShapeViewer`.
  */
 export default function ChordLibraryGrid() {
+  const { t } = useLocale()
   const [openRoot, setOpenRoot] = useState<string | null>(null)
   const [openChordId, setOpenChordId] = useState<string | null>(null)
 
@@ -33,7 +35,7 @@ export default function ChordLibraryGrid() {
     return (
       <div className="flex flex-col gap-3">
         <h2 className="font-display text-sm font-semibold uppercase tracking-wide text-brass-500">
-          Choose a root
+          {t('songsChords.chooseARoot')}
         </h2>
         <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6">
           {CHORD_LIBRARY_BY_ROOT.map((group) => (
@@ -42,11 +44,11 @@ export default function ChordLibraryGrid() {
               type="button"
               onClick={() => setOpenRoot(group.root)}
               className="panel flex flex-col items-center gap-1 px-2 py-3 text-center transition hover:bg-ink-700/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brass-400"
-              aria-label={`View chords for ${group.root}`}
+              aria-label={t('songsChords.viewChordsFor', { root: group.root })}
             >
               <span className="font-display text-lg font-semibold text-parchment-100">{group.root}</span>
               <span className="text-[10px] text-parchment-400/60">
-                {group.chords.length} {group.chords.length === 1 ? 'chord' : 'chords'}
+                {t('songsChords.chordCount', { count: group.chords.length })}
               </span>
             </button>
           ))}
@@ -59,10 +61,10 @@ export default function ChordLibraryGrid() {
     <div className="flex flex-col gap-3">
       <div className="flex items-center justify-between gap-3">
         <h2 className="font-display text-sm font-semibold uppercase tracking-wide text-brass-500">
-          {rootGroup.root} chords
+          {t('songsChords.rootChordsHeading', { root: rootGroup.root })}
         </h2>
         <button type="button" className="btn-ghost" onClick={() => setOpenRoot(null)}>
-          ‹ All roots
+          {t('songsChords.allRoots')}
         </button>
       </div>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
@@ -72,12 +74,12 @@ export default function ChordLibraryGrid() {
             type="button"
             onClick={() => setOpenChordId(chord.id)}
             className="panel flex flex-col items-center gap-1 px-2 py-3 text-center transition hover:bg-ink-700/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brass-400"
-            aria-label={`View hand positions for ${chord.name}`}
+            aria-label={t('songsChords.viewHandPositionsFor', { name: chord.name })}
           >
             <span className="font-display text-lg font-semibold text-parchment-100">{chord.name}</span>
             <span className="text-[10px] text-parchment-400/60">{chord.typeLabel}</span>
             <span className="text-[10px] text-parchment-400/40">
-              {chord.shapes.length} {chord.shapes.length === 1 ? 'shape' : 'shapes'}
+              {t('songsChords.shapeCount', { count: chord.shapes.length })}
             </span>
           </button>
         ))}

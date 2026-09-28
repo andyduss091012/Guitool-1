@@ -1,3 +1,5 @@
+import { useLocale } from '../../hooks/useLocale'
+
 interface ComingSoonProps {
   icon: string
   title: string
@@ -7,6 +9,7 @@ interface ComingSoonProps {
 }
 
 export default function ComingSoon({ icon, title, phase, description, bullets }: ComingSoonProps) {
+  const { t } = useLocale()
   return (
     <div className="flex flex-col gap-6">
       <div>
@@ -17,7 +20,7 @@ export default function ComingSoon({ icon, title, phase, description, bullets }:
       </div>
 
       <section className="panel-raised flex flex-col gap-4 p-6">
-        <span className="chip self-start">Coming soon</span>
+        <span className="chip self-start">{t('common.comingSoon')}</span>
         <p className="text-sm text-parchment-300">{description}</p>
         <ul className="flex flex-col gap-2">
           {bullets.map((b, i) => (

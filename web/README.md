@@ -53,24 +53,19 @@ docker compose up tabs-server  # shared Guitar Pro tab file-server           →
 
 Run `docker compose up --build <service>` instead of plain `up` after
 changing `package.json` or either `Dockerfile*`, so the image actually
-rebuilds rather than reusing a stale cached layer. Both Dockerfiles
-`COPY package-lock.json*` (the trailing `*` makes it optional) so they use
-your real `package-lock.json` automatically once one exists — it does now.
+rebuilds rather than reusing a stale cached layer. There's no
+`package-lock.json` committed yet (see the note below on `npm ci`); once
+you commit one from a real `npm install`, both Dockerfiles will use it
+automatically (they `COPY package-lock.json*` — the trailing `*` makes it
+optional either way).
 
-⚠️ **A real bug was caught and fixed here**: `.dockerignore` used to
-exclude the entire `docker/` folder, but the production `Dockerfile`'s
-`COPY docker/nginx.conf ...` needs that file *in* the build context — so
-every `docker build`/`docker compose up web` failed with `"/docker/nginx.conf":
-not found`. This was confirmed with a real BuildKit build (this sandbox
-got a working Docker daemon partway through the project, though it's still
-denied network access to Docker Hub/any container registry — so the base
-images themselves can't be pulled from here) and is fixed:
-`.dockerignore` now excludes only `docker/tabs-server` (that sub-app's own
-concern) instead of all of `docker/`. The rest of the multi-stage build —
-`npm install`, `npm run build`, and nginx actually serving the result —
-still hasn't been run end-to-end from this environment, since that needs
-the real `node`/`nginx` base images; if `docker compose up` turns up
-another issue past this one, it's most likely something small.
+⚠️ Not yet verified end-to-end: this sandbox has no Docker daemon and no
+npm registry access (same limitation noted throughout this README for
+`npm install` generally), so these Dockerfiles were written carefully and
+reviewed by hand but never actually built/run. If `docker compose up`
+turns up an issue, it's most likely something small — a base-image tag
+that's moved on, or a path typo — not a structural problem with the
+two-stage/bind-mount approach itself.
 
 ## What's in the MVP (Phase 1)
 
@@ -396,6 +391,186 @@ cheap, purpose-built service:
 Try it with `docker compose up tabs-server`, drop a `.gp`/`.gpx` file into
 `shared-tabs/`, and refresh the Songs → Tabs page.
 
+### Admin tab import
+
+The shared library above only ever grows by an operator manually dropping
+files into `shared-tabs/`. This adds a second way in — an admin-only HTTP
+endpoint and a matching CLI — so a tab can be added to the shared library
+**without rebuilding or redeploying anything**, while keeping the Docker
+image itself containing only application code.
+
+**What this deliberately is not:** an automated scraper that fetches tabs
+from Ultimate Guitar (or any other third-party tab site) by URL or ID.
+Guitar Pro tabs are third-party copyrighted arrangements — Ultimate
+Guitar's own catalog is itself licensed from music publishers, and its
+terms don't permit automated scraping or onward redistribution. So rather
+than an importer that reaches out and fetches someone else's content, this
+one takes a file an admin already has and already has the rights to store
+— their own composition, something they've separately cleared, a file
+they're allowed to mirror — and every import records an explicit rights
+assertion (see "Storage format" below) rather than assuming redistribution
+rights just because a file could be uploaded. This also happens to remove
+an entire class of security problem: there's no URL for the server to
+fetch on your behalf, so there's no SSRF surface to guard against.
+
+**How a tab gets in:**
+
+- `POST /admin/tabs/import` — `multipart/form-data` with a `file` field
+  plus `title`, `source` (a short slug like `own-archive`), and optionally
+  `artist`, `sourceUrl`, `externalId`, `license`, `canCache`,
+  `canRedistribute`. Requires `Authorization: Bearer <ADMIN_IMPORT_TOKEN>`
+  — the endpoint returns `503` if that env var isn't set at all (import is
+  *disabled by default*, not just unauthenticated) and `401` if the token
+  doesn't match. Rate-limited to 10 imports/minute per server process.
+
+  ```bash
+  curl -X POST http://localhost:4001/admin/tabs/import \
+    -H "Authorization: Bearer $ADMIN_IMPORT_TOKEN" \
+    -F "title=Example Song" \
+    -F "artist=Example Artist" \
+    -F "source=own-archive" \
+    -F "externalId=my-catalog-042" \
+    -F "canRedistribute=true" \
+    -F "file=@./ExampleSong.gp5"
+  ```
+
+  ```json
+  {
+    "success": true,
+    "alreadyExists": false,
+    "tab": {
+      "id": "3f9a7c21b8e4d016",
+      "title": "Example Song",
+      "artist": "Example Artist",
+      "format": "gp5",
+      "fileName": "tab.gp5",
+      "source": "own-archive",
+      "externalId": "my-catalog-042",
+      "contentHash": "…sha256…",
+      "importedAt": "2026-09-28T06:00:00.000Z",
+      "canCache": false,
+      "canRedistribute": true
+    }
+  }
+  ```
+
+  Re-running the exact same import (same `source`+`externalId`, or the
+  identical file bytes under a different one) returns
+  `"alreadyExists": true` with the existing record — no duplicate file is
+  ever written.
+
+- **`npm run import:tab -- --file <path> --title "<title>" --source <slug>`**
+  (from `docker/tabs-server/`) — the same pipeline without needing the
+  server up or a token in hand; useful when `TABS_DIR` is directly
+  reachable (run on the host, or `docker compose exec tabs-server npm run
+  import:tab -- ...`). Also accepts `--artist`, `--source-url`,
+  `--external-id`, `--license`, `--can-cache`, `--can-redistribute`.
+
+**Storage format** — `docker/tabs-server/lib/tabStorage.js` (a
+`TabStorage` interface; `LocalTabStorage` is the only implementation
+today, a plain folder on disk) writes each imported tab to its own
+subdirectory, format detected from the upload rather than assumed:
+
+```
+shared-tabs/
+  3f9a7c21b8e4d016/
+    tab.gp5
+    metadata.json
+```
+
+```json
+{
+  "id": "3f9a7c21b8e4d016",
+  "title": "Example Song",
+  "artist": "Example Artist",
+  "format": "gp5",
+  "fileName": "tab.gp5",
+  "source": "own-archive",
+  "sourceUrl": null,
+  "externalId": "my-catalog-042",
+  "contentHash": "…sha256…",
+  "importedAt": "2026-09-28T06:00:00.000Z",
+  "license": null,
+  "canCache": false,
+  "canRedistribute": true
+}
+```
+
+`canCache`/`canRedistribute` default to `false` — importing a file never
+implies you have the right to redistribute it; an admin has to say so
+explicitly. There's no database in this project (see "Notes & known
+limitations"), so `metadata.json` next to each file *is* the record —
+`GET /api/tabs` lists every one alongside the legacy flat-file list (in a
+new, additive `tabs` key existing frontend code doesn't read, so nothing
+that already worked breaks), and `GET /api/tabs/:id` /
+`GET /api/tabs/:id/file` fetch one tab's metadata and bytes respectively.
+The pre-existing `GET /api/tabs` (`files` key) and `GET /api/tabs/:name`
+routes are completely unchanged — the same flat-file behavior as before.
+
+**Deduplication** is by `source`+`externalId` first (the primary key —
+re-importing the same catalog entry is a no-op) and by SHA-256 content
+hash second (catches the same bytes arriving under a different id/URL,
+or with no external id at all).
+
+**Security, beyond the admin token:** upload size capped at 25MB
+(`MAX_TAB_FILE_BYTES` to change it) via `multer`'s built-in limit; file
+format is validated against a fixed extension allow-list plus a cheap
+magic-byte sanity check (zip signature for `.gpx`/`.gp7`, no NUL bytes for
+`.tex`) rather than trusted from the filename alone; the on-disk id is
+always a hash, never the admin-supplied title/externalId/filename, so
+there's no path-traversal surface even if one of those contained `../`;
+nothing here logs the admin token or file contents.
+
+**Sync across machines/deployments:** exactly as with the read-only
+shared library above, `./shared-tabs:/data/tabs` is a bind mount for
+*one* Docker host. Running `tabs-server` on a laptop and a production
+server, each with their own `./shared-tabs/`, gives you two independent
+libraries that never see each other's imports — a tab imported on one
+is invisible on the other. If everyone points at the *same* running
+`tabs-server` (one server, one shared filesystem), an import is visible
+to every user immediately, no rebuild or redeploy involved — that's the
+"no Docker rebuild" property the admin-import feature is built around.
+Making that true across *multiple* independent hosts means swapping
+`LocalTabStorage` for a shared-backend implementation (S3/Azure Blob/a
+network filesystem) behind the same `TabStorage` interface — the
+interface was written with exactly that swap in mind, but only
+`LocalTabStorage` exists today.
+
+**Tests:** `docker/tabs-server/test/` — `importer.test.js` covers the
+import pipeline directly (dependency-free, runs with just
+`node --test test/importer.test.js`, no `npm install` needed) —
+successful import, both dedup paths, invalid source/format, and the two
+failure-injection cases (storage failure never writes metadata;
+metadata-write failure after a successful save rolls the file back).
+`server.test.js` exercises the same things over real HTTP with
+`supertest`, plus the unauthenticated-request, path-traversal, oversized-
+upload, and "existing flat-file routes still work" cases — this one needs
+`npm install` run first (see below). There's no live Ultimate Guitar (or
+any external source) to mock, since nothing here calls out to one.
+
+**Known limitations of this pass:**
+
+- No admin UI — this is the API + CLI only. A page to search/list
+  candidate tabs and click "Import" (the eventual admin workflow) isn't
+  built.
+- No PostgreSQL migration — this project has no database at all today, so
+  per-tab `metadata.json` plus a folder scan is the whole "index." If a
+  real database is added to the project later, swapping the folder-scan
+  in `GET /api/tabs`/`findByContentHash` for a real query is a small,
+  contained change (same `TabStorage` interface, different backing
+  listing).
+- The rate limiter is in-memory and per-process — it does not coordinate
+  across multiple `tabs-server` instances/replicas.
+- `npm test` (the full suite, including the HTTP-level `server.test.js`)
+  needs `express`/`multer`/`supertest` installed in
+  `docker/tabs-server/`; that install couldn't be run from this session's
+  sandboxed environment (its network policy blocks the npm registry, same
+  restriction noted elsewhere in this README) — run `npm install && npm
+  test` there yourself, or `docker compose build tabs-server` (the image
+  build installs `express`/`multer`, the production dependencies, over
+  its own network path). The dependency-free `importer.test.js` was run
+  directly against this machine's Node and passes (9/9).
+
 ### Chord Library
 
 `src/pages/SongsChords.tsx`'s "Chord Library" tab
@@ -576,6 +751,13 @@ git-ignored by default; drop your own tab files in there).
   finished algorithm.
 - Notifications/reminders, PWA/offline support, and import/export are
   Phase 6 and not started.
+- The admin tab-import feature (see "Admin tab import" under Phase 5)
+  intentionally has no automated external-source scraper (e.g. Ultimate
+  Guitar) — it imports files an admin already has and asserts the rights
+  to store, not ones fetched from a third-party site on the server's
+  behalf. It also has no admin UI yet (API + CLI only), no database (a
+  per-tab `metadata.json` plus a folder scan stands in for one), and its
+  import rate limiter is in-memory/per-process only.
 - The Chord Library's generated (non-hand-authored) shapes are pitch-class
   verified the same way the CAGED shapes are (see "Chord Library" under
   Phase 5) but, like everything else in this project, have not been played

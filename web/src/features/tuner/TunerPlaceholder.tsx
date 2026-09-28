@@ -1,4 +1,5 @@
 import ComingSoon from '../../components/ui/ComingSoon'
+import { useLocale } from '../../hooks/useLocale'
 
 /**
  * Placeholder for the Phase 2 tuner. The real implementation will use the
@@ -7,17 +8,14 @@ import ComingSoon from '../../components/ui/ComingSoon'
  * algorithm can be swapped or improved without touching the rest of the app.
  */
 export default function TunerPlaceholder() {
+  const { t } = useLocale()
   return (
     <ComingSoon
       icon="🎵"
-      phase="Phase 2 — Guitar Tools"
-      title="Tuner"
-      description="A microphone-based tuner for standard tuning (E A D G B E), showing the detected note, cents off pitch, and frequency."
-      bullets={[
-        'Live pitch detection from your microphone via the Web Audio API.',
-        'Needle-style display with cents flat/sharp and the detected frequency.',
-        'Falls back gracefully if the browser denies microphone access.',
-      ]}
+      phase={t('tuner.phase')}
+      title={t('nav.tuner')}
+      description={t('tuner.description')}
+      bullets={[t('tuner.bullet.livePitch'), t('tuner.bullet.needleDisplay'), t('tuner.bullet.fallback')]}
     />
   )
 }

@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import type { Song, SongGenre, SongProgressEntry, SongStatus } from '../../types/song'
 import { SONG_GENRES, SONG_STATUSES, SONG_STATUS_LABELS } from '../../types/song'
+import { useLocale } from '../../hooks/useLocale'
 
 export default function SongLibraryList({
   songs,
@@ -13,6 +14,7 @@ export default function SongLibraryList({
   onSelect: (song: Song) => void
   onToggleFavorite: (id: string) => void
 }) {
+  const { t } = useLocale()
   const [genre, setGenre] = useState<SongGenre | 'all'>('all')
   const [status, setStatus] = useState<SongStatus | 'all'>('all')
   const [query, setQuery] = useState('')
@@ -36,7 +38,7 @@ export default function SongLibraryList({
     <div className="flex flex-col gap-4">
       <input
         className="w-full rounded-lg border border-ink-600 bg-ink-900/60 px-3 py-2 text-sm text-parchment-100 placeholder:text-parchment-500/50 focus:border-ember-500 focus:outline-none"
-        placeholder="Search by title, artist, or tag…"
+        placeholder={t('songs.searchPlaceholder')}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
@@ -53,7 +55,7 @@ export default function SongLibraryList({
                 : 'chip !text-parchment-400/70 hover:!text-parchment-200'
             }
           >
-            {g === 'all' ? 'All genres' : g}
+            {g === 'all' ? t('songs.allGenres') : g}
           </button>
         ))}
       </div>
@@ -70,14 +72,12 @@ export default function SongLibraryList({
                 : 'chip !text-parchment-400/70 hover:!text-parchment-200'
             }
           >
-            {s === 'all' ? 'All statuses' : SONG_STATUS_LABELS[s]}
+            {s === 'all' ? t('songs.allStatuses') : SONG_STATUS_LABELS[s]}
           </button>
         ))}
       </div>
 
-      <p className="text-xs text-parchment-400/60">
-        {filtered.length} song{filtered.length === 1 ? '' : 's'}
-      </p>
+      <p className="text-xs text-parchment-400/60">{t('songs.songCount', { count: filtered.length })}</p>
 
       <div className="flex flex-col gap-2">
         {filtered.map((song) => {
@@ -89,20 +89,22 @@ export default function SongLibraryList({
                   <p className="truncate font-display text-base font-medium tracking-wide text-parchment-100">
                     {song.title}
                   </p>
-                  {song.isCustom && <span className="chip !py-0 !text-[10px]">Custom</span>}
+                  {song.isCustom && <span className="chip !py-0 !text-[10px]">{t('songs.customBadge')}</span>}
                 </div>
                 <p className="mt-0.5 truncate text-xs text-parchment-400/70">{song.artist}</p>
                 <div className="mt-1.5 flex flex-wrap items-center gap-2">
                   <span className="chip">{song.genre}</span>
                   <span className="chip !text-parchment-300">{SONG_STATUS_LABELS[progress.status]}</span>
-                  <span className="text-xs text-parchment-400/60">Difficulty {song.difficulty}/5</span>
+                  <span className="text-xs text-parchment-400/60">
+                    {t('songs.difficultyChip', { difficulty: song.difficulty })}
+                  </span>
                 </div>
               </button>
               <button
                 type="button"
                 onClick={() => onToggleFavorite(song.id)}
                 aria-pressed={progress.isFavorite}
-                aria-label={progress.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+                aria-label={progress.isFavorite ? t('songs.removeFromFavorites') : t('songs.addToFavorites')}
                 className={
                   'shrink-0 text-xl transition hover:scale-110 ' +
                   (progress.isFavorite ? 'text-brass-400' : 'text-parchment-500/40')
@@ -115,7 +117,7 @@ export default function SongLibraryList({
         })}
 
         {filtered.length === 0 && (
-          <p className="panel px-4 py-6 text-center text-sm text-parchment-400/70">No songs match that search.</p>
+          <p className="panel px-4 py-6 text-center text-sm text-parchment-400/70">{t('songs.noSongsMatch')}</p>
         )}
       </div>
     </div>

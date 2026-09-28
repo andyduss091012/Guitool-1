@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ChordLibraryGrid from '../features/chords/ChordLibraryGrid'
 import SongLyricsView from '../features/chords/SongLyricsView'
+import { useLocale } from '../hooks/useLocale'
 
 type Tab = 'library' | 'lyrics'
 
@@ -16,16 +17,17 @@ type Tab = 'library' | 'lyrics'
  *    it's original content rather than a scraped/licensed lyrics dataset).
  */
 export default function SongsChords() {
+  const { t } = useLocale()
   const [tab, setTab] = useState<Tab>('library')
 
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <p className="label-eyebrow">Songs · Chords</p>
-        <h1 className="mt-1 text-3xl font-semibold text-parchment-100">Chords &amp; lyrics</h1>
+        <p className="label-eyebrow">{t('songsChords.eyebrow')}</p>
+        <h1 className="mt-1 text-3xl font-semibold text-parchment-100">{t('songsChords.title')}</h1>
       </div>
 
-      <div className="flex gap-1.5" role="tablist" aria-label="Chords section">
+      <div className="flex gap-1.5" role="tablist" aria-label={t('songsChords.tablistLabel')}>
         <button
           type="button"
           role="tab"
@@ -33,7 +35,7 @@ export default function SongsChords() {
           onClick={() => setTab('library')}
           className={tab === 'library' ? 'chip !border-ember-500/60 !bg-ember-500/15 !text-ember-300' : 'chip !text-parchment-400/70 hover:!text-parchment-200'}
         >
-          Chord Library
+          {t('songsChords.chordLibraryTab')}
         </button>
         <button
           type="button"
@@ -42,24 +44,18 @@ export default function SongsChords() {
           onClick={() => setTab('lyrics')}
           className={tab === 'lyrics' ? 'chip !border-ember-500/60 !bg-ember-500/15 !text-ember-300' : 'chip !text-parchment-400/70 hover:!text-parchment-200'}
         >
-          Song Lyrics
+          {t('songsChords.songLyricsTab')}
         </button>
       </div>
 
       {tab === 'library' ? (
         <>
-          <p className="text-sm text-parchment-400/70">
-            Pick a root to see every chord type we've got for it — major, minor, 7ths, 9ths, dim, aug and
-            more — each with every hand position in the dataset.
-          </p>
+          <p className="text-sm text-parchment-400/70">{t('songsChords.libraryIntro')}</p>
           <ChordLibraryGrid />
         </>
       ) : (
         <>
-          <p className="text-sm text-parchment-400/70">
-            Pick a song to see its lyrics with the chords laid out above them — tap a chord to see how to
-            play it.
-          </p>
+          <p className="text-sm text-parchment-400/70">{t('songsChords.lyricsIntro')}</p>
           <SongLyricsView />
         </>
       )}

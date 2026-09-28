@@ -5,6 +5,7 @@ import type { CustomSongInput } from '../services/songLibrary'
 import SongLibraryList from '../features/songs/SongLibraryList'
 import AddSongForm from '../features/songs/AddSongForm'
 import SongDetailView from '../features/songs/SongDetailView'
+import { useLocale } from '../hooks/useLocale'
 
 type View =
   | { mode: 'list' }
@@ -13,6 +14,7 @@ type View =
   | { mode: 'edit'; song: Song }
 
 export default function Songs() {
+  const { t } = useLocale()
   const { songs, getSongProgress, addCustomSong, editCustomSong, removeCustomSong, setSongStatus, toggleSongFavorite } =
     useGuitool()
   const [view, setView] = useState<View>({ mode: 'list' })
@@ -36,11 +38,11 @@ export default function Songs() {
     return (
       <div className="flex flex-col gap-6">
         <button className="btn-ghost self-start" onClick={() => setView({ mode: 'list' })}>
-          ‹ Back to songs
+          {t('songs.backToSongs')}
         </button>
         <div>
-          <p className="label-eyebrow">New song</p>
-          <h1 className="mt-1 text-3xl font-semibold text-parchment-100">Add to your songs</h1>
+          <p className="label-eyebrow">{t('songs.newSong')}</p>
+          <h1 className="mt-1 text-3xl font-semibold text-parchment-100">{t('songs.addToYourSongs')}</h1>
         </div>
         <AddSongForm
           initial={view.duplicateFrom}
@@ -55,10 +57,10 @@ export default function Songs() {
     return (
       <div className="flex flex-col gap-6">
         <button className="btn-ghost self-start" onClick={() => setView({ mode: 'list' })}>
-          ‹ Back to songs
+          {t('songs.backToSongs')}
         </button>
         <div>
-          <p className="label-eyebrow">Custom song</p>
+          <p className="label-eyebrow">{t('songs.customSong')}</p>
           <h1 className="mt-1 text-3xl font-semibold text-parchment-100">{view.song.title}</h1>
         </div>
         <AddSongForm
@@ -91,19 +93,15 @@ export default function Songs() {
     <div className="flex flex-col gap-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="label-eyebrow">Songs</p>
-          <h1 className="mt-1 text-3xl font-semibold text-parchment-100">Your song list</h1>
+          <p className="label-eyebrow">{t('songs.songsEyebrow')}</p>
+          <h1 className="mt-1 text-3xl font-semibold text-parchment-100">{t('songs.yourSongList')}</h1>
         </div>
         <button className="btn-primary shrink-0" onClick={() => setView({ mode: 'add' })}>
-          + Add Song
+          {t('songs.addSong')}
         </button>
       </div>
 
-      <p className="text-sm text-parchment-400/70">
-        A catalog of real songs worth learning, with our own practice notes — and links out to
-        Songsterr / Ultimate Guitar for the actual tab or chords, since Guitool doesn't store or
-        reproduce tab content itself. Track your status and star your favorites as you go.
-      </p>
+      <p className="text-sm text-parchment-400/70">{t('songs.catalogIntro')}</p>
 
       <SongLibraryList
         songs={songs}

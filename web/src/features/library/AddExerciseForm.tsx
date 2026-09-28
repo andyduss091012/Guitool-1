@@ -2,11 +2,14 @@ import { useMemo, useState, type FormEvent } from 'react'
 import type { Exercise, ExerciseCategory, Rating1to5 } from '../../types/exercise'
 import { EXERCISE_CATEGORY_LABELS } from '../../types/exercise'
 import { validateCustomExerciseInput, type CustomExerciseInput } from '../../services/exerciseLibrary'
-import { classifyByRatings, EXERCISE_TAG_LABELS, EXERCISE_TAG_STYLES } from '../../services/exerciseTags'
+import { classifyByRatings, EXERCISE_TAG_STYLES } from '../../services/exerciseTags'
 import { buildLookupLinks } from '../../services/webLookup'
 import LookupOnlineLinks from './LookupOnlineLinks'
+import { useLocale } from '../../hooks/useLocale'
+import { CATEGORY_LABEL_KEYS } from '../../components/practice/CategoryBadge'
+import { TAG_LABEL_KEYS } from '../../components/practice/ExerciseTagBadge'
 
-const CATEGORY_OPTIONS = Object.entries(EXERCISE_CATEGORY_LABELS) as [ExerciseCategory, string][]
+const CATEGORY_VALUES = Object.keys(EXERCISE_CATEGORY_LABELS) as ExerciseCategory[]
 
 interface FormState {
   name: string
@@ -128,6 +131,7 @@ export default function AddExerciseForm({
   onSubmit: (input: CustomExerciseInput) => void
   onDelete?: () => void
 }) {
+  const { t } = useLocale()
   const [form, setForm] = useState<FormState>(() => (initial ? exerciseToForm(initial) : blankForm()))
   const [errors, setErrors] = useState<string[]>([])
 
@@ -152,34 +156,34 @@ export default function AddExerciseForm({
       <section className="panel flex flex-col gap-4 p-5">
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Exercise name
+            {t('library.exerciseNameLabel')}
           </label>
           <input
             className={inputClass}
             value={form.name}
             onChange={(e) => update('name', e.target.value)}
-            placeholder="e.g. Two-hand tapping basics"
+            placeholder={t('library.exerciseNamePlaceholder')}
             maxLength={80}
           />
         </div>
 
         <div>
-          <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-parchment-400/70">Look up online</p>
+          <p className="mb-1.5 text-xs font-medium uppercase tracking-wide text-parchment-400/70">{t('library.lookUpOnline')}</p>
           <LookupOnlineLinks links={buildLookupLinks(form.name)} />
         </div>
 
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Category
+            {t('library.categoryLabel')}
           </label>
           <select
             className={inputClass}
             value={form.category}
             onChange={(e) => update('category', e.target.value as ExerciseCategory)}
           >
-            {CATEGORY_OPTIONS.map(([value, label]) => (
+            {CATEGORY_VALUES.map((value) => (
               <option key={value} value={value}>
-                {label}
+                {t(CATEGORY_LABEL_KEYS[value])}
               </option>
             ))}
           </select>
@@ -187,14 +191,14 @@ export default function AddExerciseForm({
 
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Description
+            {t('library.descriptionLabel')}
           </label>
           <textarea
             className={inputClass}
             rows={2}
             value={form.description}
             onChange={(e) => update('description', e.target.value)}
-            placeholder="One or two sentences: what it is and why it helps."
+            placeholder={t('library.descriptionPlaceholder')}
           />
         </div>
       </section>
@@ -202,26 +206,24 @@ export default function AddExerciseForm({
       <section className="panel flex flex-col gap-4 p-5">
         <div className="flex items-center justify-between gap-3">
           <p className="text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Auto-tag preview
+            {t('library.autoTagPreview')}
           </p>
           <span className={`chip ${EXERCISE_TAG_STYLES[classifyByRatings(form.importance, form.difficulty)]}`}>
-            {EXERCISE_TAG_LABELS[classifyByRatings(form.importance, form.difficulty)]}
+            {t(TAG_LABEL_KEYS[classifyByRatings(form.importance, form.difficulty)])}
           </span>
         </div>
-        <p className="-mt-2 text-xs text-parchment-400/60">
-          Importance 5/5 always tags as Must Learn; otherwise the difficulty rating decides Easy, Medium, or Hard.
-        </p>
+        <p className="-mt-2 text-xs text-parchment-400/60">{t('library.autoTagExplain')}</p>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <RatingSlider label="Difficulty" value={form.difficulty} onChange={(v) => update('difficulty', v)} />
-          <RatingSlider label="Importance" value={form.importance} onChange={(v) => update('importance', v)} />
-          <RatingSlider label="Usefulness" value={form.usefulness} onChange={(v) => update('usefulness', v)} />
+          <RatingSlider label={t('library.difficultyLabel')} value={form.difficulty} onChange={(v) => update('difficulty', v)} />
+          <RatingSlider label={t('library.importanceLabel')} value={form.importance} onChange={(v) => update('importance', v)} />
+          <RatingSlider label={t('library.usefulnessLabel')} value={form.usefulness} onChange={(v) => update('usefulness', v)} />
         </div>
       </section>
 
       <section className="panel grid grid-cols-1 gap-4 p-5 sm:grid-cols-3">
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Typical minutes
+            {t('library.typicalMinutesLabel')}
           </label>
           <input
             type="number"
@@ -233,7 +235,7 @@ export default function AddExerciseForm({
         </div>
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Min minutes
+            {t('library.minMinutesLabel')}
           </label>
           <input
             type="number"
@@ -245,7 +247,7 @@ export default function AddExerciseForm({
         </div>
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Max minutes
+            {t('library.maxMinutesLabel')}
           </label>
           <input
             type="number"
@@ -260,20 +262,20 @@ export default function AddExerciseForm({
       <section className="panel flex flex-col gap-4 p-5">
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Instructions — one step per line
+            {t('library.instructionsLabel')}
           </label>
           <textarea
             className={inputClass}
             rows={4}
             value={form.instructionsRaw}
             onChange={(e) => update('instructionsRaw', e.target.value)}
-            placeholder={'Set a metronome to a slow tempo…\nPlay the pattern ascending and descending…'}
+            placeholder={t('library.instructionsPlaceholder')}
           />
         </div>
 
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Tips — one per line (optional)
+            {t('library.tipsLabel')}
           </label>
           <textarea
             className={inputClass}
@@ -285,7 +287,7 @@ export default function AddExerciseForm({
 
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Common mistakes — one per line (optional)
+            {t('library.commonMistakesLabel')}
           </label>
           <textarea
             className={inputClass}
@@ -297,20 +299,20 @@ export default function AddExerciseForm({
 
         <div>
           <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-            Skill tags — comma separated (optional)
+            {t('library.skillTagsLabel')}
           </label>
           <input
             className={inputClass}
             value={form.skillTagsRaw}
             onChange={(e) => update('skillTagsRaw', e.target.value)}
-            placeholder="picking, right-hand, speed"
+            placeholder={t('library.skillTagsPlaceholder')}
           />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-              Recommended BPM min (optional)
+              {t('library.bpmMinLabel')}
             </label>
             <input
               type="number"
@@ -322,7 +324,7 @@ export default function AddExerciseForm({
           </div>
           <div>
             <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-parchment-400/70">
-              Recommended BPM max (optional)
+              {t('library.bpmMaxLabel')}
             </label>
             <input
               type="number"
@@ -347,10 +349,10 @@ export default function AddExerciseForm({
 
       <div className="flex flex-wrap items-center gap-3">
         <button type="submit" className="btn-primary">
-          {initial ? 'Save changes' : '+ Add to library'}
+          {initial ? t('library.saveChanges') : t('library.addToLibraryButton')}
         </button>
         <button type="button" className="btn-secondary" onClick={onCancel}>
-          Cancel
+          {t('common.cancel')}
         </button>
         {onDelete && (
           <button
@@ -358,7 +360,7 @@ export default function AddExerciseForm({
             className="btn-ghost ml-auto !text-ember-400"
             onClick={onDelete}
           >
-            Delete exercise
+            {t('library.deleteExercise')}
           </button>
         )}
       </div>

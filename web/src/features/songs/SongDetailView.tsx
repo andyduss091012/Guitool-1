@@ -2,6 +2,7 @@ import type { Song, SongProgressEntry, SongStatus } from '../../types/song'
 import { SONG_STATUSES, SONG_STATUS_LABELS } from '../../types/song'
 import { buildSongLookupLinks } from '../../services/webLookup'
 import LookupOnlineLinks from '../library/LookupOnlineLinks'
+import { useLocale } from '../../hooks/useLocale'
 
 export default function SongDetailView({
   song,
@@ -22,23 +23,24 @@ export default function SongDetailView({
   onDuplicate?: () => void
   onDelete?: () => void
 }) {
+  const { t } = useLocale()
   return (
     <div className="flex flex-col gap-6">
       <button className="btn-ghost self-start" onClick={onBack}>
-        ‹ Back to songs
+        {t('songs.backToSongs')}
       </button>
 
       <section className="panel-raised flex flex-col gap-4 p-6">
         <div className="flex items-start justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <span className="chip">{song.genre}</span>
-            {song.isCustom && <span className="chip !py-0 !text-[10px]">Custom</span>}
+            {song.isCustom && <span className="chip !py-0 !text-[10px]">{t('songs.customBadge')}</span>}
           </div>
           <button
             type="button"
             onClick={onToggleFavorite}
             aria-pressed={progress.isFavorite}
-            aria-label={progress.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+            aria-label={progress.isFavorite ? t('songs.removeFromFavorites') : t('songs.addToFavorites')}
             className={
               'shrink-0 text-2xl transition hover:scale-110 ' +
               (progress.isFavorite ? 'text-brass-400' : 'text-parchment-500/40')
@@ -54,10 +56,10 @@ export default function SongDetailView({
         </div>
 
         <div className="flex flex-wrap gap-2 text-xs text-parchment-400/70">
-          <span className="chip">Difficulty {song.difficulty}/5</span>
+          <span className="chip">{t('songs.difficultyChip', { difficulty: song.difficulty })}</span>
           <span className="chip">{song.tuning}</span>
-          {song.capo !== undefined && <span className="chip">Capo {song.capo}</span>}
-          {song.keySignature && <span className="chip">Key: {song.keySignature}</span>}
+          {song.capo !== undefined && <span className="chip">{t('songs.capoChip', { capo: song.capo })}</span>}
+          {song.keySignature && <span className="chip">{t('songs.keyChip', { key: song.keySignature })}</span>}
         </div>
 
         {song.practiceNotes && <p className="text-sm text-parchment-300">{song.practiceNotes}</p>}
@@ -74,7 +76,7 @@ export default function SongDetailView({
       </section>
 
       <section className="panel flex flex-col gap-3 p-5">
-        <p className="label-eyebrow">Your status</p>
+        <p className="label-eyebrow">{t('songs.yourStatus')}</p>
         <div className="flex flex-wrap gap-2">
           {SONG_STATUSES.map((status) => (
             <button
@@ -94,35 +96,33 @@ export default function SongDetailView({
       </section>
 
       <section className="panel flex flex-col gap-3 p-5">
-        <p className="label-eyebrow">Get the tab / chords</p>
+        <p className="label-eyebrow">{t('songs.getTabChords')}</p>
         <LookupOnlineLinks links={buildSongLookupLinks(song.title, song.artist)} />
       </section>
 
       <div className="panel flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
         {song.isCustom ? (
           <>
-            <p className="text-sm text-parchment-300">This is one of your own songs.</p>
+            <p className="text-sm text-parchment-300">{t('songs.ownSongNotice')}</p>
             <div className="flex gap-2">
               {onEdit && (
                 <button className="btn-secondary shrink-0" onClick={onEdit}>
-                  Edit
+                  {t('songs.edit')}
                 </button>
               )}
               {onDelete && (
                 <button className="btn-ghost shrink-0 !text-ember-400" onClick={onDelete}>
-                  Delete
+                  {t('common.delete')}
                 </button>
               )}
             </div>
           </>
         ) : (
           <>
-            <p className="text-sm text-parchment-300">
-              This is one of Guitool's built-in songs, so its details can't be edited directly.
-            </p>
+            <p className="text-sm text-parchment-300">{t('songs.builtInNotice')}</p>
             {onDuplicate && (
               <button className="btn-secondary shrink-0" onClick={onDuplicate}>
-                Duplicate & customize
+                {t('songs.duplicateAndCustomize')}
               </button>
             )}
           </>

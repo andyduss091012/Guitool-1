@@ -2,9 +2,11 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useGuitool } from '../hooks/useGuitool'
 import { PLAYER_LEVELS, type PlayerLevel } from '../types/progress'
+import { useLocale } from '../hooks/useLocale'
 
 export default function Level() {
   const { state, setLevel, ensureTodaySession } = useGuitool()
+  const { t } = useLocale()
   const navigate = useNavigate()
   const currentLevel = state.settings.level
   const [justChanged, setJustChanged] = useState(false)
@@ -27,12 +29,11 @@ export default function Level() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <p className="label-eyebrow">Your level</p>
-        <h1 className="mt-1 text-3xl font-semibold text-parchment-100">How are you playing right now?</h1>
+        <p className="label-eyebrow">{t('level.yourLevel')}</p>
+        <h1 className="mt-1 text-3xl font-semibold text-parchment-100">{t('level.headline')}</h1>
         <p className="mt-2 text-sm text-parchment-400/70">
-          This shapes your daily practice sessions — Beginner leans on an easier mix, Advanced pushes harder.
-          Exercises tagged <span className="text-ember-300">Must Learn</span> still show up for everyone,
-          regardless of level.
+          {t('level.descriptionPrefix')} <span className="text-ember-300">{t('level.mustLearnLabel')}</span>{' '}
+          {t('level.descriptionSuffix')}
         </p>
       </div>
 
@@ -56,7 +57,7 @@ export default function Level() {
                 </span>
                 {active && (
                   <span className="chip shrink-0 !border-ember-500/60 !bg-ember-500/15 !text-ember-300">
-                    Current
+                    {t('common.current')}
                   </span>
                 )}
               </div>
@@ -69,13 +70,11 @@ export default function Level() {
       {justChanged && (
         <div className="panel flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-parchment-300">
-            {canRegenerateToday
-              ? "Level updated. Regenerate today's practice to reflect it, or it'll apply automatically from tomorrow."
-              : "Level updated — it'll shape tomorrow's practice session."}
+            {canRegenerateToday ? t('level.updatedRegenerateMessage') : t('level.updatedTomorrowMessage')}
           </p>
           {canRegenerateToday && (
             <button className="btn-secondary shrink-0" onClick={handleRegenerate}>
-              🔄 Regenerate today's session
+              🔄 {t('level.regenerateToday')}
             </button>
           )}
         </div>

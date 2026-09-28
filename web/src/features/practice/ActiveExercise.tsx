@@ -8,6 +8,7 @@ import CategoryBadge from '../../components/practice/CategoryBadge'
 import ExerciseTagBadge from '../../components/practice/ExerciseTagBadge'
 import FretboardDiagram from '../../components/practice/FretboardDiagram'
 import MiniMusicTab from '../../components/practice/MiniMusicTab'
+import { useLocale } from '../../hooks/useLocale'
 
 const EXTRA_TIME_SECONDS = 5 * 60
 
@@ -40,6 +41,7 @@ export default function ActiveExercise({
   isFavorite,
   onToggleFavorite,
 }: ActiveExerciseProps) {
+  const { t } = useLocale()
   const totalSeconds = sessionExercise.plannedSeconds + sessionExercise.extraSecondsAdded
   const [elapsed, setElapsed] = useState(sessionExercise.elapsedSeconds)
   const [paused, setPaused] = useState(false)
@@ -103,7 +105,7 @@ export default function ActiveExercise({
     <div className="flex flex-col gap-6">
       <div>
         <p className="label-eyebrow">
-          Exercise {exerciseNumber} of {totalExercises}
+          {t('practice.exerciseProgress', { current: exerciseNumber, total: totalExercises })}
         </p>
         <ProgressBar
           value={(exerciseNumber - 1 + fraction) / totalExercises}
@@ -118,7 +120,7 @@ export default function ActiveExercise({
             type="button"
             onClick={onToggleFavorite}
             aria-pressed={isFavorite}
-            aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+            aria-label={isFavorite ? t('practice.removeFavorite') : t('practice.addFavorite')}
             className={
               'absolute right-4 top-4 text-xl transition hover:scale-110 ' +
               (isFavorite ? 'text-brass-400' : 'text-parchment-500/40')
@@ -136,13 +138,13 @@ export default function ActiveExercise({
         <div className="font-mono text-6xl font-semibold tabular-nums text-parchment-100 sm:text-7xl">
           {formatMinutesSeconds(remaining)}
         </div>
-        <p className="-mt-3 text-xs uppercase tracking-widest2 text-parchment-400/60">remaining</p>
+        <p className="-mt-3 text-xs uppercase tracking-widest2 text-parchment-400/60">{t('practice.remaining')}</p>
 
         <ProgressBar value={fraction} className="max-w-sm" />
 
         {exercise.recommendedBpm && (
           <p className="text-sm text-parchment-300">
-            Recommended BPM:{' '}
+            {t('practice.recommendedBpmLabel')}{' '}
             <span className="font-display font-semibold text-brass-300">
               {exercise.recommendedBpm.min}–{exercise.recommendedBpm.max}
             </span>
@@ -151,13 +153,13 @@ export default function ActiveExercise({
 
         <div className="flex flex-wrap items-center justify-center gap-3">
           <button className="btn-secondary" onClick={handlePauseToggle}>
-            {paused ? '▶ Resume' : '⏸ Pause'}
+            {paused ? t('practice.resume') : t('practice.pause')}
           </button>
           <button className="btn-secondary" onClick={handleAddTime}>
-            +5 min
+            {t('practice.addFiveMin')}
           </button>
           <button className="btn-secondary" onClick={handleSkip}>
-            Skip ⏭
+            {t('practice.skip')}
           </button>
         </div>
       </div>
@@ -167,7 +169,7 @@ export default function ActiveExercise({
           className="flex w-full items-center justify-between text-left"
           onClick={() => setShowDetails((s) => !s)}
         >
-          <h2 className="label-eyebrow">How to practice this</h2>
+          <h2 className="label-eyebrow">{t('practice.howToPractice')}</h2>
           <span className="text-parchment-400">{showDetails ? '−' : '+'}</span>
         </button>
 
@@ -185,7 +187,7 @@ export default function ActiveExercise({
               exercise.diagram && (
                 <div className="panel-raised flex flex-col gap-3 px-4 py-4">
                   <p className="text-xs font-semibold uppercase tracking-wide text-parchment-400/70">
-                    Fret positions
+                    {t('practice.fretPositions')}
                   </p>
                   <FretboardDiagram diagram={exercise.diagram} />
                 </div>
@@ -205,7 +207,7 @@ export default function ActiveExercise({
 
             {exercise.tips && exercise.tips.length > 0 && (
               <div>
-                <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-parchment-400/70">Tips</p>
+                <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-parchment-400/70">{t('practice.tips')}</p>
                 <ul className="flex flex-col gap-1.5">
                   {exercise.tips.map((tip, i) => (
                     <li key={i} className="flex gap-2 text-sm text-parchment-300">
@@ -220,7 +222,7 @@ export default function ActiveExercise({
             {exercise.commonMistakes && exercise.commonMistakes.length > 0 && (
               <div>
                 <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-parchment-400/70">
-                  Watch out for
+                  {t('practice.watchOutFor')}
                 </p>
                 <ul className="flex flex-col gap-1.5">
                   {exercise.commonMistakes.map((m, i) => (
@@ -237,13 +239,13 @@ export default function ActiveExercise({
       </section>
 
       <div className="panel flex items-center justify-between px-4 py-3">
-        <span className="label-eyebrow">Next</span>
+        <span className="label-eyebrow">{t('practice.next')}</span>
         {nextExercise ? (
           <span className="text-sm text-parchment-200">
-            {nextExercise.name} — {nextMinutes} min
+            {nextExercise.name} — {t('common.minutesAbbrev', { minutes: nextMinutes ?? 0 })}
           </span>
         ) : (
-          <span className="text-sm text-parchment-400/70">Last exercise — session wraps up after this</span>
+          <span className="text-sm text-parchment-400/70">{t('practice.lastExercise')}</span>
         )}
       </div>
     </div>

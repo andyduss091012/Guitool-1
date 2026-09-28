@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { getConcept } from '../../data/concepts'
 import { useShapeIndex } from '../../hooks/useShapeIndex'
+import { useLocale } from '../../hooks/useLocale'
 import FretShapeDiagram from './FretShapeDiagram'
 import ShapeViewer from './ShapeViewer'
 
@@ -20,6 +21,7 @@ import ShapeViewer from './ShapeViewer'
  * placeholder components already in the repo).
  */
 export default function MiniMusicTab({ conceptId }: { conceptId: string }) {
+  const { t } = useLocale()
   const concept = getConcept(conceptId)
   const shapes = concept?.shapes ?? []
   const { index, setIndex } = useShapeIndex(shapes.length)
@@ -31,7 +33,7 @@ export default function MiniMusicTab({ conceptId }: { conceptId: string }) {
     return (
       <div className="panel flex flex-col gap-2 px-4 py-4">
         <ConceptHeader name={concept.name} description={concept.description} />
-        <p className="text-xs text-parchment-400/60">No diagram for this one yet.</p>
+        <p className="text-xs text-parchment-400/60">{t('miniMusicTab.noDiagram')}</p>
       </div>
     )
   }
@@ -43,7 +45,7 @@ export default function MiniMusicTab({ conceptId }: { conceptId: string }) {
     <div className="panel flex flex-col gap-3 px-4 py-4">
       <div className="flex items-start justify-between gap-3">
         <ConceptHeader name={concept.name} description={concept.description} />
-        {shapes.length > 1 && <span className="chip shrink-0">{shapes.length} shapes</span>}
+        {shapes.length > 1 && <span className="chip shrink-0">{t('miniMusicTab.shapesCount', { count: shapes.length })}</span>}
       </div>
 
       {shapes.length > 1 && (
@@ -53,7 +55,7 @@ export default function MiniMusicTab({ conceptId }: { conceptId: string }) {
               key={shape.id}
               type="button"
               onClick={() => setIndex(i)}
-              aria-label={`Show the ${shape.label} shape of ${concept.name}`}
+              aria-label={t('miniMusicTab.showShapeLabel', { label: shape.label, name: concept.name })}
               aria-pressed={i === index}
               className={
                 i === index
@@ -73,13 +75,13 @@ export default function MiniMusicTab({ conceptId }: { conceptId: string }) {
         className="group flex flex-col items-center gap-2 rounded-xl py-1 transition hover:bg-ink-700/40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brass-400"
         aria-label={
           shapes.length > 1
-            ? `Open full-screen shape viewer for ${concept.name} — ${shapes.length} shapes`
-            : `Open full-screen shape viewer for ${concept.name}`
+            ? t('miniMusicTab.openViewerWithCount', { name: concept.name, count: shapes.length })
+            : t('miniMusicTab.openViewer', { name: concept.name })
         }
       >
         <FretShapeDiagram shape={active} mode={mode} />
         <span className="text-xs font-medium uppercase tracking-wide text-brass-400 group-hover:text-brass-300">
-          View all shapes →
+          {t('miniMusicTab.viewAllShapes')}
         </span>
       </button>
 

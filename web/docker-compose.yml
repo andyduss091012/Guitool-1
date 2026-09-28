@@ -49,9 +49,11 @@ services:
       - tabs-server
 
   # Small file-server exposing a shared folder of Guitar Pro tab files
-  # (.gp/.gp3/.gp4/.gp5/.gp7/.gpx) as a list+download REST API — see
-  # docker/tabs-server/server.js. Cheap-but-good-enough on purpose: no
-  # database, no object storage, just this folder on disk.
+  # (.gp/.gp3/.gp4/.gp5/.gp7/.gpx/.tex) as a list+download REST API, plus an
+  # admin-only import endpoint — see docker/tabs-server/server.js. Cheap-
+  # but-good-enough on purpose: no database, no object storage, just this
+  # folder on disk (see the README's "Admin tab import" section for what
+  # that does and doesn't give you across multiple hosts).
   tabs-server:
     build:
       context: ./docker/tabs-server
@@ -61,5 +63,16 @@ services:
       # Point this at wherever your Guitar Pro files actually live — a
       # different host folder, or a mounted network/NAS share — instead of
       # ./shared-tabs if you'd rather not keep them next to the project.
-      - ./shared-tabs:/data/tabs:ro
+      #
+      # No longer :ro — admin import (POST /admin/tabs/import, or the
+      # import:tab CLI) needs to write into this folder. It stays disabled
+      # until ADMIN_IMPORT_TOKEN is set below, so simply enabling writes
+      # here doesn't by itself expose a write path to anyone.
+      - ./shared-tabs:/data/tabs
+    environment:
+      # Unset (the default) disables admin import entirely — see
+      # docker/tabs-server/lib/adminAuth.js. Set a long random value here
+      # (and only share it with people you want to be able to import tabs)
+      # to turn it on. Never commit a real token — see .env.example.
+      - ADMIN_IMPORT_TOKEN=${ADMIN_IMPORT_TOKEN:-}
     restart: unless-stopped
