@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\GuitarApp.Domain\GuitarApp.Domain.csproj" />
+  </ItemGroup>
+</Project>

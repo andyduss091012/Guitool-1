@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <ItemGroup>
+    <ProjectReference Include="..\GuitarApp.Application\GuitarApp.Application.csproj" />
+    <ProjectReference Include="..\GuitarApp.Infrastructure\GuitarApp.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.*" />
+    <!-- UI only; the OpenAPI document itself comes from the built-in generator. -->
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="9.0.*" />
+    <!-- Needed in the *startup* project for `dotnet ef`. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

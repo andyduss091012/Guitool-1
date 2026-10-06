@@ -12,3 +12,17 @@ dist
 .env.local
 web/.env
 web/.env.local
+
+# GuitarApp backend (.NET)
+backend/**/bin/
+backend/**/obj/
+backend/**/TestResults/
+backend/**/.vs/
+*.user
+backend/src/GuitarApp.Api/appsettings.Development.json
+backend/tools/**/import-report.json
+.azurite/
+**/import-report.json
+
+# Claude Code local settings
+.claude/settings.local.json

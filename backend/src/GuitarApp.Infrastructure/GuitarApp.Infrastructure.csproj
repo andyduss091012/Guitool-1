@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\GuitarApp.Application\GuitarApp.Application.csproj" />
+    <ProjectReference Include="..\GuitarApp.Domain\GuitarApp.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Floating minor/patch within the 10.x line (see docs/agent-log/DECISIONS.md). -->
+    <!-- Direct references keep EF Core itself on one version across all projects (avoids MSB3277 conflicts). -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.*" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.*" />
+    <PackageReference Include="EFCore.NamingConventions" Version="10.*" />
+  </ItemGroup>
+</Project>

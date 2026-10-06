@@ -1,0 +1,16 @@
+{
+  "exercises": 27,
+  "songs": 20,
+  "artists": 18,
+  "tunings": 1,
+  "concepts": 10,
+  "conceptShapes": 26,
+  "chords": 496,
+  "chordVoicings": 2554,
+  "tabFiles": 4,
+  "tabFilesMatchedToSongs": 1,
+  "warnings": {
+    "artistSlugClashes": 0,
+    "malformedVoicings": 0
+  }
+}

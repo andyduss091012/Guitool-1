@@ -1,0 +1,74 @@
+[
+  {
+    "name": "America",
+    "slug": "america"
+  },
+  {
+    "name": "B.B. King",
+    "slug": "b-b-king"
+  },
+  {
+    "name": "Bob Dylan",
+    "slug": "bob-dylan"
+  },
+  {
+    "name": "Bob Marley",
+    "slug": "bob-marley"
+  },
+  {
+    "name": "Eagles",
+    "slug": "eagles"
+  },
+  {
+    "name": "Eric Johnson",
+    "slug": "eric-johnson"
+  },
+  {
+    "name": "Johann Pachelbel (trad., arr. for solo guitar)",
+    "slug": "johann-pachelbel-trad-arr-for-solo-guitar"
+  },
+  {
+    "name": "Johnny Cash",
+    "slug": "johnny-cash"
+  },
+  {
+    "name": "Kansas",
+    "slug": "kansas"
+  },
+  {
+    "name": "Lynyrd Skynyrd",
+    "slug": "lynyrd-skynyrd"
+  },
+  {
+    "name": "Mason Williams",
+    "slug": "mason-williams"
+  },
+  {
+    "name": "Metallica",
+    "slug": "metallica"
+  },
+  {
+    "name": "Oasis",
+    "slug": "oasis"
+  },
+  {
+    "name": "Ozzy Osbourne",
+    "slug": "ozzy-osbourne"
+  },
+  {
+    "name": "Pink Floyd",
+    "slug": "pink-floyd"
+  },
+  {
+    "name": "Red Hot Chili Peppers",
+    "slug": "red-hot-chili-peppers"
+  },
+  {
+    "name": "The Beatles",
+    "slug": "the-beatles"
+  },
+  {
+    "name": "Van Halen",
+    "slug": "van-halen"
+  }
+]

@@ -1,0 +1,9 @@
+**/bin/
+**/obj/
+**/.vs/
+**/*.user
+# Local-only settings (may hold passwords) must never be baked into an image.
+**/appsettings.Development.json
+**/import-report.json
+tests/
+tools/

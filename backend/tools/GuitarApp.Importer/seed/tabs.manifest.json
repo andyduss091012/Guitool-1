@@ -1,0 +1,42 @@
+[
+  {
+    "fileName": "Guns N Roses - Sweet Child O Mine.gp3",
+    "format": "gp3",
+    "sizeBytes": 54797,
+    "sha256": "3397b0545c15d5eeb738a597d0b1eafaf95766c65949c12037e066f6c5e4201a",
+    "titleGuess": "Sweet Child O Mine",
+    "artistGuess": "Guns N Roses",
+    "songSlug": null,
+    "rightsStatus": "unverified"
+  },
+  {
+    "fileName": "Metallica - Enter Sandman.gp3",
+    "format": "gp3",
+    "sizeBytes": 41379,
+    "sha256": "f648015058f7fcfb1d51d4073c3b612472855db9bdd9a25fd4a106bb742477bf",
+    "titleGuess": "Enter Sandman",
+    "artistGuess": "Metallica",
+    "songSlug": null,
+    "rightsStatus": "unverified"
+  },
+  {
+    "fileName": "Metallica - Master Of Puppets.gp4",
+    "format": "gp4",
+    "sizeBytes": 114867,
+    "sha256": "6fe450d3bea735ac4457ac53366bbd9263278e29c671d313e834501974a220af",
+    "titleGuess": "Master Of Puppets",
+    "artistGuess": "Metallica",
+    "songSlug": "song-master-of-puppets",
+    "rightsStatus": "unverified"
+  },
+  {
+    "fileName": "Nhất Bái Thiên Địa.gp",
+    "format": "gp",
+    "sizeBytes": 121477,
+    "sha256": "290564133cec6e0aedb6e37a534714d31e6af36a02e59b4f84615211b00ffd2f",
+    "titleGuess": "Nhất Bái Thiên Địa",
+    "artistGuess": null,
+    "songSlug": null,
+    "rightsStatus": "unverified"
+  }
+]
