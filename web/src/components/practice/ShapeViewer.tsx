@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type TouchEvent } from 'react'
 import type { MusicConcept } from '../../types/musicConcept'
 import { useShapeIndex } from '../../hooks/useShapeIndex'
 import { useLocale } from '../../hooks/useLocale'
-import FretShapeDiagram, { type DiagramLabelMode } from './FretShapeDiagram'
+import FretShapeDiagram, { shapeLabel, type DiagramLabelMode } from './FretShapeDiagram'
 import type { TranslationKey } from '../../i18n/translations'
 
 const LABEL_MODES: { mode: DiagramLabelMode; labelKey: TranslationKey }[] = [
@@ -40,11 +40,12 @@ export default function ShapeViewer({
   onIndexChange?: (index: number) => void
   onClose: () => void
 }) {
-  const { t } = useLocale()
+  const { t, l } = useLocale()
   const shapes = concept.shapes ?? []
   const { index, setIndex, next, prev, hasNext, hasPrev } = useShapeIndex(shapes.length, initialIndex)
   const active = shapes[index]
   const mode = concept.type === 'chord' ? 'chord' : 'scale'
+  const conceptName = l(concept.name)
 
   const [labelMode, setLabelMode] = useState<DiagramLabelMode>('finger')
   const [visible, setVisible] = useState(false)
@@ -134,7 +135,7 @@ export default function ShapeViewer({
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
-        aria-label={t('shapeViewer.dialogLabel', { name: concept.name })}
+        aria-label={t('shapeViewer.dialogLabel', { name: conceptName })}
         tabIndex={-1}
         onClick={(e) => e.stopPropagation()}
         onTouchStart={handleTouchStart}
@@ -147,13 +148,13 @@ export default function ShapeViewer({
       >
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="font-display text-lg font-semibold text-parchment-100">{concept.name}</p>
-            <p className="text-xs text-parchment-400/70">{concept.description}</p>
+            <p className="font-display text-lg font-semibold text-parchment-100">{conceptName}</p>
+            <p className="text-xs text-parchment-400/70">{l(concept.description)}</p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            aria-label={t('shapeViewer.closeLabel', { name: concept.name })}
+            aria-label={t('shapeViewer.closeLabel', { name: conceptName })}
             className="btn-ghost shrink-0 !p-2 text-lg leading-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-brass-400"
           >
             ✕
@@ -161,13 +162,13 @@ export default function ShapeViewer({
         </div>
 
         {shapes.length > 1 && (
-          <div className="flex flex-wrap gap-1.5" role="group" aria-label={t('shapeViewer.shapesGroupLabel', { name: concept.name })}>
+          <div className="flex flex-wrap gap-1.5" role="group" aria-label={t('shapeViewer.shapesGroupLabel', { name: conceptName })}>
             {shapes.map((shape, i) => (
               <button
                 key={shape.id}
                 type="button"
                 aria-pressed={i === index}
-                aria-label={t('shapeViewer.showShapeLabel', { current: i + 1, total: shapes.length, label: shape.label })}
+                aria-label={t('shapeViewer.showShapeLabel', { current: i + 1, total: shapes.length, label: shapeLabel(shape.label, t) })}
                 onClick={() => setIndex(i)}
                 className={
                   (i === index
@@ -176,7 +177,7 @@ export default function ShapeViewer({
                   ' focus-visible:outline focus-visible:outline-2 focus-visible:outline-brass-400'
                 }
               >
-                {shape.label}
+                {shapeLabel(shape.label, t)}
               </button>
             ))}
           </div>
@@ -209,7 +210,7 @@ export default function ShapeViewer({
           })}
         </div>
 
-        {active.caption && <p className="text-center text-xs text-parchment-400/70">{active.caption}</p>}
+        {active.caption && <p className="text-center text-xs text-parchment-400/70">{l(active.caption)}</p>}
 
         {shapes.length > 1 && (
           <div className="flex items-center justify-between">

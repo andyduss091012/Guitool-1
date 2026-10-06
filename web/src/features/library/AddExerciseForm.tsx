@@ -1,5 +1,6 @@
 import { useMemo, useState, type FormEvent } from 'react'
 import type { Exercise, ExerciseCategory, Rating1to5 } from '../../types/exercise'
+import type { LocalizableText } from '../../i18n/localizedText'
 import { EXERCISE_CATEGORY_LABELS } from '../../types/exercise'
 import { validateCustomExerciseInput, type CustomExerciseInput } from '../../services/exerciseLibrary'
 import { classifyByRatings, EXERCISE_TAG_STYLES } from '../../services/exerciseTags'
@@ -49,11 +50,11 @@ function blankForm(): FormState {
   }
 }
 
-function exerciseToForm(exercise: Exercise): FormState {
+function exerciseToForm(exercise: Exercise, l: (text: LocalizableText) => string): FormState {
   return {
-    name: exercise.name,
+    name: l(exercise.name),
     category: exercise.category,
-    description: exercise.description,
+    description: l(exercise.description),
     difficulty: exercise.difficulty,
     importance: exercise.importance,
     usefulness: exercise.usefulness,
@@ -61,9 +62,9 @@ function exerciseToForm(exercise: Exercise): FormState {
     minDuration: String(exercise.minDuration),
     maxDuration: String(exercise.maxDuration),
     skillTagsRaw: exercise.skillTags.join(', '),
-    instructionsRaw: exercise.instructions.join('\n'),
-    tipsRaw: (exercise.tips ?? []).join('\n'),
-    commonMistakesRaw: (exercise.commonMistakes ?? []).join('\n'),
+    instructionsRaw: exercise.instructions.map(l).join('\n'),
+    tipsRaw: (exercise.tips ?? []).map(l).join('\n'),
+    commonMistakesRaw: (exercise.commonMistakes ?? []).map(l).join('\n'),
     bpmMin: exercise.recommendedBpm ? String(exercise.recommendedBpm.min) : '',
     bpmMax: exercise.recommendedBpm ? String(exercise.recommendedBpm.max) : '',
   }
@@ -131,8 +132,8 @@ export default function AddExerciseForm({
   onSubmit: (input: CustomExerciseInput) => void
   onDelete?: () => void
 }) {
-  const { t } = useLocale()
-  const [form, setForm] = useState<FormState>(() => (initial ? exerciseToForm(initial) : blankForm()))
+  const { t, l } = useLocale()
+  const [form, setForm] = useState<FormState>(() => (initial ? exerciseToForm(initial, l) : blankForm()))
   const [errors, setErrors] = useState<string[]>([])
 
   const update = <K extends keyof FormState>(key: K, value: FormState[K]) =>

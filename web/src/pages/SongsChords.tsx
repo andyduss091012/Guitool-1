@@ -51,6 +51,7 @@ export default function SongsChords() {
       {tab === 'library' ? (
         <>
           <p className="text-sm text-parchment-400/70">{t('songsChords.libraryIntro')}</p>
+          <p className="text-xs text-parchment-400/50">{t('songsChords.dataCredit')}</p>
           <ChordLibraryGrid />
         </>
       ) : (

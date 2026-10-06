@@ -19,10 +19,9 @@ export const EXERCISES: Exercise[] = [
   // ---------------------------------------------------------------- Technique
   {
     id: 'technique-alternate-picking',
-    name: 'Alternate Picking Fundamentals',
+    name: { en: 'Alternate Picking Fundamentals', vi: 'Kỹ thuật gảy luân phiên (Alternate Picking)', ja: 'オルタネイトピッキングの基礎', zh: '交替拨弦基础', es: 'Fundamentos de la púa alternada' },
     category: 'technique',
-    description:
-      'Strict down-up picking on a single note or simple pattern, building the right-hand engine that almost every other technique depends on.',
+    description: { en: 'Strict down-up picking on a single note or simple pattern, building the right-hand engine that almost every other technique depends on.', vi: 'Gảy xuống-lên nghiêm ngặt trên một nốt đơn hoặc một mẫu đơn giản, xây dựng nền tảng cho tay phải mà hầu hết các kỹ thuật khác đều phụ thuộc vào.', ja: '単音またはシンプルなパターンで厳密にダウン・アップを繰り返し、他のほとんどのテクニックの土台となるピッキングハンドの基礎エンジンを作る。', zh: '在单音或简单音型上进行严格的下上交替拨弦练习，锻炼几乎所有其他技巧都依赖的右手基本功。', es: 'Púa estricta abajo-arriba sobre una sola nota o un patrón simple, construyendo el motor de la mano derecha del que dependen casi todas las demás técnicas.' },
     difficulty: 3,
     importance: 5,
     usefulness: 5,
@@ -31,27 +30,26 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 25,
     skillTags: ['picking', 'right-hand', 'speed', 'accuracy'],
     instructions: [
-      'Mute the strings lightly with your fret hand and pick a single open string in strict down-up-down-up motion.',
-      'Set a metronome to a comfortable tempo and play steady 8th notes for two minutes without breaking the pattern.',
-      'Move to a 1-2-3-4 chromatic finger pattern on one string, keeping the same strict alternation.',
-      'Increase the metronome by 4-6 BPM once you can play two full minutes cleanly.',
+      { en: 'Mute the strings lightly with your fret hand and pick a single open string in strict down-up-down-up motion.', vi: 'Dùng tay bấm chặn nhẹ các dây và gảy một dây buông theo chuyển động xuống-lên-xuống-lên nghiêm ngặt.', ja: 'フレットハンドで軽く弦をミュートし、開放弦1本を厳密なダウン・アップ・ダウン・アップの動きでピッキングする。', zh: '用按弦手轻轻闷音，以严格的下-上-下-上动作拨奏一根空弦。', es: 'Silencia ligeramente las cuerdas con la mano del diapasón y toca una sola cuerda al aire en movimiento estricto abajo-arriba-abajo-arriba.' },
+      { en: 'Set a metronome to a comfortable tempo and play steady 8th notes for two minutes without breaking the pattern.', vi: 'Đặt metronome ở tempo vừa phải và chơi đều các nốt móc đơn (8th notes) trong hai phút mà không phá vỡ mẫu gảy.', ja: 'メトロノームを弾きやすいテンポに設定し、2分間パターンを崩さずに安定した8分音符を弾き続ける。', zh: '将节拍器设定在一个舒适的速度，稳定地弹奏八分音符两分钟，全程不打乱节奏型。', es: 'Configura un metrónomo a un tempo cómodo y toca corcheas constantes durante dos minutos sin romper el patrón.' },
+      { en: 'Move to a 1-2-3-4 chromatic finger pattern on one string, keeping the same strict alternation.', vi: 'Chuyển sang mẫu ngón chromatic 1-2-3-4 trên một dây, vẫn giữ nguyên kiểu gảy luân phiên nghiêm ngặt.', ja: '1本の弦上で1-2-3-4のクロマチックな指のパターンに移行し、同じ厳密なオルタネイトを保つ。', zh: '改用单弦上的1-2-3-4半音指法音型练习，保持同样严格的交替拨弦。', es: 'Pasa a un patrón cromático de dedos 1-2-3-4 en una sola cuerda, manteniendo la misma alternancia estricta.' },
+      { en: 'Increase the metronome by 4-6 BPM once you can play two full minutes cleanly.', vi: 'Tăng metronome thêm 4-6 BPM khi bạn đã chơi sạch được đủ hai phút liên tục.', ja: '2分間ノーミスで弾けるようになったら、メトロノームを4〜6BPMずつ上げていく。', zh: '一旦能连续干净地弹满两分钟，就把节拍器提高4-6 BPM。', es: 'Aumenta el metrónomo entre 4 y 6 BPM una vez que puedas tocar dos minutos completos de forma limpia.' },
     ],
     tips: [
-      'Keep pick strokes small — most speed is lost to over-large motions.',
-      'Relax your fretting-hand grip; tension there slows the picking hand too.',
+      { en: 'Keep pick strokes small — most speed is lost to over-large motions.', vi: 'Giữ các nhát gảy nhỏ gọn — phần lớn tốc độ bị mất do biên độ tay quá lớn.', ja: 'ピッキングのストロークは小さく保つこと――スピードが出ない原因の多くは動きが大きすぎることにある。', zh: '拨片动作要小——大部分速度都是被过大的动作拖慢的。', es: 'Mantén los golpes de púa pequeños: la mayor parte de la velocidad se pierde por movimientos demasiado amplios.' },
+      { en: 'Relax your fretting-hand grip; tension there slows the picking hand too.', vi: 'Thả lỏng tay bấm phím; sự căng cứng ở đó cũng làm chậm tay gảy.', ja: 'フレットハンドの握りをリラックスさせること。そこに力みがあるとピッキングハンドも遅くなる。', zh: '放松按弦手的握持力度，那里的紧张也会拖慢拨弦手。', es: 'Relaja el agarre de la mano del diapasón; la tensión ahí también ralentiza la mano de la púa.' },
     ],
     commonMistakes: [
-      'Speeding up only the easy parts and rushing string changes.',
-      'Gripping the pick too tightly, which stiffens the whole arm.',
+      { en: 'Speeding up only the easy parts and rushing string changes.', vi: 'Chỉ tăng tốc ở những đoạn dễ và vội vàng khi đổi dây.', ja: '弾きやすい部分だけ速くなり、弦移動で慌ててしまうこと。', zh: '只加快容易的部分，换弦时反而赶拍子。', es: 'Acelerar solo las partes fáciles y apresurar los cambios de cuerda.' },
+      { en: 'Gripping the pick too tightly, which stiffens the whole arm.', vi: 'Cầm pick quá chặt, khiến cả cánh tay bị cứng.', ja: 'ピックを強く握りすぎて腕全体が固くなってしまうこと。', zh: '握拨片太紧，导致整条手臂僵硬。', es: 'Sujetar la púa con demasiada fuerza, lo que rigidiza todo el brazo.' },
     ],
     recommendedBpm: { min: 70, max: 140 },
   },
   {
     id: 'technique-economy-picking',
-    name: 'Economy Picking Transitions',
+    name: { en: 'Economy Picking Transitions', vi: 'Chuyển động trong Economy Picking', ja: 'エコノミーピッキングの移行練習', zh: '经济拨弦换弦练习', es: 'Transiciones de púa económica' },
     category: 'technique',
-    description:
-      'Blends alternate picking with picking in the same direction as the next string, so the pick "falls" naturally when crossing strings.',
+    description: { en: 'Blends alternate picking with picking in the same direction as the next string, so the pick "falls" naturally when crossing strings.', vi: 'Kết hợp gảy luân phiên với việc gảy cùng chiều với dây tiếp theo, để pick tự nhiên "rơi" xuống khi chuyển dây.', ja: 'オルタネイトピッキングと、次の弦へ同じ方向でピッキングする動きを組み合わせ、弦移動の際にピックが自然に『落ちる』ようにする奏法。', zh: '将交替拨弦与顺势拨向下一根弦的拨弦方式结合起来，让拨片在跨弦时自然「落下」。', es: 'Combina la púa alternada con golpes en la misma dirección al pasar a la siguiente cuerda, de modo que la púa "cae" de forma natural al cruzar cuerdas.' },
     difficulty: 4,
     importance: 3,
     usefulness: 3,
@@ -60,26 +58,25 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 20,
     skillTags: ['picking', 'economy', 'string-crossing'],
     instructions: [
-      'Play a 3-note-per-string scale fragment and pick the first note of a new string in the same direction you just used.',
-      'Practice a single string-crossing (e.g. 3rd string to 2nd string) in isolation before stringing a full scale together.',
-      'Alternate between strict alternate picking and economy picking on the same lick to feel the difference in motion.',
+      { en: 'Play a 3-note-per-string scale fragment and pick the first note of a new string in the same direction you just used.', vi: 'Chơi một đoạn scale 3-nốt-mỗi-dây và gảy nốt đầu tiên của dây mới theo đúng chiều vừa gảy trước đó.', ja: '1弦につき3音のスケールフレーズを弾き、新しい弦の最初の音は直前と同じ方向でピッキングする。', zh: '弹奏一个每弦三音的音阶片段，在换到新弦的第一个音时，沿用刚才那一下拨弦的方向。', es: 'Toca un fragmento de escala de 3 notas por cuerda y ataca la primera nota de la nueva cuerda en la misma dirección que acabas de usar.' },
+      { en: 'Practice a single string-crossing (e.g. 3rd string to 2nd string) in isolation before stringing a full scale together.', vi: 'Tập riêng một lần chuyển dây (ví dụ dây 3 sang dây 2) trước khi ghép thành cả một scale hoàn chỉnh.', ja: 'スケール全体をつなげる前に、単一の弦移動(例:3弦から2弦)だけを取り出して練習する。', zh: '先单独练习一次跳弦动作（例如第3弦到第2弦），熟练后再串联成完整音阶。', es: 'Practica un solo cruce de cuerdas (por ejemplo, de la 3ª a la 2ª cuerda) de forma aislada antes de enlazar una escala completa.' },
+      { en: 'Alternate between strict alternate picking and economy picking on the same lick to feel the difference in motion.', vi: 'Luân phiên giữa gảy luân phiên nghiêm ngặt và economy picking trên cùng một lick để cảm nhận sự khác biệt về chuyển động.', ja: '同じリックで厳密なオルタネイトピッキングとエコノミーピッキングを交互に弾き、動きの違いを体感する。', zh: '在同一个乐句上交替使用严格交替拨弦和经济拨弦，感受两者动作上的差异。', es: 'Alterna entre púa alternada estricta y púa económica sobre el mismo lick para sentir la diferencia en el movimiento.' },
     ],
     tips: [
-      'Let the pick glide toward the next string instead of lifting straight off.',
-      'Start slow — this technique lives or dies on small motion control.',
+      { en: 'Let the pick glide toward the next string instead of lifting straight off.', vi: 'Để pick lướt về phía dây tiếp theo thay vì nhấc thẳng lên.', ja: 'ピックを真上に持ち上げるのではなく、次の弦へ滑らせるように動かすこと。', zh: '让拨片顺势滑向下一根弦，而不是直接抬离琴弦。', es: 'Deja que la púa se deslice hacia la siguiente cuerda en lugar de levantarla en línea recta.' },
+      { en: 'Start slow — this technique lives or dies on small motion control.', vi: 'Bắt đầu chậm — kỹ thuật này sống nhờ khả năng kiểm soát chuyển động nhỏ.', ja: 'ゆっくり始めること――このテクニックは小さな動きのコントロールがすべてを左右する。', zh: '从慢速开始——这项技巧的成败全在于对细微动作的控制。', es: 'Empieza despacio: esta técnica depende por completo del control de movimientos pequeños.' },
     ],
     commonMistakes: [
-      'Reverting to alternate picking under pressure and losing the economy motion.',
-      "Digging in too hard on the string change, causing an accent that shouldn't be there.",
+      { en: 'Reverting to alternate picking under pressure and losing the economy motion.', vi: 'Quay lại gảy luân phiên khi bị áp lực tốc độ, làm mất chuyển động economy.', ja: 'プレッシャーがかかるとオルタネイトピッキングに戻ってしまい、エコノミーの動きが失われること。', zh: '一紧张就退回严格交替拨弦，失去了经济拨弦的动作特点。', es: 'Volver a la púa alternada bajo presión y perder el movimiento económico.' },
+      { en: 'Digging in too hard on the string change, causing an accent that shouldn\'t be there.', vi: 'Gảy quá mạnh khi đổi dây, tạo ra một tiếng nhấn (accent) không nên có.', ja: '弦移動の際に力を入れすぎて、本来不要なアクセントがついてしまうこと。', zh: '换弦时用力过猛，弹出不该有的重音。', es: 'Atacar con demasiada fuerza en el cambio de cuerda, provocando un acento que no debería estar ahí.' },
     ],
     recommendedBpm: { min: 60, max: 120 },
   },
   {
     id: 'technique-string-skipping',
-    name: 'String Skipping Accuracy',
+    name: { en: 'String Skipping Accuracy', vi: 'Độ chính xác khi nhảy dây (String Skipping)', ja: 'ストリングスキッピングの正確性', zh: '跳弦准确度练习', es: 'Precisión en el salto de cuerdas' },
     category: 'technique',
-    description:
-      'Jumping over one or more strings while keeping picking and muting clean — useful for wide-interval licks and arpeggios.',
+    description: { en: 'Jumping over one or more strings while keeping picking and muting clean — useful for wide-interval licks and arpeggios.', vi: 'Nhảy qua một hoặc nhiều dây trong khi vẫn giữ tay gảy và tay chặn dây sạch sẽ — hữu ích cho các lick quãng rộng và arpeggio.', ja: '1本以上の弦を飛び越えながらピッキングとミュートをクリーンに保つ奏法――音程の広いリックやアルペジオに役立つ。', zh: '跳过一根或多根琴弦，同时保持拨弦和闷音干净利落——对宽音程乐句和琶音演奏很有帮助。', es: 'Saltar una o más cuerdas manteniendo la púa y el silenciado limpios, útil para licks de intervalos amplios y arpegios.' },
     difficulty: 4,
     importance: 3,
     usefulness: 3,
@@ -88,26 +85,25 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 18,
     skillTags: ['picking', 'accuracy', 'string-crossing'],
     instructions: [
-      'Pick a two-note pattern that skips one string (e.g. 6th string then 4th string) and repeat it slowly.',
-      'Mute the skipped string with a spare fret-hand finger or the side of the picking hand to avoid ringing.',
-      'Gradually widen the skip (skip two strings) once the first pattern is clean at tempo.',
+      { en: 'Pick a two-note pattern that skips one string (e.g. 6th string then 4th string) and repeat it slowly.', vi: 'Gảy một mẫu hai nốt bỏ qua một dây (ví dụ dây 6 rồi đến dây 4) và lặp lại thật chậm.', ja: '1本の弦を飛ばす2音パターン(例:6弦の次に4弦)を選び、ゆっくり繰り返す。', zh: '拨奏一个跳过一根弦的两音音型（例如第6弦接第4弦），先慢速重复练习。', es: 'Toca un patrón de dos notas que salte una cuerda (por ejemplo, 6ª cuerda y luego 4ª cuerda) y repítelo despacio.' },
+      { en: 'Mute the skipped string with a spare fret-hand finger or the side of the picking hand to avoid ringing.', vi: 'Chặn dây bị bỏ qua bằng một ngón tay bấm phím rảnh hoặc cạnh tay gảy để tránh tiếng ù.', ja: '余っているフレットハンドの指やピッキングハンドの側面で、飛ばした弦をミュートし鳴らさないようにする。', zh: '用按弦手空闲的手指或拨弦手的侧边闷住被跳过的弦，避免其发出杂音。', es: 'Silencia la cuerda saltada con un dedo libre de la mano del diapasón o con el borde de la mano de la púa para evitar que suene.' },
+      { en: 'Gradually widen the skip (skip two strings) once the first pattern is clean at tempo.', vi: 'Mở rộng dần khoảng nhảy (bỏ qua hai dây) khi mẫu đầu tiên đã sạch ở đúng tempo.', ja: '最初のパターンがテンポ通りにクリーンに弾けたら、徐々にスキップ幅を広げる(2本飛ばしにする)。', zh: '当第一种音型在正常速度下已经干净后，逐渐把跳跃幅度加大（跳过两根弦）。', es: 'Amplía gradualmente el salto (saltando dos cuerdas) una vez que el primer patrón esté limpio a tempo.' },
     ],
     tips: [
-      'Anchor your attention on the target string before you pick it.',
-      'Small, controlled pick strokes beat big sweeping motions here.',
+      { en: 'Anchor your attention on the target string before you pick it.', vi: 'Tập trung sự chú ý vào dây đích trước khi gảy nó.', ja: 'ピッキングする前に意識をターゲットの弦に集中させること。', zh: '拨弦前先把注意力锁定在目标弦上。', es: 'Enfoca tu atención en la cuerda objetivo antes de tocarla.' },
+      { en: 'Small, controlled pick strokes beat big sweeping motions here.', vi: 'Những nhát gảy nhỏ, có kiểm soát sẽ tốt hơn những động tác quét rộng ở kỹ thuật này.', ja: 'ここでは大きく振り回す動きより、小さくコントロールされたピッキングストロークの方が有効。', zh: '小而可控的拨弦动作比大幅度的挥动更有效。', es: 'Los golpes de púa pequeños y controlados funcionan mejor aquí que los movimientos amplios de barrido.' },
     ],
     commonMistakes: [
-      'Letting the skipped string ring unmuted.',
-      'Picking too far from the strings, losing accuracy on the jump.',
+      { en: 'Letting the skipped string ring unmuted.', vi: 'Để dây bị bỏ qua ngân vang mà không chặn.', ja: '飛ばした弦をミュートせずに鳴らしてしまうこと。', zh: '被跳过的弦没有闷住，任其发出杂音。', es: 'Dejar que la cuerda saltada suene sin silenciar.' },
+      { en: 'Picking too far from the strings, losing accuracy on the jump.', vi: 'Gảy quá xa dây đàn, làm mất độ chính xác khi nhảy dây.', ja: '弦から離れすぎた位置でピッキングし、ジャンプの正確性を失うこと。', zh: '拨弦位置离琴弦太远，导致跳跃时准确度下降。', es: 'Tocar demasiado lejos de las cuerdas, perdiendo precisión en el salto.' },
     ],
     recommendedBpm: { min: 70, max: 130 },
   },
   {
     id: 'technique-legato',
-    name: 'Legato: Hammer-ons & Pull-offs',
+    name: { en: 'Legato: Hammer-ons & Pull-offs', vi: 'Legato: Hammer-on & Pull-off', ja: 'レガート:ハンマリングオン&プリングオフ', zh: '连奏：击弦与勾弦', es: 'Ligado: hammer-ons y pull-offs' },
     category: 'technique',
-    description:
-      'Sounding notes with the fretting hand alone to build smooth, flowing lines and strengthen individual finger independence.',
+    description: { en: 'Sounding notes with the fretting hand alone to build smooth, flowing lines and strengthen individual finger independence.', vi: 'Phát ra âm thanh chỉ bằng tay bấm phím để tạo những đoạn nhạc mượt mà, liền mạch và tăng cường sự độc lập của từng ngón tay.', ja: 'フレットハンドだけで音を鳴らし、滑らかで流れるようなラインを作りながら各指の独立性を鍛える。', zh: '仅靠按弦手发声，练出流畅顺滑的乐句，同时增强各手指的独立性。', es: 'Producir notas solo con la mano del diapasón para construir líneas suaves y fluidas y fortalecer la independencia de cada dedo.' },
     difficulty: 3,
     importance: 4,
     usefulness: 4,
@@ -116,26 +112,25 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 25,
     skillTags: ['legato', 'left-hand', 'fluidity'],
     instructions: [
-      'On one string, hammer from an open or fretted note up to the next finger without picking the second note.',
-      'Reverse the motion with pull-offs, plucking the string slightly as you release each finger.',
-      'Chain a 4-note hammer-on/pull-off pattern per string and move it across all six strings.',
+      { en: 'On one string, hammer from an open or fretted note up to the next finger without picking the second note.', vi: 'Trên một dây, hammer từ nốt buông hoặc nốt đã bấm lên ngón tiếp theo mà không gảy nốt thứ hai.', ja: '1本の弦上で、開放または押弦した音から次の指へ、2音目をピッキングせずにハンマリングオンする。', zh: '在同一根弦上，从空弦音或按弦音击弦到下一个手指按的音，中途不用拨片弹第二个音。', es: 'En una cuerda, haz un hammer-on desde una nota al aire o pisada hasta el siguiente dedo sin tocar la segunda nota con la púa.' },
+      { en: 'Reverse the motion with pull-offs, plucking the string slightly as you release each finger.', vi: 'Đảo ngược chuyển động bằng pull-off, khảy nhẹ dây khi bạn thả từng ngón ra.', ja: '逆の動きでプリングオフを行い、各指を離す際に弦を軽く弾くようにする。', zh: '反向练习勾弦，在松开每根手指时轻轻带动琴弦发声。', es: 'Invierte el movimiento con pull-offs, pellizcando ligeramente la cuerda al soltar cada dedo.' },
+      { en: 'Chain a 4-note hammer-on/pull-off pattern per string and move it across all six strings.', vi: 'Ghép một chuỗi hammer-on/pull-off 4 nốt trên mỗi dây và di chuyển nó qua cả sáu dây.', ja: '1弦につき4音のハンマリングオン/プリングオフのパターンをつなげ、6弦すべてで移動させる。', zh: '在每根弦上串联一个4音的击弦/勾弦音型，并依次移动到全部六根弦上练习。', es: 'Encadena un patrón de 4 notas de hammer-on/pull-off por cuerda y muévelo por las seis cuerdas.' },
     ],
     tips: [
-      'Hammer from the knuckle, not just the fingertip, for real volume.',
-      'Keep unused fingers hovering close to the strings, ready to fret.',
+      { en: 'Hammer from the knuckle, not just the fingertip, for real volume.', vi: 'Hammer từ khớp ngón chứ không chỉ từ đầu ngón để có âm lượng thực sự.', ja: '本当の音量を出すには、指先だけでなくナックル(関節)から叩くこと。', zh: '击弦时用整个指关节发力，而不只是指尖，才能获得足够的音量。', es: 'Golpea desde el nudillo, no solo con la punta del dedo, para conseguir volumen real.' },
+      { en: 'Keep unused fingers hovering close to the strings, ready to fret.', vi: 'Giữ các ngón chưa dùng lơ lửng gần dây đàn, sẵn sàng bấm phím.', ja: '使っていない指は弦の近くに浮かせておき、いつでも押弦できるようにしておくこと。', zh: '让暂不使用的手指悬停在琴弦附近，随时准备按弦。', es: 'Mantén los dedos que no usas cerca de las cuerdas, listos para pisar.' },
     ],
     commonMistakes: [
-      'Hammering too softly so notes fade out inaudibly.',
-      'Pulling off flat instead of slightly sideways, which produces a weak pluck.',
+      { en: 'Hammering too softly so notes fade out inaudibly.', vi: 'Hammer quá nhẹ khiến nốt nhạc mờ dần không nghe rõ.', ja: 'ハンマリングが弱すぎて音が聞こえないまま消えてしまうこと。', zh: '击弦力度太轻，导致音量小到几乎听不见。', es: 'Golpear con demasiada suavidad, de modo que las notas se apagan de forma inaudible.' },
+      { en: 'Pulling off flat instead of slightly sideways, which produces a weak pluck.', vi: 'Pull-off thẳng phẳng thay vì hơi chếch sang một bên, tạo ra tiếng khảy yếu.', ja: 'まっすぐ離すのではなく、わずかに横方向に離すべきプリングオフができておらず、弱い音になってしまうこと。', zh: '勾弦时手指是垂直抬起而不是略带侧向的拨动，导致发音无力。', es: 'Hacer el pull-off en línea recta en vez de ligeramente hacia un lado, lo que produce un pellizco débil.' },
     ],
     recommendedBpm: { min: 70, max: 140 },
   },
   {
     id: 'technique-bending-vibrato',
-    name: 'Bending & Vibrato Control',
+    name: { en: 'Bending & Vibrato Control', vi: 'Kiểm soát Bending & Vibrato', ja: 'ベンド(チョーキング)とビブラートのコントロール', zh: '推弦与揉弦控制', es: 'Control de bends y vibrato' },
     category: 'technique',
-    description:
-      'Pitch-accurate bends and a controlled, singing vibrato — the details that make lead lines sound expressive instead of just "correct."',
+    description: { en: 'Pitch-accurate bends and a controlled, singing vibrato — the details that make lead lines sound expressive instead of just "correct."', vi: 'Bend chuẩn cao độ và vibrato có kiểm soát, ngân nga — những chi tiết khiến các đoạn lead nghe biểu cảm chứ không chỉ "đúng".', ja: '正確な音程のベンドと、コントロールされた歌うようなビブラート――リードラインを『正しい』だけでなく表現力豊かに聴かせる細部。', zh: '音准精确的推弦，加上可控、富有歌唱感的揉弦——正是这些细节让旋律听起来富有表现力，而不只是「音符正确」。', es: 'Bends afinados con precisión y un vibrato controlado y cantable: los detalles que hacen que las líneas melódicas suenen expresivas y no solo "correctas".' },
     difficulty: 3,
     importance: 4,
     usefulness: 5,
@@ -144,26 +139,25 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 20,
     skillTags: ['bending', 'vibrato', 'expression', 'lead'],
     instructions: [
-      'Fret a note and bend it up while comparing it to the target pitch played on an adjacent string, to check your bend is in tune.',
-      'Practice whole-step and half-step bends until you can hit the target pitch without checking it first.',
-      'Add vibrato on a held note using a consistent wrist or forearm rotation, keeping the pitch wobble even.',
+      { en: 'Fret a note and bend it up while comparing it to the target pitch played on an adjacent string, to check your bend is in tune.', vi: 'Bấm một nốt rồi bend lên trong khi so sánh với cao độ mục tiêu chơi trên dây kế bên, để kiểm tra bend của bạn có đúng tông không.', ja: '音を押弦してベンドし、隣の弦で弾いたターゲットの音程と比較して、ベンドが正確な音程になっているか確認する。', zh: '按住一个音并向上推弦，同时与相邻弦上弹出的目标音高对比，检验推弦音准是否准确。', es: 'Pisa una nota y hazle un bend hacia arriba mientras la comparas con la nota objetivo tocada en una cuerda adyacente, para comprobar que el bend está afinado.' },
+      { en: 'Practice whole-step and half-step bends until you can hit the target pitch without checking it first.', vi: 'Luyện bend cả cung (whole-step) và nửa cung (half-step) cho tới khi bạn có thể đạt đúng cao độ mục tiêu mà không cần kiểm tra trước.', ja: '事前に確認しなくてもターゲットの音程にぴたりと当てられるようになるまで、全音・半音のベンドを練習する。', zh: '练习全音推弦和半音推弦，直到不用先核对音高就能准确推到目标音。', es: 'Practica bends de tono entero y de semitono hasta que puedas alcanzar la nota objetivo sin comprobarla antes.' },
+      { en: 'Add vibrato on a held note using a consistent wrist or forearm rotation, keeping the pitch wobble even.', vi: 'Thêm vibrato vào một nốt giữ (held note) bằng cách xoay cổ tay hoặc cẳng tay đều đặn, giữ độ rung cao độ đồng đều.', ja: '音を伸ばしている間、手首または前腕を一定のリズムで回転させてビブラートをかけ、音程の揺れを均一に保つ。', zh: '在一个延音上加入揉弦，用手腕或前臂做持续均匀的转动，保持音高起伏均匀一致。', es: 'Añade vibrato sobre una nota sostenida usando una rotación constante de muñeca o antebrazo, manteniendo la oscilación de la afinación uniforme.' },
     ],
     tips: [
-      'Use multiple fingers behind the bending finger for support on heavier strings.',
-      "Vibrato speed and width are a personal 'voice' — experiment rather than copying one style exactly.",
+      { en: 'Use multiple fingers behind the bending finger for support on heavier strings.', vi: 'Dùng nhiều ngón tay đỡ phía sau ngón bend để hỗ trợ khi bend trên các dây nặng.', ja: '太い弦ではベンドする指の後ろに他の指を添えてサポートすること。', zh: '在较粗的琴弦上推弦时，用后面的几根手指辅助支撑推弦手指。', es: 'Usa varios dedos detrás del dedo que hace el bend para dar apoyo en las cuerdas más gruesas.' },
+      { en: 'Vibrato speed and width are a personal \'voice\' — experiment rather than copying one style exactly.', vi: 'Tốc độ và biên độ vibrato là "chất giọng" riêng của mỗi người — hãy thử nghiệm thay vì sao chép y hệt một phong cách nào đó.', ja: 'ビブラートの速さと幅は個人の『声』のようなもの――一つのスタイルをそのまま真似るのではなく、自分なりに試してみること。', zh: '揉弦的速度和幅度是个人的「音色签名」——多去尝试，而不是照搬某一种风格。', es: 'La velocidad y amplitud del vibrato son una "voz" personal: experimenta en lugar de copiar un estilo exacto.' },
     ],
     commonMistakes: [
-      'Bending sharp or flat of the target pitch.',
-      'Vibrato that speeds up or slows down unevenly instead of staying steady.',
+      { en: 'Bending sharp or flat of the target pitch.', vi: 'Bend cao hơn (sharp) hoặc thấp hơn (flat) so với cao độ mục tiêu.', ja: 'ベンドがターゲットの音程より高すぎたり低すぎたりすること。', zh: '推弦音高偏高或偏低，没有准确对准目标音。', es: 'Hacer bends que quedan más agudos o más graves que la nota objetivo.' },
+      { en: 'Vibrato that speeds up or slows down unevenly instead of staying steady.', vi: 'Vibrato nhanh chậm không đều thay vì giữ nhịp ổn định.', ja: 'ビブラートが一定を保てず、速くなったり遅くなったりムラが出ること。', zh: '揉弦忽快忽慢，节奏不稳定，而不是保持均匀。', es: 'Un vibrato que se acelera o se ralentiza de forma irregular en vez de mantenerse constante.' },
     ],
     recommendedBpm: { min: 60, max: 100 },
   },
   {
     id: 'technique-sweep-picking',
-    name: 'Sweep Picking Basics',
+    name: { en: 'Sweep Picking Basics', vi: 'Nhập môn Sweep Picking', ja: 'スウィープピッキングの基礎', zh: '扫弦（Sweep Picking）入门', es: 'Fundamentos del sweep picking' },
     category: 'technique',
-    description:
-      'A single, continuous picking motion across several strings to outline arpeggios quickly — a high-payoff but technically demanding skill.',
+    description: { en: 'A single, continuous picking motion across several strings to outline arpeggios quickly — a high-payoff but technically demanding skill.', vi: 'Một chuyển động gảy liên tục qua nhiều dây để phác họa arpeggio thật nhanh — kỹ năng đem lại hiệu quả cao nhưng đòi hỏi kỹ thuật khắt khe.', ja: '複数の弦を一続きのピッキング動作で素早くなぞりアルペジオを描く奏法――効果は大きいが技術的な難易度も高い。', zh: '用一个连贯不间断的拨弦动作扫过多根琴弦，快速勾勒出琶音轮廓——回报很高但对技术要求也很严苛。', es: 'Un único movimiento continuo de púa a través de varias cuerdas para trazar arpegios rápidamente: una habilidad de gran rendimiento pero técnicamente exigente.' },
     difficulty: 5,
     importance: 2,
     usefulness: 2,
@@ -172,17 +166,17 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 20,
     skillTags: ['sweep-picking', 'arpeggios', 'advanced'],
     instructions: [
-      'Start with a 3-string minor or major triad shape and pick it with one continuous down or up sweep.',
-      "Focus on the fretting hand rolling off each note cleanly so notes don't blur together.",
-      'Once the 3-string shape is clean at a slow tempo, extend to a 5-string arpeggio shape.',
+      { en: 'Start with a 3-string minor or major triad shape and pick it with one continuous down or up sweep.', vi: 'Bắt đầu với một thế hợp âm rải (triad) 3 dây trưởng hoặc thứ và gảy nó bằng một cú sweep xuống hoặc lên liên tục.', ja: '3弦のマイナーまたはメジャートライアドの形から始め、1回の連続したダウンまたはアップのスウィープでピッキングする。', zh: '先从一个三弦的小三和弦或大三和弦指型开始，用一次连贯的下扫或上扫拨奏。', es: 'Empieza con una forma de tríada menor o mayor de 3 cuerdas y tócala con un solo barrido continuo hacia abajo o hacia arriba.' },
+      { en: 'Focus on the fretting hand rolling off each note cleanly so notes don\'t blur together.', vi: 'Tập trung để tay bấm phím "lăn" qua từng nốt thật sạch để các nốt không bị nhòe vào nhau.', ja: '音が濁らないよう、フレットハンドが各音をきれいに離していく動きに集中する。', zh: '专注于按弦手在每个音上干净利落地滚动松开，避免音与音之间糊在一起。', es: 'Concéntrate en que la mano del diapasón suelte cada nota de forma limpia para que no se mezclen entre sí.' },
+      { en: 'Once the 3-string shape is clean at a slow tempo, extend to a 5-string arpeggio shape.', vi: 'Khi thế 3 dây đã sạch ở tempo chậm, mở rộng sang thế arpeggio 5 dây.', ja: '3弦の形がゆっくりしたテンポでクリーンに弾けたら、5弦のアルペジオの形に広げる。', zh: '当三弦指型在慢速下已经干净后，再扩展到五弦琶音指型。', es: 'Una vez que la forma de 3 cuerdas esté limpia a tempo lento, amplíala a una forma de arpegio de 5 cuerdas.' },
     ],
     tips: [
-      "Mute aggressively with both hands — sweep picking is unforgiving of stray noise.",
-      'Practice silently (fretting only, no pick) first to nail the left-hand rolling motion.',
+      { en: 'Mute aggressively with both hands — sweep picking is unforgiving of stray noise.', vi: 'Chặn dây thật kỹ bằng cả hai tay — sweep picking không tha thứ cho tiếng ồn thừa.', ja: '両手でしっかりとミュートすること――スウィープピッキングは余計なノイズに対して容赦がない。', zh: '双手都要积极闷音——扫弦对杂音毫不留情。', es: 'Silencia con fuerza con ambas manos: el sweep picking no perdona el ruido no deseado.' },
+      { en: 'Practice silently (fretting only, no pick) first to nail the left-hand rolling motion.', vi: 'Tập không tiếng trước (chỉ bấm phím, không gảy) để làm chủ chuyển động lăn của tay trái.', ja: 'まずは音を出さずに(ピッキングせず押弦のみで)練習し、左手のローリング動作を固めること。', zh: '先不用拨片、只用按弦手静默练习，把左手的滚动动作打磨到位。', es: 'Practica en silencio primero (solo con el diapasón, sin púa) para dominar el movimiento de rotación de la mano izquierda.' },
     ],
     commonMistakes: [
-      'Strumming through the shape like a chord instead of a controlled sweep.',
-      'Trying full tempo before the muting and rolling motion is under control.',
+      { en: 'Strumming through the shape like a chord instead of a controlled sweep.', vi: 'Quét qua thế hợp âm như strum một hợp âm thay vì một cú sweep có kiểm soát.', ja: 'コントロールされたスウィープではなく、コードのようにジャラーンとストロークしてしまうこと。', zh: '像刷和弦一样扫过整个指型，而不是有控制地扫弦。', es: 'Rasguear la forma como un acorde en lugar de hacer un barrido controlado.' },
+      { en: 'Trying full tempo before the muting and rolling motion is under control.', vi: 'Thử chơi hết tốc lực trước khi làm chủ được việc chặn dây và chuyển động lăn.', ja: 'ミュートとローリングの動きがコントロールできる前にフルテンポに挑戦してしまうこと。', zh: '在闷音和滚动动作还没掌握好之前就急于求快。', es: 'Intentar el tempo completo antes de tener bajo control el silenciado y el movimiento de rotación.' },
     ],
     recommendedBpm: { min: 50, max: 110 },
   },
@@ -190,10 +184,9 @@ export const EXERCISES: Exercise[] = [
   // -------------------------------------------------------------------- Scales
   {
     id: 'scales-minor-pentatonic',
-    name: 'Minor Pentatonic Patterns',
+    name: { en: 'Minor Pentatonic Patterns', vi: 'Các thế Minor Pentatonic', ja: 'マイナーペンタトニックのパターン', zh: '小调五声音阶指型', es: 'Patrones de la escala pentatónica menor' },
     category: 'scales',
-    description:
-      'The five-note scale behind most rock, blues and pop lead playing, practiced across its five box positions so you can find it anywhere on the neck.',
+    description: { en: 'The five-note scale behind most rock, blues and pop lead playing, practiced across its five box positions so you can find it anywhere on the neck.', vi: 'Scale 5 nốt đứng sau hầu hết các đoạn lead rock, blues và pop, luyện qua cả năm vị trí box để bạn có thể tìm thấy nó ở bất kỳ đâu trên cần đàn.', ja: 'ロック、ブルース、ポップのリードプレイの大半を支える5音のスケール。5つのボックスポジションすべてで練習し、ネック上のどこでも弾けるようにする。', zh: '大多数摇滚、蓝调和流行主奏吉他背后的五音音阶，练习它的五种箱型把位，让你能在指板上任何位置找到它。', es: 'La escala de cinco notas detrás de la mayoría de los solos de rock, blues y pop, practicada en sus cinco posiciones para que puedas encontrarla en cualquier parte del mástil.' },
     difficulty: 2,
     importance: 5,
     usefulness: 5,
@@ -202,27 +195,26 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 30,
     skillTags: ['scales', 'pentatonic', 'lead', 'improvisation'],
     instructions: [
-      'Play box 1 of the minor pentatonic scale ascending and descending with a metronome at a comfortable tempo.',
-      'Practice connecting box 1 into box 2 by sliding or shifting on the top string.',
-      'Pick a familiar key and run through as many of the five positions as you can from memory.',
+      { en: 'Play box 1 of the minor pentatonic scale ascending and descending with a metronome at a comfortable tempo.', vi: 'Chơi box 1 của scale minor pentatonic đi lên rồi đi xuống cùng metronome ở tempo vừa phải.', ja: 'マイナーペンタトニックスケールのボックス1を、メトロノームに合わせて弾きやすいテンポで上行・下行する。', zh: '配合节拍器，以舒适的速度上下弹奏小调五声音阶的第一箱型。', es: 'Toca la posición 1 de la escala pentatónica menor ascendiendo y descendiendo con un metrónomo a un tempo cómodo.' },
+      { en: 'Practice connecting box 1 into box 2 by sliding or shifting on the top string.', vi: 'Tập nối box 1 vào box 2 bằng cách trượt (slide) hoặc dịch chuyển trên dây cao nhất.', ja: '一番上の弦でスライドまたはポジション移動を使い、ボックス1からボックス2への接続を練習する。', zh: '通过在最高音弦上滑音或换把，练习把第一箱型和第二箱型连接起来。', es: 'Practica la conexión de la posición 1 con la posición 2 deslizando o cambiando en la cuerda más aguda.' },
+      { en: 'Pick a familiar key and run through as many of the five positions as you can from memory.', vi: 'Chọn một tông quen thuộc và chạy qua càng nhiều trong năm vị trí càng tốt hoàn toàn bằng trí nhớ.', ja: '慣れ親しんだキーを1つ選び、5つのポジションのうちできるだけ多くを暗譜で弾いてみる。', zh: '选一个熟悉的调，凭记忆尽可能多地弹奏这五个把位。', es: 'Elige una tonalidad que te resulte familiar y recorre de memoria tantas de las cinco posiciones como puedas.' },
     ],
     tips: [
-      'Say or think the scale degree (1, b3, 4, 5, b7) as you play to build fretboard/ear connection.',
-      "Practice in more than one key so the shape doesn't get tied to one set of frets.",
+      { en: 'Say or think the scale degree (1, b3, 4, 5, b7) as you play to build fretboard/ear connection.', vi: 'Vừa chơi vừa nói hoặc nghĩ tên bậc scale (1, b3, 4, 5, b7) để xây dựng kết nối giữa cần đàn và tai nghe.', ja: '弾きながらスケールディグリー(1, b3, 4, 5, b7)を口ずさんだり頭の中で意識したりして、指板と耳のつながりを作ること。', zh: '弹奏时说出或默念音级（1、b3、4、5、b7），建立指板与听觉之间的联系。', es: 'Di o piensa el grado de la escala (1, b3, 4, 5, b7) mientras tocas para construir la conexión entre el mástil y el oído.' },
+      { en: 'Practice in more than one key so the shape doesn\'t get tied to one set of frets.', vi: 'Tập ở nhiều tông khác nhau để thế bấm không bị gắn chặt vào một dãy phím cố định.', ja: '複数のキーで練習し、形が特定のフレットに固定されないようにすること。', zh: '在不止一个调上练习，避免这个指型被固定死在某几个品格上。', es: 'Practica en más de una tonalidad para que la forma no quede atada a un conjunto fijo de trastes.' },
     ],
     commonMistakes: [
-      'Only ever practicing box 1 and never learning the other positions.',
-      'Playing the pattern with no rhythmic intention, just running up and down.',
+      { en: 'Only ever practicing box 1 and never learning the other positions.', vi: 'Chỉ luyện mãi box 1 mà không bao giờ học các vị trí khác.', ja: 'ボックス1ばかり練習し、他のポジションを一切覚えないこと。', zh: '只练第一箱型，从不学习其他把位。', es: 'Practicar siempre solo la posición 1 y nunca aprender las demás posiciones.' },
+      { en: 'Playing the pattern with no rhythmic intention, just running up and down.', vi: 'Chơi mẫu scale mà không có chủ đích về nhịp điệu, chỉ chạy lên chạy xuống.', ja: 'リズムの意図なく、ただ上下に弾くだけになってしまうこと。', zh: '弹奏时毫无节奏意图，只是机械地上下跑动。', es: 'Tocar el patrón sin ninguna intención rítmica, simplemente subiendo y bajando.' },
     ],
     recommendedBpm: { min: 70, max: 140 },
     conceptIds: ['scale-minor-pentatonic'],
   },
   {
     id: 'scales-major-pentatonic',
-    name: 'Major Pentatonic Patterns',
+    name: { en: 'Major Pentatonic Patterns', vi: 'Các thế Major Pentatonic', ja: 'メジャーペンタトニックのパターン', zh: '大调五声音阶指型', es: 'Patrones de la escala pentatónica mayor' },
     category: 'scales',
-    description:
-      'The brighter cousin of the minor pentatonic, essential for country, pop and major-key rock soloing.',
+    description: { en: 'The brighter cousin of the minor pentatonic, essential for country, pop and major-key rock soloing.', vi: 'Người anh em tươi sáng hơn của minor pentatonic, thiết yếu cho solo country, pop và rock ở tông trưởng.', ja: 'マイナーペンタトニックの明るい仲間で、カントリーやポップ、メジャーキーのロックのソロには欠かせない。', zh: '小调五声音阶明亮版的「姐妹音阶」，是乡村、流行以及大调摇滚即兴的必备音阶。', es: 'La prima más brillante de la pentatónica menor, esencial para el country, el pop y los solos de rock en tonalidad mayor.' },
     difficulty: 2,
     importance: 4,
     usefulness: 4,
@@ -231,15 +223,15 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 25,
     skillTags: ['scales', 'pentatonic', 'lead'],
     instructions: [
-      'Play the major pentatonic box shape that shares its root with a minor pentatonic shape you already know (its relative major).',
-      'Compare the two scales back to back over a drone or backing track to hear the difference in mood.',
-      'Practice simple 3-note licks that outline the major 3rd, a defining color tone of the scale.',
+      { en: 'Play the major pentatonic box shape that shares its root with a minor pentatonic shape you already know (its relative major).', vi: 'Chơi thế box major pentatonic có chung âm chủ (root) với một thế minor pentatonic bạn đã biết (tông trưởng song song, relative major).', ja: 'すでに知っているマイナーペンタトニックの形とルート音を共有する(その平行調にあたる)メジャーペンタトニックのボックスの形を弾く。', zh: '弹奏与你已经掌握的某个小调五声音阶指型同根音的大调五声音阶箱型（即其关系大调）。', es: 'Toca la posición de la pentatónica mayor que comparte tónica con una forma de pentatónica menor que ya conozcas (su relativa mayor).' },
+      { en: 'Compare the two scales back to back over a drone or backing track to hear the difference in mood.', vi: 'So sánh hai scale này lần lượt trên một nốt trầm giữ (drone) hoặc backing track để nghe rõ sự khác biệt về màu sắc âm nhạc.', ja: 'ドローン音やバッキングトラックの上で2つのスケールを交互に弾き比べ、雰囲気の違いを聴き取る。', zh: '在持续低音或伴奏音轨上前后对比弹奏这两种音阶，感受情绪上的差异。', es: 'Compara ambas escalas una tras otra sobre un drone o una pista de acompañamiento para escuchar la diferencia de ambiente.' },
+      { en: 'Practice simple 3-note licks that outline the major 3rd, a defining color tone of the scale.', vi: 'Tập những lick đơn giản 3 nốt làm nổi bật quãng 3 trưởng, một màu âm đặc trưng của scale này.', ja: 'このスケールを特徴づける音であるメジャー3rdを浮き立たせる、シンプルな3音のリックを練習する。', zh: '练习勾勒出大三度音的简单三音乐句，大三度正是这个音阶的标志性色彩音。', es: 'Practica licks simples de 3 notas que resalten la 3ª mayor, un tono de color definitorio de la escala.' },
     ],
     tips: [
-      'The major pentatonic is the minor pentatonic shape three frets lower with the same fingering — a fast way to learn it.',
+      { en: 'The major pentatonic is the minor pentatonic shape three frets lower with the same fingering — a fast way to learn it.', vi: 'Major pentatonic chính là thế minor pentatonic lùi xuống 3 phím với cùng cách bấm ngón — một cách học nhanh.', ja: 'メジャーペンタトニックは、同じ運指でマイナーペンタトニックの形を3フレット下げたものにあたる――これを覚えれば習得が早い。', zh: '大调五声音阶其实就是同一套指法向下移三品的小调五声音阶指型——这是快速掌握它的捷径。', es: 'La pentatónica mayor es la forma de la pentatónica menor tres trastes más abajo con la misma digitación: una manera rápida de aprenderla.' },
     ],
     commonMistakes: [
-      'Defaulting back to minor pentatonic licks out of habit even over major-key progressions.',
+      { en: 'Defaulting back to minor pentatonic licks out of habit even over major-key progressions.', vi: 'Theo thói quen quay lại các lick minor pentatonic dù đang chơi trên tiến trình hợp âm trưởng.', ja: 'メジャーキーの進行の上でも、癖でついマイナーペンタトニックのリックに戻ってしまうこと。', zh: '即使伴奏是大调进行，也出于习惯默认弹小调五声音阶的乐句。', es: 'Volver por costumbre a licks de pentatónica menor incluso sobre progresiones en tonalidad mayor.' },
     ],
     recommendedBpm: { min: 70, max: 130 },
     diagram: {
@@ -266,10 +258,9 @@ export const EXERCISES: Exercise[] = [
   },
   {
     id: 'scales-major-minor',
-    name: 'Natural Minor & Major Scale',
+    name: { en: 'Natural Minor & Major Scale', vi: 'Scale Trưởng và Thứ Tự nhiên', ja: 'ナチュラルマイナースケール&メジャースケール', zh: '自然小调与大调音阶', es: 'Escala mayor y menor natural' },
     category: 'scales',
-    description:
-      'The seven-note major and natural minor scales that underpin most Western music theory and unlock modal playing later on.',
+    description: { en: 'The seven-note major and natural minor scales that underpin most Western music theory and unlock modal playing later on.', vi: 'Scale trưởng và thứ tự nhiên 7 nốt làm nền tảng cho hầu hết lý thuyết âm nhạc phương Tây và mở đường vào chơi modal sau này.', ja: '西洋音楽理論の大半を支える7音のメジャースケールとナチュラルマイナースケール。後のモード(旋法)演奏への扉も開く。', zh: '支撑大部分西方乐理体系的七音大调和自然小调音阶，也是后续学习调式演奏的钥匙。', es: 'Las escalas de siete notas mayor y menor natural que sustentan la mayor parte de la teoría musical occidental y abren la puerta al toque modal más adelante.' },
     difficulty: 3,
     importance: 4,
     usefulness: 4,
@@ -278,22 +269,23 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 30,
     skillTags: ['scales', 'diatonic', 'theory'],
     instructions: [
-      'Play one position of the major scale ascending and descending slowly, naming each scale degree.',
-      'Play the relative natural minor scale starting from its own root, noticing it uses the same notes as the major scale.',
-      'Practice in 3rds (skip a note each time) through the scale to build a more musical ear for it than straight runs.',
+      { en: 'Play one position of the major scale ascending and descending slowly, naming each scale degree.', vi: 'Chơi một vị trí của scale trưởng đi lên rồi đi xuống thật chậm, gọi tên từng bậc scale.', ja: 'メジャースケールの1つのポジションをゆっくり上行・下行しながら、各スケールディグリーの名前を口にする。', zh: '缓慢地上下弹奏大调音阶的一个把位，同时念出每个音级的名称。', es: 'Toca una posición de la escala mayor ascendiendo y descendiendo despacio, nombrando cada grado de la escala.' },
+      { en: 'Play the relative natural minor scale starting from its own root, noticing it uses the same notes as the major scale.', vi: 'Chơi scale thứ tự nhiên song song (relative minor) bắt đầu từ âm chủ của chính nó, để ý rằng nó dùng đúng những nốt của scale trưởng.', ja: '平行調のナチュラルマイナースケールを、その独自のルート音から弾き、メジャースケールと同じ音を使っていることに気づく。', zh: '从其关系自然小调自身的根音开始弹奏，留意它使用的音其实和大调音阶完全相同。', es: 'Toca la escala menor natural relativa comenzando desde su propia tónica, notando que usa las mismas notas que la escala mayor.' },
+      { en: 'Practice in 3rds (skip a note each time) through the scale to build a more musical ear for it than straight runs.', vi: 'Tập chơi theo quãng 3 (bỏ qua một nốt mỗi lần) xuyên suốt scale để xây dựng thính giác nhạc tính tốt hơn là chỉ chạy thẳng.', ja: 'スケールを3度ずつ(1音飛ばし)で練習し、単純に上下するよりも音楽的な耳を養う。', zh: '以三度音程（每次跳过一个音）贯穿整个音阶练习，比单纯的直线跑动更能培养乐感。', es: 'Practica en terceras (saltando una nota cada vez) a lo largo de la escala para desarrollar un oído más musical que con las corridas rectas.' },
     ],
-    tips: ['Anchor the scale to a chord progression in that key rather than practicing it in isolation.'],
+    tips: [
+      { en: 'Anchor the scale to a chord progression in that key rather than practicing it in isolation.', vi: 'Gắn scale với một tiến trình hợp âm ở đúng tông đó thay vì tập riêng lẻ.', ja: 'スケールを単独で練習するのではなく、そのキーのコード進行と結びつけて弾くこと。', zh: '把音阶和该调的和弦进行结合起来练习，而不要孤立地练音阶。', es: 'Ancla la escala a una progresión de acordes en esa tonalidad en lugar de practicarla de forma aislada.' },
+    ],
     commonMistakes: [
-      'Memorizing finger patterns without ever connecting them to a key signature or chord progression.',
+      { en: 'Memorizing finger patterns without ever connecting them to a key signature or chord progression.', vi: 'Học thuộc thế bấm ngón mà không bao giờ liên kết chúng với một bộ khóa (key signature) hay tiến trình hợp âm.', ja: '運指パターンだけを暗記し、調号やコード進行と結びつけずに終わってしまうこと。', zh: '死记指法却从未把它和调号或和弦进行联系起来。', es: 'Memorizar patrones de dedos sin conectarlos nunca con una armadura de clave o una progresión de acordes.' },
     ],
     recommendedBpm: { min: 60, max: 120 },
   },
   {
     id: 'scales-blues',
-    name: 'Blues Scale Phrasing',
+    name: { en: 'Blues Scale Phrasing', vi: 'Phrasing với Scale Blues', ja: 'ブルーススケールのフレージング', zh: '蓝调音阶乐句表达', es: 'Frasear con la escala de blues' },
     category: 'scales',
-    description:
-      'The minor pentatonic plus a "blue note," adding tension and character — central to blues, rock and soulful lead lines.',
+    description: { en: 'The minor pentatonic plus a "blue note," adding tension and character — central to blues, rock and soulful lead lines.', vi: 'Minor pentatonic cộng thêm một "blue note", thêm sự căng và cá tính — cốt lõi của blues, rock và các đoạn lead đầy cảm xúc.', ja: 'マイナーペンタトニックに『ブルーノート』を加え、緊張感とキャラクターを添える――ブルース、ロック、ソウルフルなリードラインの核となる。', zh: '在小调五声音阶基础上加入一个「蓝调音」，增添张力与个性——是蓝调、摇滚以及富有灵魂感主奏乐句的核心。', es: 'La pentatónica menor más una "nota blue", que añade tensión y carácter: central en el blues, el rock y las líneas melódicas con alma.' },
     difficulty: 3,
     importance: 4,
     usefulness: 4,
@@ -302,12 +294,17 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 20,
     skillTags: ['scales', 'blues', 'lead', 'phrasing'],
     instructions: [
-      'Play the minor pentatonic box shape you know, then add the flat-5 blue note between the 4th and 5th scale degrees.',
-      'Practice resolving the blue note quickly to the 4th or 5th rather than lingering on it.',
-      'Build a short 4-bar phrase using the scale over a slow blues backing track or drone.',
+      { en: 'Play the minor pentatonic box shape you know, then add the flat-5 blue note between the 4th and 5th scale degrees.', vi: 'Chơi thế box minor pentatonic bạn đã biết, sau đó thêm blue note (quãng 5 giáng) giữa bậc 4 và bậc 5 của scale.', ja: '知っているマイナーペンタトニックのボックスの形を弾き、そこに4度と5度の間にあるフラット5thのブルーノートを加える。', zh: '弹奏你熟悉的小调五声音阶箱型，然后在第4级和第5级音之间加入降5级的蓝调音。', es: 'Toca la forma de pentatónica menor que ya conoces y añade la nota blue (5ª bemol) entre el 4º y el 5º grado de la escala.' },
+      { en: 'Practice resolving the blue note quickly to the 4th or 5th rather than lingering on it.', vi: 'Tập giải quyết (resolve) blue note nhanh về bậc 4 hoặc bậc 5 thay vì lưu lại lâu trên đó.', ja: 'ブルーノートに長く留まるのではなく、素早く4度か5度に解決させる練習をする。', zh: '练习让蓝调音快速解决到第4级或第5级音，而不是长时间停留在上面。', es: 'Practica resolver la nota blue rápidamente hacia el 4º o el 5º grado en lugar de detenerte en ella.' },
+      { en: 'Build a short 4-bar phrase using the scale over a slow blues backing track or drone.', vi: 'Xây dựng một câu nhạc ngắn 4 ô nhịp dùng scale này trên nền backing track blues chậm hoặc drone.', ja: 'ゆっくりとしたブルースのバッキングトラックやドローンの上で、このスケールを使った4小節の短いフレーズを組み立てる。', zh: '在慢速蓝调伴奏或持续低音上，用这个音阶编一个4小节的短乐句。', es: 'Construye una frase corta de 4 compases usando la escala sobre una pista lenta de blues o un drone.' },
     ],
-    tips: ['The blue note works best as a passing tone, not a landing note.', 'Space and phrasing matter more here than speed.'],
-    commonMistakes: ['Overusing the blue note until it sounds like a mistake instead of a color tone.'],
+    tips: [
+      { en: 'The blue note works best as a passing tone, not a landing note.', vi: 'Blue note phát huy tốt nhất như một nốt lướt qua (passing tone), không phải nốt để dừng lại.', ja: 'ブルーノートは着地音としてではなく、経過音として使うのが最も効果的。', zh: '蓝调音作为经过音效果最好，而不适合作为落脚音。', es: 'La nota blue funciona mejor como nota de paso, no como nota de llegada.' },
+      { en: 'Space and phrasing matter more here than speed.', vi: 'Khoảng lặng và cách nhả câu (phrasing) quan trọng hơn tốc độ ở đây.', ja: 'ここではスピードよりも間(ま)とフレージングの方が重要。', zh: '在这里，留白与乐句处理比速度更重要。', es: 'Aquí el espacio y el fraseo importan más que la velocidad.' },
+    ],
+    commonMistakes: [
+      { en: 'Overusing the blue note until it sounds like a mistake instead of a color tone.', vi: 'Lạm dụng blue note đến mức nghe như một lỗi sai thay vì một màu âm.', ja: 'ブルーノートを使いすぎて、色付けではなくミスのように聞こえてしまうこと。', zh: '过度使用蓝调音，导致它听起来像弹错了，而不是一个色彩音。', es: 'Abusar de la nota blue hasta que suene como un error en lugar de un tono de color.' },
+    ],
     recommendedBpm: { min: 60, max: 100 },
     diagram: {
       mode: 'scale',
@@ -337,10 +334,9 @@ export const EXERCISES: Exercise[] = [
   // -------------------------------------------------------------------- Rhythm
   {
     id: 'rhythm-subdivisions',
-    name: 'Metronome Subdivision Training',
+    name: { en: 'Metronome Subdivision Training', vi: 'Luyện chia nhịp với Metronome', ja: 'メトロノームによる音符の分割練習', zh: '节拍器细分练习', es: 'Entrenamiento de subdivisiones con metrónomo' },
     category: 'rhythm',
-    description:
-      'Practicing quarter, eighth, triplet and sixteenth-note subdivisions against a click to build an internal sense of time.',
+    description: { en: 'Practicing quarter, eighth, triplet and sixteenth-note subdivisions against a click to build an internal sense of time.', vi: 'Luyện các kiểu chia nhịp đen (quarter), móc đơn (eighth), chùm ba (triplet) và móc kép (sixteenth) theo tiếng click để xây dựng cảm nhận thời gian nội tại.', ja: 'クリック音に合わせて4分音符、8分音符、3連符、16分音符の分割を練習し、内的なリズム感覚を養う。', zh: '配合节拍器练习四分音符、八分音符、三连音和十六分音符的细分，培养内在的节奏感。', es: 'Practicar subdivisiones en negras, corcheas, tresillos y semicorcheas contra un clic para desarrollar un sentido interno del tiempo.' },
     difficulty: 2,
     importance: 5,
     usefulness: 5,
@@ -349,20 +345,23 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 20,
     skillTags: ['timing', 'metronome', 'subdivision'],
     instructions: [
-      'Set the metronome to a slow tempo and strum or pick a single chord in steady quarter notes, locked to the click.',
-      'Switch to eighth notes, then eighth-note triplets, then sixteenth notes, keeping the chord and tempo the same.',
-      'Try setting the click to only beats 2 and 4 once comfortable, forcing you to feel beats 1 and 3 internally.',
+      { en: 'Set the metronome to a slow tempo and strum or pick a single chord in steady quarter notes, locked to the click.', vi: 'Đặt metronome ở tempo chậm và strum hoặc gảy một hợp âm đều theo nốt đen, khớp chặt với tiếng click.', ja: 'メトロノームをゆっくりしたテンポに設定し、クリックに合わせて1つのコードを安定した4分音符でストロークまたはピッキングする。', zh: '将节拍器设为慢速，以稳定的四分音符扫弦或拨弦弹奏一个和弦，紧贴节拍器的点。', es: 'Configura el metrónomo a un tempo lento y rasguea o pica un solo acorde en negras constantes, encajado con el clic.' },
+      { en: 'Switch to eighth notes, then eighth-note triplets, then sixteenth notes, keeping the chord and tempo the same.', vi: 'Chuyển sang móc đơn, rồi chùm ba móc đơn, rồi móc kép, giữ nguyên hợp âm và tempo.', ja: 'コードとテンポはそのままに、8分音符、次に8分3連符、そして16分音符へと切り替えていく。', zh: '在保持同一和弦与速度不变的情况下，依次切换到八分音符、八分音符三连音，再到十六分音符。', es: 'Cambia a corcheas, luego a tresillos de corchea y luego a semicorcheas, manteniendo el mismo acorde y tempo.' },
+      { en: 'Try setting the click to only beats 2 and 4 once comfortable, forcing you to feel beats 1 and 3 internally.', vi: 'Thử đặt tiếng click chỉ vào phách 2 và 4 khi đã quen, buộc bạn phải cảm nhận phách 1 và 3 từ bên trong.', ja: '慣れてきたら、クリックを2拍目と4拍目だけに設定してみて、1拍目と3拍目を自分の内側で感じ取る練習をする。', zh: '熟练后尝试把节拍器只设置在第2、4拍上，逼自己在内心感受第1、3拍。', es: 'Prueba a configurar el clic solo en los tiempos 2 y 4 una vez que te sientas cómodo, obligándote a sentir internamente los tiempos 1 y 3.' },
     ],
-    tips: ['Tap your foot on the beat while subdividing with your hands to reinforce the pulse physically.'],
-    commonMistakes: ['Rushing subdivisions faster than the beat, especially on the first note after a rest.'],
+    tips: [
+      { en: 'Tap your foot on the beat while subdividing with your hands to reinforce the pulse physically.', vi: 'Gõ chân theo phách trong khi chia nhịp bằng tay để củng cố nhịp đập một cách vật lý.', ja: '手で分割を刻みながら足で拍を踏み、体でパルスを補強すること。', zh: '用脚打拍子的同时用手细分节奏，从身体上强化对节拍的感知。', es: 'Marca el tiempo con el pie mientras subdivides con las manos para reforzar físicamente el pulso.' },
+    ],
+    commonMistakes: [
+      { en: 'Rushing subdivisions faster than the beat, especially on the first note after a rest.', vi: 'Vội vàng chơi các bậc chia nhịp nhanh hơn phách, đặc biệt ở nốt đầu tiên sau một khoảng nghỉ.', ja: '特に休符の後の最初の音で、分割が拍より速くなってしまう(走ってしまう)こと。', zh: '把细分音符弹得比原本的速度还快，尤其是休止符后的第一个音。', es: 'Acelerar las subdivisiones por delante del tiempo, especialmente en la primera nota después de un silencio.' },
+    ],
     recommendedBpm: { min: 60, max: 120 },
   },
   {
     id: 'rhythm-strumming-patterns',
-    name: 'Strumming Pattern Practice',
+    name: { en: 'Strumming Pattern Practice', vi: 'Luyện mẫu Strumming', ja: 'ストロークパターンの練習', zh: '扫弦节奏型练习', es: 'Práctica de patrones de rasgueo' },
     category: 'rhythm',
-    description:
-      'Building a vocabulary of down/up strumming patterns, including "ghost strums" over muted strings, for confident rhythm playing.',
+    description: { en: 'Building a vocabulary of down/up strumming patterns, including "ghost strums" over muted strings, for confident rhythm playing.', vi: 'Xây dựng vốn từ vựng các mẫu strum xuống/lên, bao gồm cả "ghost strum" trên dây bị chặn, để chơi đệm tự tin.', ja: 'ミュートした弦を弾く『ゴーストストローク』も含め、ダウン/アップのストロークパターンの語彙を増やし、自信を持ってリズムを弾けるようにする。', zh: '建立一套下上扫弦节奏型的「词汇库」，包括在闷住的琴弦上做「幽灵扫弦」，培养自信的节奏演奏能力。', es: 'Construir un vocabulario de patrones de rasgueo abajo/arriba, incluyendo "rasgueos fantasma" sobre cuerdas silenciadas, para tocar ritmo con confianza.' },
     difficulty: 2,
     importance: 4,
     usefulness: 5,
@@ -371,20 +370,23 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 20,
     skillTags: ['rhythm', 'strumming', 'chords'],
     instructions: [
-      "Practice a constant down-up 8th-note strumming hand motion, even when some strums don't hit the strings (ghost strums).",
-      'Layer a simple down-down-up-up-down-up pattern over a single chord, keeping the strumming hand moving throughout.',
-      'Apply the pattern to a two-chord progression, focusing on clean chord changes on the beat.',
+      { en: 'Practice a constant down-up 8th-note strumming hand motion, even when some strums don\'t hit the strings (ghost strums).', vi: 'Luyện chuyển động tay strum xuống-lên móc đơn liên tục, ngay cả khi một số nhát strum không chạm vào dây (ghost strum).', ja: '一部のストロークが弦に当たらなくても(ゴーストストローク)、絶え間ないダウン・アップの8分音符の手の動きを練習する。', zh: '保持稳定的下上八分音符扫弦手臂动作，即使有些扫弦并不真正触碰琴弦（幽灵扫弦）也要保持动作。', es: 'Practica un movimiento constante de la mano en corcheas abajo-arriba, incluso cuando algunos rasgueos no toquen las cuerdas (rasgueos fantasma).' },
+      { en: 'Layer a simple down-down-up-up-down-up pattern over a single chord, keeping the strumming hand moving throughout.', vi: 'Áp một mẫu đơn giản xuống-xuống-lên-lên-xuống-lên lên một hợp âm duy nhất, giữ tay strum di chuyển liên tục.', ja: '1つのコードの上で、シンプルなダウン・ダウン・アップ・アップ・ダウン・アップのパターンを重ね、ストロークの手を常に動かし続ける。', zh: '在单一和弦上叠加一个简单的下-下-上-上-下-上节奏型，全程保持扫弦手臂不停顿。', es: 'Superpón un patrón sencillo de abajo-abajo-arriba-arriba-abajo-arriba sobre un solo acorde, manteniendo la mano de rasgueo en movimiento todo el tiempo.' },
+      { en: 'Apply the pattern to a two-chord progression, focusing on clean chord changes on the beat.', vi: 'Áp dụng mẫu này lên một tiến trình hai hợp âm, tập trung vào việc đổi hợp âm sạch sẽ đúng phách.', ja: '2コードの進行にこのパターンを当てはめ、拍に合わせてクリーンにコードチェンジすることに集中する。', zh: '把这个节奏型运用到一个两和弦的进行中，重点是在正拍上做到干净的换和弦。', es: 'Aplica el patrón a una progresión de dos acordes, centrándote en cambios de acorde limpios en el tiempo.' },
     ],
-    tips: ['Keep the strumming arm moving in constant 8th notes even during rests — it’s the secret to steady rhythm.'],
-    commonMistakes: ['Stopping the strumming arm during rests, which breaks the internal pulse.'],
+    tips: [
+      { en: 'Keep the strumming arm moving in constant 8th notes even during rests — it’s the secret to steady rhythm.', vi: 'Giữ tay strum di chuyển liên tục theo móc đơn ngay cả trong lúc nghỉ — đó là bí quyết để có nhịp điệu vững vàng.', ja: '休符の間もストロークの腕を絶え間ない8分音符で動かし続けること――これが安定したリズムの秘訣。', zh: '即使在休止的地方，也要让扫弦手臂保持稳定的八分音符律动——这是稳定节奏的秘诀。', es: 'Mantén el brazo de rasgueo moviéndose en corcheas constantes incluso durante los silencios: es el secreto de un ritmo estable.' },
+    ],
+    commonMistakes: [
+      { en: 'Stopping the strumming arm during rests, which breaks the internal pulse.', vi: 'Dừng tay strum trong lúc nghỉ, làm gãy nhịp đập nội tại.', ja: '休符の間にストロークの腕を止めてしまい、内的なパルスが途切れてしまうこと。', zh: '在休止处停止手臂摆动，这会打断内在的节奏脉动。', es: 'Detener el brazo de rasgueo durante los silencios, lo que rompe el pulso interno.' },
+    ],
     recommendedBpm: { min: 70, max: 130 },
   },
   {
     id: 'rhythm-palm-muting',
-    name: 'Palm Muting Control',
+    name: { en: 'Palm Muting Control', vi: 'Kiểm soát Palm Muting', ja: 'パームミュートのコントロール', zh: '闷音（Palm Muting）控制', es: 'Control del palm muting' },
     category: 'rhythm',
-    description:
-      'Using the edge of the picking hand to control sustain and create the tight, percussive "chugging" sound common in rock and metal rhythm playing.',
+    description: { en: 'Using the edge of the picking hand to control sustain and create the tight, percussive "chugging" sound common in rock and metal rhythm playing.', vi: 'Dùng cạnh bàn tay gảy để kiểm soát độ ngân và tạo ra âm thanh chặt, mang tính tiết tấu "chugging" thường gặp trong đệm nhịp rock và metal.', ja: 'ピッキングハンドの側面を使ってサステインをコントロールし、ロックやメタルのリズムプレイでおなじみのタイトでパーカッシブな『チャギング』サウンドを作る。', zh: '用拨弦手掌根的边缘控制延音，制造出摇滚和金属节奏吉他中常见的紧实、富有颗粒感的「闷音颗粒声」。', es: 'Usar el borde de la mano de la púa para controlar el sustain y crear el sonido ajustado y percusivo del "chugging", habitual en el ritmo de rock y metal.' },
     difficulty: 2,
     importance: 3,
     usefulness: 4,
@@ -393,20 +395,23 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 18,
     skillTags: ['palm-muting', 'rhythm', 'tone-control'],
     instructions: [
-      'Rest the edge of your picking-hand palm lightly on the strings near the bridge and pick a single low string.',
-      'Adjust palm pressure and position to find the point between "too open" and "too dead" for a tight chug.',
-      'Alternate between muted and open (unmuted) notes in a simple riff to practice switching quickly.',
+      { en: 'Rest the edge of your picking-hand palm lightly on the strings near the bridge and pick a single low string.', vi: 'Đặt nhẹ cạnh lòng bàn tay gảy lên các dây gần ngựa đàn (bridge) và gảy một dây trầm đơn lẻ.', ja: 'ブリッジ付近の弦にピッキングハンドの手のひらの側面を軽く乗せ、低音弦1本をピッキングする。', zh: '把拨弦手掌根的边缘轻轻搭在靠近琴桥的琴弦上，拨奏一根低音弦。', es: 'Apoya ligeramente el borde de la palma de la mano de la púa sobre las cuerdas cerca del puente y toca una sola cuerda grave.' },
+      { en: 'Adjust palm pressure and position to find the point between "too open" and "too dead" for a tight chug.', vi: 'Điều chỉnh lực và vị trí lòng bàn tay để tìm điểm cân bằng giữa "quá mở" và "quá tắt" cho tiếng chug chặt.', ja: '手のひらの圧力と位置を調整し、『開きすぎ』と『詰まりすぎ』の間にあるタイトなチャグのポイントを見つける。', zh: '调整手掌的压力和位置，在「太松（声音太开）」和「太死（完全没声）」之间找到紧实颗粒感的最佳点。', es: 'Ajusta la presión y la posición de la palma para encontrar el punto entre "demasiado abierto" y "demasiado apagado" para un chug ajustado.' },
+      { en: 'Alternate between muted and open (unmuted) notes in a simple riff to practice switching quickly.', vi: 'Luân phiên giữa nốt bị chặn và nốt mở (không chặn) trong một riff đơn giản để luyện chuyển đổi nhanh.', ja: 'シンプルなリフの中でミュートした音と開放的な(ミュートなしの)音を交互に弾き、素早い切り替えを練習する。', zh: '在一个简单的riff中交替弹奏闷音和开放（不闷音）的音，练习快速切换。', es: 'Alterna entre notas silenciadas y abiertas (sin silenciar) en un riff sencillo para practicar el cambio rápido.' },
     ],
-    tips: ['A little palm movement toward or away from the bridge changes the tone significantly — experiment.'],
-    commonMistakes: ['Muting so hard the note loses all pitch, or so lightly it barely mutes at all.'],
+    tips: [
+      { en: 'A little palm movement toward or away from the bridge changes the tone significantly — experiment.', vi: 'Chỉ cần di chuyển lòng bàn tay một chút về phía hoặc ra xa ngựa đàn cũng thay đổi âm sắc đáng kể — hãy thử nghiệm.', ja: '手のひらをブリッジに近づけたり離したりする、わずかな動きだけで音色が大きく変わる――色々試してみること。', zh: '手掌稍微靠近或远离琴桥移动一点，音色就会有明显变化——多去尝试。', es: 'Un pequeño movimiento de la palma hacia el puente o alejándose de él cambia el tono de forma notable: experimenta.' },
+    ],
+    commonMistakes: [
+      { en: 'Muting so hard the note loses all pitch, or so lightly it barely mutes at all.', vi: 'Chặn quá mạnh khiến nốt mất hẳn cao độ, hoặc quá nhẹ khiến gần như không chặn được gì.', ja: 'ミュートが強すぎて音程が完全に失われてしまうか、逆に弱すぎてほとんどミュートになっていないこと。', zh: '闷音力度太大导致完全没有音高，或者力度太轻几乎起不到闷音效果。', es: 'Silenciar con tanta fuerza que la nota pierde toda la afinación, o con tan poca que apenas se silencia.' },
+    ],
     recommendedBpm: { min: 80, max: 160 },
   },
   {
     id: 'rhythm-syncopation',
-    name: 'Syncopation & Off-beat Accents',
+    name: { en: 'Syncopation & Off-beat Accents', vi: 'Syncopation & Nhấn Off-beat', ja: 'シンコペーションとオフビートアクセント', zh: '切分节奏与反拍重音', es: 'Síncopa y acentos a contratiempo' },
     category: 'rhythm',
-    description:
-      'Deliberately accenting off-beats (the "and" of a beat) to add groove and push/pull feel to rhythm parts.',
+    description: { en: 'Deliberately accenting off-beats (the "and" of a beat) to add groove and push/pull feel to rhythm parts.', vi: 'Cố ý nhấn vào các off-beat (phần "và" của một phách) để tạo groove và cảm giác kéo đẩy cho phần đệm nhịp.', ja: '拍の『裏(アンド)』をあえて強調し、リズムパートにグルーヴと『押し引き』の感覚を加える。', zh: '刻意强调反拍（即某一拍的「and」）以增添律动感，赋予节奏部分推拉的张力。', es: 'Acentuar deliberadamente los contratiempos (el "y" de un tiempo) para añadir groove y una sensación de empuje al ritmo.' },
     difficulty: 3,
     importance: 3,
     usefulness: 3,
@@ -415,22 +420,25 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 18,
     skillTags: ['syncopation', 'rhythm', 'feel'],
     instructions: [
-      "Clap or tap a simple syncopated rhythm (e.g. accent the 'and' of beat 2) away from the guitar first.",
-      'Transfer the same rhythm to a single muted chord stab on the guitar, locked to a metronome.',
-      'Apply the syncopated accent within a full strumming or riff pattern.',
+      { en: 'Clap or tap a simple syncopated rhythm (e.g. accent the \'and\' of beat 2) away from the guitar first.', vi: 'Vỗ tay hoặc gõ một nhịp syncopate đơn giản (ví dụ nhấn vào chữ "và" của phách 2) tách rời khỏi đàn trước.', ja: 'まずギターを使わず、シンプルなシンコペーションのリズム(例:2拍目の裏を強調する)を手拍子やタップで叩いてみる。', zh: '先脱离吉他，用拍手或敲击练习一个简单的切分节奏（例如强调第2拍的「and」）。', es: 'Aplaude o marca primero un ritmo sincopado sencillo (por ejemplo, acentuando el \'y\' del tiempo 2) sin la guitarra.' },
+      { en: 'Transfer the same rhythm to a single muted chord stab on the guitar, locked to a metronome.', vi: 'Chuyển nhịp điệu đó thành một cú bấm hợp âm bị chặn (muted stab) đơn lẻ trên đàn, khớp chặt với metronome.', ja: '同じリズムをメトロノームに合わせて、ミュートした1つのコードのスタブ(短い一撃)としてギターに移す。', zh: '把同样的节奏转移到吉他上，用一个闷音的和弦重音来演奏，并配合节拍器锁定节奏。', es: 'Traslada el mismo ritmo a un solo golpe de acorde silenciado en la guitarra, encajado con un metrónomo.' },
+      { en: 'Apply the syncopated accent within a full strumming or riff pattern.', vi: 'Áp dụng nhát nhấn syncopate này vào bên trong một mẫu strum hoặc riff hoàn chỉnh.', ja: 'そのシンコペーションのアクセントを、フルのストロークパターンやリフの中に取り入れる。', zh: '把这个切分重音运用到完整的扫弦节奏型或riff中。', es: 'Aplica el acento sincopado dentro de un patrón completo de rasgueo o riff.' },
     ],
-    tips: ['Isolating the rhythm away from the instrument first makes it much easier to feel accurately.'],
-    commonMistakes: ['Accenting the wrong subdivision because the underlying pulse was not solid first.'],
+    tips: [
+      { en: 'Isolating the rhythm away from the instrument first makes it much easier to feel accurately.', vi: 'Tách nhịp điệu ra khỏi cây đàn trước sẽ giúp bạn cảm nhận nó chính xác hơn nhiều.', ja: 'まず楽器を使わずにリズムだけを取り出すと、はるかに正確に体感しやすくなる。', zh: '先脱离乐器单独练习节奏，会更容易准确地感受它。', es: 'Aislar el ritmo lejos del instrumento primero facilita mucho sentirlo con precisión.' },
+    ],
+    commonMistakes: [
+      { en: 'Accenting the wrong subdivision because the underlying pulse was not solid first.', vi: 'Nhấn sai bậc chia nhịp vì nhịp đập nền chưa thực sự vững trước đó.', ja: '根底のパルスがまず固まっていないために、間違った分割にアクセントを置いてしまうこと。', zh: '在底层节奏脉动还没稳固之前就强调错误的细分位置。', es: 'Acentuar la subdivisión equivocada porque el pulso de base no estaba sólido de antemano.' },
+    ],
     recommendedBpm: { min: 70, max: 120 },
   },
 
   // -------------------------------------------------------------------- Chords
   {
     id: 'chords-open-chord-changes',
-    name: 'Open Chord Changes',
+    name: { en: 'Open Chord Changes', vi: 'Chuyển đổi Hợp âm Mở', ja: 'オープンコードのコードチェンジ', zh: '开放和弦转换练习', es: 'Cambios de acordes abiertos' },
     category: 'chords',
-    description:
-      'Fast, clean transitions between common open chords (G, C, D, Em, Am) — the foundation of rhythm guitar for most styles.',
+    description: { en: 'Fast, clean transitions between common open chords (G, C, D, Em, Am) — the foundation of rhythm guitar for most styles.', vi: 'Chuyển đổi nhanh, sạch giữa các hợp âm mở phổ biến (G, C, D, Em, Am) — nền tảng của guitar đệm hát trong hầu hết các thể loại.', ja: 'よく使うオープンコード(G, C, D, Em, Am)間の速くクリーンな移行――ほとんどのスタイルにおけるリズムギターの土台。', zh: '在常见开放和弦（G、C、D、Em、Am）之间快速、干净地转换——这是大多数风格节奏吉他的基础。', es: 'Transiciones rápidas y limpias entre acordes abiertos comunes (G, C, D, Em, Am): la base de la guitarra rítmica en la mayoría de los estilos.' },
     difficulty: 1,
     importance: 5,
     usefulness: 5,
@@ -439,12 +447,16 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 20,
     skillTags: ['chords', 'open-chords', 'transitions', 'beginner'],
     instructions: [
-      'Pick two chords you find awkward together (e.g. C to G) and change between them slowly, checking every string rings clean.',
-      'Add a metronome and change chords on every 4th beat, then every 2nd beat as it gets comfortable.',
-      'String three or four chords into a short progression and loop it for two minutes without stopping.',
+      { en: 'Pick two chords you find awkward together (e.g. C to G) and change between them slowly, checking every string rings clean.', vi: 'Chọn hai hợp âm mà bạn thấy khó chuyển với nhau (ví dụ C sang G) và đổi giữa chúng thật chậm, kiểm tra từng dây đều ngân sạch.', ja: '自分が苦手だと感じる2つのコード(例:CからG)を選び、すべての弦がクリーンに鳴っているか確認しながらゆっくりチェンジする。', zh: '挑出两个你觉得转换起来别扭的和弦（例如C到G），慢速转换，检查每根弦都能发出干净的音。', es: 'Elige dos acordes que te resulten incómodos juntos (por ejemplo, C a G) y cambia entre ellos despacio, comprobando que cada cuerda suene limpia.' },
+      { en: 'Add a metronome and change chords on every 4th beat, then every 2nd beat as it gets comfortable.', vi: 'Thêm metronome và đổi hợp âm ở mỗi phách thứ 4, sau đó là mỗi phách thứ 2 khi đã thấy thoải mái.', ja: 'メトロノームを加え、最初は4拍ごとに、慣れてきたら2拍ごとにコードを変える。', zh: '配合节拍器，先每4拍换一次和弦，熟练后改为每2拍换一次。', es: 'Añade un metrónomo y cambia de acorde en cada 4º tiempo, luego en cada 2º tiempo a medida que te sientas cómodo.' },
+      { en: 'String three or four chords into a short progression and loop it for two minutes without stopping.', vi: 'Ghép ba hoặc bốn hợp âm thành một tiến trình ngắn và lặp lại trong hai phút không dừng.', ja: '3つか4つのコードを短い進行につなげ、止まらずに2分間ループする。', zh: '把三到四个和弦串成一个短进行，循环弹奏两分钟不间断。', es: 'Encadena tres o cuatro acordes en una progresión corta y repítela en bucle durante dos minutos sin detenerte.' },
     ],
-    tips: ["Move fingers that stay on the same string/fret as little as possible between chords ('common tone' economy)."],
-    commonMistakes: ['Looking away from the fretboard too soon, before the muscle memory is really there.'],
+    tips: [
+      { en: 'Move fingers that stay on the same string/fret as little as possible between chords (\'common tone\' economy).', vi: 'Di chuyển các ngón vẫn giữ nguyên dây/phím càng ít càng tốt giữa các hợp âm (tận dụng "common tone").', ja: 'コード間で同じ弦・フレットに留まる指はできるだけ動かさないこと(『共通音』を活かした省エネな運指)。', zh: '和弦转换时，尽量让停留在同一根弦、同一品位上的手指少移动（「共同音」省力法）。', es: 'Mueve lo menos posible los dedos que permanecen en la misma cuerda/traste entre acordes (economía de \'nota común\').' },
+    ],
+    commonMistakes: [
+      { en: 'Looking away from the fretboard too soon, before the muscle memory is really there.', vi: 'Rời mắt khỏi cần đàn quá sớm, trước khi trí nhớ cơ bắp thực sự hình thành.', ja: '筋肉の記憶が本当に定着する前に、早すぎるタイミングで指板から目を離してしまうこと。', zh: '肌肉记忆还没真正建立起来，就过早把视线移开指板。', es: 'Dejar de mirar el diapasón demasiado pronto, antes de que la memoria muscular esté realmente asentada.' },
+    ],
     recommendedBpm: { min: 60, max: 110 },
     conceptIds: [
       'chord-open-g-major',
@@ -456,10 +468,9 @@ export const EXERCISES: Exercise[] = [
   },
   {
     id: 'chords-barre-strength',
-    name: 'Barre Chord Strength Builder',
+    name: { en: 'Barre Chord Strength Builder', vi: 'Tăng cường sức mạnh cho Hợp âm Chặn (Barre)', ja: 'バレーコードの筋力強化', zh: '横按和弦力量训练', es: 'Fortalecedor de fuerza para acordes con cejilla' },
     category: 'chords',
-    description:
-      'Building the hand strength and finger positioning needed for clean, buzz-free barre chords across the neck.',
+    description: { en: 'Building the hand strength and finger positioning needed for clean, buzz-free barre chords across the neck.', vi: 'Xây dựng sức mạnh tay và cách đặt ngón cần thiết để bấm hợp âm chặn sạch, không bị rè trên khắp cần đàn.', ja: 'ネックのどこでもクリーンでビビリのないバレーコードを弾くために必要な手の筋力と指の配置を鍛える。', zh: '锻炼在指板各处弹出干净、不打品的横按和弦所需要的手部力量和手指定位。', es: 'Desarrollar la fuerza de la mano y la colocación de los dedos necesarias para acordes con cejilla limpios y sin zumbidos en todo el mástil.' },
     difficulty: 3,
     importance: 4,
     usefulness: 5,
@@ -468,20 +479,23 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 20,
     skillTags: ['chords', 'barre-chords', 'strength'],
     instructions: [
-      'Form an E-shape barre chord at the 3rd fret and check each string rings clearly one at a time.',
-      'Release and reform the barre chord ten times in a row, resting briefly between sets to avoid strain.',
-      'Move the same shape up and down the neck, changing root note without looking at a chord chart.',
+      { en: 'Form an E-shape barre chord at the 3rd fret and check each string rings clearly one at a time.', vi: 'Bấm hợp âm barre thế E ở phím 3 và kiểm tra từng dây ngân rõ ràng lần lượt từng dây một.', ja: '3フレットでE-shapeのバレーコードを組み、1本ずつすべての弦がクリアに鳴っているか確認する。', zh: '在第3品按出E型横按和弦，逐根检查每根弦是否都能清晰发声。', es: 'Forma un acorde con cejilla en forma de E en el 3er traste y comprueba que cada cuerda suene con claridad, una por una.' },
+      { en: 'Release and reform the barre chord ten times in a row, resting briefly between sets to avoid strain.', vi: 'Thả ra rồi bấm lại hợp âm barre mười lần liên tiếp, nghỉ ngắn giữa các lượt để tránh căng cơ.', ja: 'バレーコードを組んでは離す動作を10回連続で行い、負担がかからないようセット間に短い休憩を入れる。', zh: '连续松开再按回横按和弦十次，每组之间稍作休息以避免手部劳损。', es: 'Suelta y vuelve a formar el acorde con cejilla diez veces seguidas, descansando brevemente entre series para evitar tensión.' },
+      { en: 'Move the same shape up and down the neck, changing root note without looking at a chord chart.', vi: 'Di chuyển cùng thế bấm này lên xuống cần đàn, đổi âm chủ mà không nhìn vào chord chart.', ja: '同じ形をネックの上下に動かし、コードチャートを見ずにルート音を変えてみる。', zh: '在指板上下移动同一个指型，不看和弦图，凭感觉改变根音。', es: 'Mueve la misma forma arriba y abajo del mástil, cambiando la nota fundamental sin mirar un diagrama de acordes.' },
     ],
-    tips: ['Roll your index finger slightly onto its side rather than pressing flat — it takes less effort.'],
-    commonMistakes: ['Squeezing with the thumb wrapped over the top of the neck, which adds tension instead of leverage.'],
+    tips: [
+      { en: 'Roll your index finger slightly onto its side rather than pressing flat — it takes less effort.', vi: 'Nghiêng ngón trỏ hơi nghiêng sang một bên thay vì ấn phẳng — sẽ tốn ít sức hơn.', ja: '人差し指はフラットに押さえるのではなく、少し側面を使うように転がすと力が少なくて済む。', zh: '食指稍微侧立一点去按弦，而不是完全压平，这样更省力。', es: 'Inclina ligeramente el dedo índice sobre su lateral en lugar de presionar plano: requiere menos esfuerzo.' },
+    ],
+    commonMistakes: [
+      { en: 'Squeezing with the thumb wrapped over the top of the neck, which adds tension instead of leverage.', vi: 'Bóp bằng ngón cái quặp qua đỉnh cần đàn, tạo thêm căng thẳng thay vì lực đòn bẩy.', ja: '親指をネックの上から巻き込むように握ってしまい、てこの力ではなく余計な緊張を生んでしまうこと。', zh: '用大拇指扣住琴颈上方来发力，这只会增加紧张感而不是提供杠杆力。', es: 'Apretar con el pulgar envuelto por encima del mástil, lo que añade tensión en lugar de palanca.' },
+    ],
     recommendedBpm: { min: 50, max: 100 },
   },
   {
     id: 'chords-power-chords',
-    name: 'Power Chord Chugging',
+    name: { en: 'Power Chord Chugging', vi: 'Chugging với Power Chord', ja: 'パワーコードのチャギング', zh: '强力和弦（Power Chord）闷音扫弦', es: 'Power chords en chugging' },
     category: 'chords',
-    description:
-      'Two and three-note power chords moved quickly around the low strings, the backbone of rock and metal rhythm parts.',
+    description: { en: 'Two and three-note power chords moved quickly around the low strings, the backbone of rock and metal rhythm parts.', vi: 'Power chord hai và ba nốt di chuyển nhanh quanh các dây trầm, xương sống của phần đệm nhịp rock và metal.', ja: '低音弦の上で素早く動かす2音・3音のパワーコード――ロックやメタルのリズムパートの背骨となる存在。', zh: '在低音弦上快速移动的两音或三音强力和弦，是摇滚和金属节奏部分的骨架。', es: 'Power chords de dos y tres notas movidos rápidamente por las cuerdas graves, la columna vertebral del ritmo de rock y metal.' },
     difficulty: 2,
     importance: 4,
     usefulness: 5,
@@ -490,12 +504,16 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 18,
     skillTags: ['power-chords', 'rock', 'metal', 'rhythm'],
     instructions: [
-      'Play a single power chord shape on the low E and A strings, palm-muted, in steady quarter notes.',
-      'Move the same shape to a new root every two beats, keeping the muting and picking hand consistent.',
-      'Combine two power chords into a simple riff and loop it against a metronome.',
+      { en: 'Play a single power chord shape on the low E and A strings, palm-muted, in steady quarter notes.', vi: 'Chơi một thế power chord đơn trên dây E trầm và dây A, palm-muted, theo nốt đen đều đặn.', ja: '低音のEとA弦で1つのパワーコードの形を作り、パームミュートしながら安定した4分音符で弾く。', zh: '在低音E弦和A弦上弹奏一个强力和弦指型，配合闷音，以稳定的四分音符弹奏。', es: 'Toca una sola forma de power chord en las cuerdas E grave y A, con palm muting, en negras constantes.' },
+      { en: 'Move the same shape to a new root every two beats, keeping the muting and picking hand consistent.', vi: 'Di chuyển cùng thế bấm này sang âm chủ mới sau mỗi hai phách, giữ tay chặn và tay gảy nhất quán.', ja: 'ミュートとピッキングハンドの動きを一定に保ちながら、2拍ごとに同じ形を新しいルート音へ移動させる。', zh: '每两拍把同一指型移到新的根音上，保持闷音和拨弦手的动作一致。', es: 'Mueve la misma forma a una nueva fundamental cada dos tiempos, manteniendo constante el silenciado y la mano de la púa.' },
+      { en: 'Combine two power chords into a simple riff and loop it against a metronome.', vi: 'Kết hợp hai power chord thành một riff đơn giản và lặp lại theo metronome.', ja: '2つのパワーコードを組み合わせてシンプルなリフを作り、メトロノームに合わせてループする。', zh: '把两个强力和弦组合成一个简单的riff，配合节拍器循环弹奏。', es: 'Combina dos power chords en un riff sencillo y repítelo en bucle contra un metrónomo.' },
     ],
-    tips: ["Keep the power-chord shape's finger spacing fixed so you can slide it anywhere without rethinking it."],
-    commonMistakes: ['Letting the open strings above the shape ring and clash with the chord.'],
+    tips: [
+      { en: 'Keep the power-chord shape\'s finger spacing fixed so you can slide it anywhere without rethinking it.', vi: 'Giữ khoảng cách ngón của thế power chord cố định để có thể trượt đi bất cứ đâu mà không cần nghĩ lại.', ja: 'パワーコードの形の指の間隔を固定しておくと、考え直さずにどこへでもスライドできる。', zh: '保持强力和弦指型的手指间距固定，这样就能不假思索地把它移到任何位置。', es: 'Mantén fija la separación de dedos de la forma del power chord para poder deslizarla a cualquier sitio sin volver a pensarla.' },
+    ],
+    commonMistakes: [
+      { en: 'Letting the open strings above the shape ring and clash with the chord.', vi: 'Để các dây buông phía trên thế bấm ngân vang và xung đột với hợp âm.', ja: '形の上にある開放弦を鳴らしてしまい、コードとぶつかってしまうこと。', zh: '让指型上方的空弦一起发声，和和弦产生冲突。', es: 'Dejar que las cuerdas al aire por encima de la forma suenen y choquen con el acorde.' },
+    ],
     recommendedBpm: { min: 80, max: 160 },
     diagram: {
       mode: 'chord',
@@ -512,10 +530,9 @@ export const EXERCISES: Exercise[] = [
   },
   {
     id: 'chords-transition-speed',
-    name: 'Chord-to-Chord Transition Speed',
+    name: { en: 'Chord-to-Chord Transition Speed', vi: 'Tốc độ Chuyển Hợp âm', ja: 'コード間の移行スピード強化', zh: '和弦转换速度训练', es: 'Velocidad de transición entre acordes' },
     category: 'chords',
-    description:
-      'Timed drills that push chord-change speed up gradually, closing the gap between "knowing" a chord and playing it in real time.',
+    description: { en: 'Timed drills that push chord-change speed up gradually, closing the gap between "knowing" a chord and playing it in real time.', vi: 'Các bài tập tính giờ giúp tăng dần tốc độ đổi hợp âm, thu hẹp khoảng cách giữa "biết" một hợp âm và chơi được nó trong thời gian thực.', ja: 'コードチェンジのスピードを段階的に上げていくタイマー練習で、コードを『知っている』ことと実際にリアルタイムで弾けることのギャップを埋める。', zh: '通过定时训练逐步提升和弦转换速度，缩小「认得和弦」与「能实时弹出来」之间的差距。', es: 'Ejercicios cronometrados que aumentan gradualmente la velocidad de cambio de acordes, cerrando la brecha entre "conocer" un acorde y tocarlo en tiempo real.' },
     difficulty: 3,
     importance: 3,
     usefulness: 4,
@@ -524,21 +541,25 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 18,
     skillTags: ['chords', 'transitions', 'speed'],
     instructions: [
-      "Pick your two slowest chord changes and set a metronome to a tempo where they're just barely comfortable.",
-      'Loop the change for one minute, then raise the tempo by a small increment.',
-      "Repeat with a three or four chord progression pulled from a song you're learning.",
+      { en: 'Pick your two slowest chord changes and set a metronome to a tempo where they\'re just barely comfortable.', vi: 'Chọn hai lần đổi hợp âm chậm nhất của bạn và đặt metronome ở tempo vừa đủ thoải mái.', ja: '自分が最も苦手とする2つのコードチェンジを選び、ぎりぎり快適に弾けるテンポにメトロノームを設定する。', zh: '挑出你转换最慢的两个和弦，把节拍器设在一个刚好能勉强应付的速度上。', es: 'Elige tus dos cambios de acorde más lentos y configura un metrónomo a un tempo en el que apenas resulten cómodos.' },
+      { en: 'Loop the change for one minute, then raise the tempo by a small increment.', vi: 'Lặp lại lần đổi đó trong một phút, sau đó tăng tempo lên một bước nhỏ.', ja: 'そのチェンジを1分間ループしたら、テンポを少しだけ上げる。', zh: '循环练习这个转换一分钟，然后把速度小幅提高。', es: 'Repite el cambio en bucle durante un minuto, luego sube el tempo en un pequeño incremento.' },
+      { en: 'Repeat with a three or four chord progression pulled from a song you\'re learning.', vi: 'Lặp lại với một tiến trình ba hoặc bốn hợp âm lấy từ một bài hát bạn đang học.', ja: '今練習している曲から取った3つか4つのコード進行でも同じことを繰り返す。', zh: '换成你正在学的歌曲中的三到四和弦进行，重复以上步骤。', es: 'Repite con una progresión de tres o cuatro acordes sacada de una canción que estés aprendiendo.' },
     ],
-    tips: ['Small, frequent tempo increases beat one big jump — the hand needs repetition to relearn the shape at speed.'],
-    commonMistakes: ['Jumping to a much faster tempo too soon and reinforcing sloppy changes.'],
+    tips: [
+      { en: 'Small, frequent tempo increases beat one big jump — the hand needs repetition to relearn the shape at speed.', vi: 'Tăng tempo từng chút một thường xuyên sẽ tốt hơn một bước nhảy lớn — tay cần được lặp lại để học lại thế bấm ở tốc độ mới.', ja: '一気に大きく上げるより、小刻みに頻繁にテンポを上げる方が効果的――手が速さの中でその形を覚え直すには反復が必要。', zh: '小步频繁地提速比一次性跳大速度更有效——手需要反复练习才能在更快的速度下重新记住指型。', es: 'Los aumentos de tempo pequeños y frecuentes superan a un salto grande: la mano necesita repetición para reaprender la forma a mayor velocidad.' },
+    ],
+    commonMistakes: [
+      { en: 'Jumping to a much faster tempo too soon and reinforcing sloppy changes.', vi: 'Nhảy lên tempo nhanh hơn nhiều quá sớm, khiến những lần đổi hợp âm cẩu thả trở thành thói quen.', ja: '早すぎるタイミングでずっと速いテンポに飛びつき、雑なチェンジを定着させてしまうこと。', zh: '过早跳到快得多的速度，反而强化了不干净的换弦动作。', es: 'Saltar a un tempo mucho más rápido demasiado pronto y reforzar cambios descuidados.' },
+    ],
     recommendedBpm: { min: 70, max: 140 },
   },
 
   // ---------------------------------------------------------------- Fretboard
   {
     id: 'fretboard-note-memorization',
-    name: 'Fretboard Note Memorization',
+    name: { en: 'Fretboard Note Memorization', vi: 'Ghi nhớ tên nốt trên Cần đàn', ja: '指板上の音名暗記', zh: '指板音名记忆', es: 'Memorización de notas en el diapasón' },
     category: 'fretboard',
-    description: 'Drilling note names across the neck so you can find any note instantly, rather than relying purely on shapes.',
+    description: { en: 'Drilling note names across the neck so you can find any note instantly, rather than relying purely on shapes.', vi: 'Luyện tên nốt khắp cần đàn để bạn có thể tìm bất kỳ nốt nào ngay lập tức, thay vì chỉ dựa vào thế bấm.', ja: 'ネック上の音名を徹底的に覚え、形だけに頼らず、どの音でも瞬時に見つけられるようにする。', zh: '熟记指板各处的音名，这样就能立刻找到任何一个音，而不是单纯依赖指型记忆。', es: 'Practicar los nombres de las notas por todo el mástil para poder encontrar cualquier nota al instante, en lugar de depender solo de las formas.' },
     difficulty: 2,
     importance: 4,
     usefulness: 5,
@@ -547,21 +568,22 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 20,
     skillTags: ['fretboard', 'theory', 'note-names'],
     instructions: [
-      'Pick one string and name every natural note (no sharps/flats) from open to the 12th fret out loud.',
-      'Have someone call out notes (or use a random note generator) and find each one on that string as fast as you can.',
-      'Repeat on a second string, then practice finding the same note name on two different strings.',
+      { en: 'Pick one string and name every natural note (no sharps/flats) from open to the 12th fret out loud.', vi: 'Chọn một dây và đọc to tên từng nốt tự nhiên (không thăng/giáng) từ dây buông đến phím 12.', ja: '1本の弦を選び、開放弦から12フレットまで、すべてのナチュラルノート(シャープ・フラットなし)を声に出して言う。', zh: '选一根弦，从空弦到第12品，大声念出每一个自然音（不含升降号）的名称。', es: 'Elige una cuerda y nombra en voz alta cada nota natural (sin sostenidos/bemoles) desde el aire hasta el traste 12.' },
+      { en: 'Have someone call out notes (or use a random note generator) and find each one on that string as fast as you can.', vi: 'Nhờ ai đó đọc tên nốt (hoặc dùng công cụ tạo nốt ngẫu nhiên) và tìm từng nốt trên dây đó nhanh nhất có thể.', ja: '誰かに音名を言ってもらう(またはランダム音名ジェネレーターを使う)、その弦上でできるだけ速く見つける。', zh: '请人随机报出音名（或使用随机音名生成器），尽可能快地在这根弦上找到对应的音。', es: 'Pide a alguien que diga notas en voz alta (o usa un generador aleatorio de notas) y encuentra cada una en esa cuerda lo más rápido que puedas.' },
+      { en: 'Repeat on a second string, then practice finding the same note name on two different strings.', vi: 'Lặp lại trên một dây thứ hai, sau đó luyện tìm cùng một tên nốt trên hai dây khác nhau.', ja: '2本目の弦でも繰り返し、同じ音名を2本の異なる弦で見つける練習をする。', zh: '换第二根弦重复练习，然后练习在两根不同的弦上找到同一个音名。', es: 'Repite en una segunda cuerda y luego practica encontrando el mismo nombre de nota en dos cuerdas diferentes.' },
     ],
     tips: [
-      "Learn the string's 'landmark' notes (open, 5th, 7th, 12th fret) first, then fill in the gaps around them.",
+      { en: 'Learn the string\'s \'landmark\' notes (open, 5th, 7th, 12th fret) first, then fill in the gaps around them.', vi: 'Học các nốt "mốc" của dây (buông, phím 5, phím 7, phím 12) trước, rồi lấp đầy các khoảng trống xung quanh.', ja: 'まず弦の『ランドマーク』となる音(開放弦、5フレット、7フレット、12フレット)を覚え、その周りの隙間を埋めていくこと。', zh: '先记住每根弦上的「地标音」（空弦、第5品、第7品、第12品），再逐步填补它们之间的空白。', es: 'Aprende primero las notas \'de referencia\' de la cuerda (al aire, traste 5, traste 7, traste 12) y luego rellena los huecos alrededor de ellas.' },
     ],
-    commonMistakes: ['Only ever thinking in shapes, so note names stay a mystery even after years of playing.'],
+    commonMistakes: [
+      { en: 'Only ever thinking in shapes, so note names stay a mystery even after years of playing.', vi: 'Chỉ nghĩ theo thế bấm, khiến tên nốt vẫn là điều bí ẩn ngay cả sau nhiều năm chơi đàn.', ja: '形でしか考えず、何年弾いていても音名が謎のままになってしまうこと。', zh: '始终只靠指型思考，导致即使弹了多年，音名依然是个谜。', es: 'Pensar siempre solo en formas, de modo que los nombres de las notas siguen siendo un misterio incluso después de años tocando.' },
+    ],
   },
   {
     id: 'fretboard-caged',
-    name: 'CAGED System Mapping',
+    name: { en: 'CAGED System Mapping', vi: 'Bản đồ hệ thống CAGED', ja: 'CAGEDシステムのマッピング', zh: 'CAGED体系指板映射', es: 'Mapeo del sistema CAGED' },
     category: 'fretboard',
-    description:
-      'Seeing how the five open chord shapes (C, A, G, E, D) tile up the neck, connecting chord shapes, scale patterns and arpeggios into one map.',
+    description: { en: 'Seeing how the five open chord shapes (C, A, G, E, D) tile up the neck, connecting chord shapes, scale patterns and arpeggios into one map.', vi: 'Thấy được cách năm thế hợp âm mở (C, A, G, E, D) lát kín cần đàn, kết nối thế hợp âm, mẫu scale và arpeggio thành một bản đồ duy nhất.', ja: '5つのオープンコードの形(C, A, G, E, D)がネック上をどう敷き詰めていくかを見る練習で、コードの形、スケールパターン、アルペジオを1つの地図としてつなげる。', zh: '了解五个开放和弦指型（C、A、G、E、D）如何在指板上依次铺开，把和弦指型、音阶指型和琶音串联成一张完整的地图。', es: 'Ver cómo las cinco formas de acordes abiertos (C, A, G, E, D) recubren el mástil, conectando formas de acordes, patrones de escalas y arpegios en un solo mapa.' },
     difficulty: 3,
     importance: 3,
     usefulness: 4,
@@ -570,20 +592,23 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 25,
     skillTags: ['fretboard', 'caged', 'chord-shapes', 'theory'],
     instructions: [
-      'Play an open C chord, then find the same chord tones using the A-shape barre chord a few frets up.',
-      'Continue through the G, E and D shapes for the same root note, moving up the neck each time.',
-      'Overlay the minor pentatonic box that sits closest to each CAGED shape to link chords and scales visually.',
+      { en: 'Play an open C chord, then find the same chord tones using the A-shape barre chord a few frets up.', vi: 'Chơi hợp âm C mở, sau đó tìm đúng các nốt hợp âm đó bằng thế barre A-shape ở vài phím cao hơn.', ja: 'オープンCコードを弾き、その後数フレット上にA-shapeのバレーコードで同じコードトーンを見つける。', zh: '弹奏开放C和弦，然后在往上几品的位置用A型横按和弦找到相同的和弦音。', es: 'Toca un acorde de C abierto y luego encuentra las mismas notas del acorde usando la forma con cejilla A-shape unos trastes más arriba.' },
+      { en: 'Continue through the G, E and D shapes for the same root note, moving up the neck each time.', vi: 'Tiếp tục qua các thế G, E và D cho cùng một âm chủ, mỗi lần di chuyển lên cần đàn.', ja: '同じルート音のままG、E、D shapeへと続けていき、そのたびにネックを上へ移動する。', zh: '对同一个根音依次弹奏G、E、D型指法，每次都往指板上方移动。', es: 'Continúa por las formas G, E y D para la misma nota fundamental, subiendo por el mástil cada vez.' },
+      { en: 'Overlay the minor pentatonic box that sits closest to each CAGED shape to link chords and scales visually.', vi: 'Chồng box minor pentatonic gần nhất với mỗi thế CAGED để liên kết hợp âm và scale một cách trực quan.', ja: '各CAGEDの形に最も近いマイナーペンタトニックのボックスを重ね合わせ、コードとスケールを視覚的につなげる。', zh: '在每个CAGED指型最靠近的位置叠加对应的小调五声音阶箱型，直观地把和弦与音阶联系起来。', es: 'Superpón la posición de la pentatónica menor más cercana a cada forma CAGED para conectar visualmente acordes y escalas.' },
     ],
-    tips: ['Focus on one shape pair (e.g. C to A) until it clicks before trying to chain all five.'],
-    commonMistakes: ['Trying to learn all five shapes for every chord in one sitting instead of one connection at a time.'],
+    tips: [
+      { en: 'Focus on one shape pair (e.g. C to A) until it clicks before trying to chain all five.', vi: 'Tập trung vào một cặp thế bấm (ví dụ C sang A) cho tới khi nó "vỡ lẽ" trước khi cố ghép cả năm thế.', ja: '5つすべてを一気につなげようとせず、1組の形(例:CからA)がしっくりくるまでそこに集中すること。', zh: '先专注于一对指型（例如C到A），等真正掌握后再尝试串联全部五个。', es: 'Concéntrate en un solo par de formas (por ejemplo, de C a A) hasta que encaje, antes de intentar encadenar las cinco.' },
+    ],
+    commonMistakes: [
+      { en: 'Trying to learn all five shapes for every chord in one sitting instead of one connection at a time.', vi: 'Cố học cả năm thế cho mọi hợp âm trong một buổi tập thay vì từng kết nối một.', ja: '1回のセッションで、あるコードの5つの形すべてを一度に覚えようとしてしまい、1つずつのつながりを積み重ねられないこと。', zh: '试图一次性学完某个和弦的全部五种指型，而不是一次只建立一个连接。', es: 'Intentar aprender las cinco formas de cada acorde en una sola sesión en lugar de una conexión a la vez.' },
+    ],
     conceptIds: ['chord-caged-major-g'],
   },
   {
     id: 'fretboard-intervals',
-    name: 'Interval Recognition on the Neck',
+    name: { en: 'Interval Recognition on the Neck', vi: 'Nhận diện Quãng trên Cần đàn', ja: 'ネック上でのインターバル認識', zh: '指板音程识别', es: 'Reconocimiento de intervalos en el mástil' },
     category: 'fretboard',
-    description:
-      'Recognizing common interval shapes (3rds, 5ths, octaves) by sight and sound — useful for improvising, harmonizing and sight-reading the neck.',
+    description: { en: 'Recognizing common interval shapes (3rds, 5ths, octaves) by sight and sound — useful for improvising, harmonizing and sight-reading the neck.', vi: 'Nhận diện các thế quãng phổ biến (quãng 3, quãng 5, quãng 8) bằng mắt và tai — hữu ích cho ứng tấu, hòa âm và đọc cần đàn.', ja: '3度、5度、オクターブなど、よく使われるインターバルの形を見た目と音の両方で認識できるようにする――アドリブ、ハーモナイズ、ネックの読み取りに役立つ。', zh: '通过视觉和听觉识别常见的音程指型（三度、五度、八度）——对即兴、和声配置以及视奏指板都很有帮助。', es: 'Reconocer formas de intervalos comunes (3ras, 5tas, octavas) a la vista y al oído: útil para improvisar, armonizar y leer el mástil a primera vista.' },
     difficulty: 3,
     importance: 3,
     usefulness: 4,
@@ -592,21 +617,24 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 20,
     skillTags: ['fretboard', 'intervals', 'ear-training'],
     instructions: [
-      'Play a root note, then find its octave two different ways on the neck (same string vs. a two-string shape).',
-      'Practice the fixed shape for a perfect 5th from any root, moving it to five different starting notes.',
-      'Sing or hum an interval before playing it to connect the sound to the shape.',
+      { en: 'Play a root note, then find its octave two different ways on the neck (same string vs. a two-string shape).', vi: 'Chơi một âm chủ, sau đó tìm quãng 8 (octave) của nó theo hai cách khác nhau trên cần đàn (cùng dây so với thế hai dây).', ja: 'ルート音を弾き、ネック上で2つの異なる方法(同じ弦上 vs. 2弦にまたがる形)でそのオクターブを見つける。', zh: '弹一个根音，然后在指板上用两种不同方式找到它的高八度音（同弦位置与双弦指型）。', es: 'Toca una nota fundamental y luego encuentra su octava de dos formas distintas en el mástil (misma cuerda frente a una forma de dos cuerdas).' },
+      { en: 'Practice the fixed shape for a perfect 5th from any root, moving it to five different starting notes.', vi: 'Luyện thế bấm cố định cho quãng 5 đúng (perfect 5th) từ bất kỳ âm chủ nào, di chuyển nó tới năm nốt bắt đầu khác nhau.', ja: 'どのルート音からでも使える完全5度の固定した形を練習し、5つの異なる開始音に移動させる。', zh: '练习纯五度的固定指型，从任意根音出发，把它移到五个不同的起始音上。', es: 'Practica la forma fija para una 5ta justa desde cualquier fundamental, moviéndola a cinco notas de inicio diferentes.' },
+      { en: 'Sing or hum an interval before playing it to connect the sound to the shape.', vi: 'Hát hoặc ngân nga một quãng trước khi chơi nó để kết nối âm thanh với thế bấm.', ja: '弾く前にそのインターバルを歌ったりハミングしたりして、音と形を結びつける。', zh: '在弹奏一个音程之前先哼唱出来，把声音和指型联系起来。', es: 'Canta o tararea un intervalo antes de tocarlo para conectar el sonido con la forma.' },
     ],
-    tips: ['Octave and 5th shapes are movable — once memorized in one spot they work everywhere on the neck.'],
-    commonMistakes: ['Learning the shape without ever checking that it actually sounds like the interval it is named after.'],
+    tips: [
+      { en: 'Octave and 5th shapes are movable — once memorized in one spot they work everywhere on the neck.', vi: 'Thế quãng 8 và quãng 5 đều có thể di chuyển được — một khi thuộc ở một vị trí, chúng hoạt động ở mọi nơi trên cần đàn.', ja: 'オクターブと5度の形は移動可能――一度どこか1箇所で覚えれば、ネック上のどこでも通用する。', zh: '八度和五度的指型是可移动的——一旦在一个位置记住，就能在指板任何地方通用。', es: 'Las formas de octava y de 5ta son movibles: una vez memorizadas en un sitio, funcionan en cualquier parte del mástil.' },
+    ],
+    commonMistakes: [
+      { en: 'Learning the shape without ever checking that it actually sounds like the interval it is named after.', vi: 'Học thế bấm mà không bao giờ kiểm tra xem nó có thực sự nghe giống quãng mang tên đó hay không.', ja: 'その形が実際に名前通りのインターバルの響きになっているか一度も確認せずに、形だけを覚えてしまうこと。', zh: '只记住指型，却从未核对它听起来是否真的是所标注的那个音程。', es: 'Aprender la forma sin comprobar nunca que realmente suena como el intervalo cuyo nombre lleva.' },
+    ],
   },
 
   // ------------------------------------------------------------ Improvisation
   {
     id: 'improv-call-response',
-    name: 'Call and Response Phrasing',
+    name: { en: 'Call and Response Phrasing', vi: 'Phrasing Hỏi và Đáp (Call and Response)', ja: 'コール&レスポンスのフレージング', zh: '问答式乐句（Call and Response）', es: 'Fraseo de pregunta y respuesta' },
     category: 'improvisation',
-    description:
-      'Playing a short musical "question," leaving space, then answering it — the basic building block of musical, conversational soloing.',
+    description: { en: 'Playing a short musical "question," leaving space, then answering it — the basic building block of musical, conversational soloing.', vi: 'Chơi một "câu hỏi" âm nhạc ngắn, để lại khoảng lặng, rồi trả lời nó — khối xây dựng cơ bản của lối solo mang tính đối thoại, âm nhạc.', ja: '短い音楽的な『問いかけ』を弾き、間を置いてから『答える』――音楽的で会話のようなソロの基本的な構成要素。', zh: '先弹一个简短的音乐「提问」，留出空白，再给出「回答」——这是富有音乐性、对话感即兴演奏的基本构件。', es: 'Tocar una breve "pregunta" musical, dejar espacio y luego responderla: el bloque de construcción básico de un solo musical y conversacional.' },
     difficulty: 3,
     importance: 4,
     usefulness: 4,
@@ -615,21 +643,22 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 20,
     skillTags: ['improvisation', 'phrasing', 'listening'],
     instructions: [
-      'Play a short 2-4 note phrase, then stop completely for an equal amount of silence.',
-      'Play a second phrase that answers or varies the first one, keeping the same rhythmic feel.',
-      'Record a short loop of yourself doing this and listen back for spots where the "conversation" felt natural.',
+      { en: 'Play a short 2-4 note phrase, then stop completely for an equal amount of silence.', vi: 'Chơi một câu ngắn 2-4 nốt, rồi dừng hoàn toàn trong khoảng thời gian im lặng tương đương.', ja: '2〜4音の短いフレーズを弾き、その後同じ長さだけ完全に音を止める。', zh: '弹一个2到4个音的短乐句，然后完全停下来，留出与乐句等长的静默。', es: 'Toca una frase corta de 2-4 notas y luego detente por completo durante la misma cantidad de silencio.' },
+      { en: 'Play a second phrase that answers or varies the first one, keeping the same rhythmic feel.', vi: 'Chơi câu thứ hai để trả lời hoặc biến tấu câu đầu tiên, giữ nguyên cảm giác nhịp điệu.', ja: '最初のフレーズに答える、あるいはそれを変化させた2つ目のフレーズを、同じリズムの感覚を保ちながら弾く。', zh: '弹第二个乐句来回应或变化第一个乐句，保持相同的节奏感。', es: 'Toca una segunda frase que responda o varíe la primera, manteniendo la misma sensación rítmica.' },
+      { en: 'Record a short loop of yourself doing this and listen back for spots where the "conversation" felt natural.', vi: 'Thu âm một đoạn ngắn bạn tự chơi kiểu này và nghe lại để tìm những chỗ mà "cuộc trò chuyện" nghe tự nhiên.', ja: '自分がこれを行っている短いループを録音し、『会話』が自然に感じられた箇所を聴き返して確認する。', zh: '把自己这样弹奏的过程录一小段循环，回放并留意哪些地方的「对话」感觉自然。', es: 'Graba un bucle corto de ti mismo haciendo esto y escúchalo de nuevo buscando los momentos en que la "conversación" se sintió natural.' },
     ],
-    tips: ['Silence is part of the phrase — resist the urge to fill every gap with notes.'],
+    tips: [
+      { en: 'Silence is part of the phrase — resist the urge to fill every gap with notes.', vi: 'Sự im lặng cũng là một phần của câu nhạc — hãy cưỡng lại ý muốn lấp đầy mọi khoảng trống bằng nốt nhạc.', ja: '沈黙もフレーズの一部――すべての隙間を音で埋めたくなる衝動を我慢すること。', zh: '静默也是乐句的一部分——克制住用音符填满每一个空隙的冲动。', es: 'El silencio forma parte de la frase: resiste la tentación de llenar cada hueco con notas.' },
+    ],
     commonMistakes: [
-      "Playing a constant stream of notes with no space, which removes the 'question and answer' effect.",
+      { en: 'Playing a constant stream of notes with no space, which removes the \'question and answer\' effect.', vi: 'Chơi một chuỗi nốt liên tục không có khoảng lặng, làm mất hiệu ứng "hỏi và đáp".', ja: '間を置かずに音を延々と鳴らし続け、『問いと答え』の効果が消えてしまうこと。', zh: '音符连续不断毫无留白，消除了「一问一答」的效果。', es: 'Tocar un flujo constante de notas sin espacio, lo que elimina el efecto de \'pregunta y respuesta\'.' },
     ],
   },
   {
     id: 'improv-target-notes',
-    name: 'Target Note Landing',
+    name: { en: 'Target Note Landing', vi: 'Đáp đúng vào Nốt mục tiêu (Target Note)', ja: 'ターゲットノートの着地', zh: '目标音落点练习', es: 'Aterrizaje en notas objetivo' },
     category: 'improvisation',
-    description:
-      'Practicing landing on a chord tone exactly when a chord change happens, so improvised lines sound intentional rather than random.',
+    description: { en: 'Practicing landing on a chord tone exactly when a chord change happens, so improvised lines sound intentional rather than random.', vi: 'Luyện đáp chính xác vào một nốt trong hợp âm ngay khi hợp âm đổi, để các câu ứng tấu nghe có chủ đích thay vì ngẫu nhiên.', ja: 'コードチェンジのタイミングでぴったりコードトーンに着地する練習をし、アドリブのラインが行き当たりばったりではなく意図的に聞こえるようにする。', zh: '练习在和弦转换的那一刻精准落在和弦内音上，让即兴乐句听起来是刻意为之，而不是随意乱弹。', es: 'Practicar aterrizar en una nota del acorde justo cuando ocurre un cambio de acorde, para que las líneas improvisadas suenen intencionadas en lugar de aleatorias.' },
     difficulty: 3,
     importance: 4,
     usefulness: 4,
@@ -638,19 +667,22 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 20,
     skillTags: ['improvisation', 'chord-tones', 'ear'],
     instructions: [
-      'Loop a simple two-chord progression and identify the root note of each chord on your fretboard.',
-      'Improvise freely, but make sure you land on the root of each chord right as it changes.',
-      'Repeat, targeting the 3rd of each chord instead of the root, to add more melodic color.',
+      { en: 'Loop a simple two-chord progression and identify the root note of each chord on your fretboard.', vi: 'Lặp một tiến trình hai hợp âm đơn giản và xác định âm chủ của mỗi hợp âm trên cần đàn.', ja: 'シンプルな2コードの進行をループし、それぞれのコードのルート音を指板上で確認する。', zh: '循环一个简单的两和弦进行，找出每个和弦在指板上的根音位置。', es: 'Repite en bucle una progresión sencilla de dos acordes e identifica la nota fundamental de cada acorde en tu diapasón.' },
+      { en: 'Improvise freely, but make sure you land on the root of each chord right as it changes.', vi: 'Ứng tấu tự do, nhưng đảm bảo bạn đáp vào âm chủ của mỗi hợp âm đúng lúc nó đổi.', ja: '自由にアドリブしながら、コードが変わる瞬間にそのコードのルート音へ必ず着地するようにする。', zh: '自由即兴演奏，但确保在每次和弦转换的瞬间准确落在该和弦的根音上。', es: 'Improvisa libremente, pero asegúrate de aterrizar en la fundamental de cada acorde justo cuando cambia.' },
+      { en: 'Repeat, targeting the 3rd of each chord instead of the root, to add more melodic color.', vi: 'Lặp lại, lần này nhắm vào quãng 3 của mỗi hợp âm thay vì âm chủ, để thêm màu sắc giai điệu.', ja: '同じことをルートの代わりに各コードの3rdをターゲットにして繰り返し、よりメロディックな色を加える。', zh: '重复练习，这次把目标改成每个和弦的三音，增添更丰富的旋律色彩。', es: 'Repite, apuntando a la 3ª de cada acorde en lugar de la fundamental, para añadir más color melódico.' },
     ],
-    tips: ["It's fine to play any notes you like between target notes — the target is what needs to be precise."],
-    commonMistakes: ['Losing track of the chord changes and landing on notes that clash with the new chord.'],
+    tips: [
+      { en: 'It\'s fine to play any notes you like between target notes — the target is what needs to be precise.', vi: 'Bạn có thể chơi bất kỳ nốt nào mình thích giữa các nốt mục tiêu — điều cần chính xác chỉ là nốt mục tiêu.', ja: 'ターゲットノートの間はどんな音を弾いても構わない――正確さが求められるのはターゲット部分だけ。', zh: '目标音之间可以随意弹奏任何你喜欢的音——真正需要精准的只有目标音本身。', es: 'Está bien tocar las notas que quieras entre las notas objetivo: lo que necesita ser preciso es el objetivo en sí.' },
+    ],
+    commonMistakes: [
+      { en: 'Losing track of the chord changes and landing on notes that clash with the new chord.', vi: 'Mất dấu các lần đổi hợp âm và đáp vào những nốt xung đột với hợp âm mới.', ja: 'コードチェンジを見失い、新しいコードとぶつかる音に着地してしまうこと。', zh: '跟丢了和弦转换，落在了与新和弦冲突的音上。', es: 'Perder de vista los cambios de acorde y aterrizar en notas que chocan con el nuevo acorde.' },
+    ],
   },
   {
     id: 'improv-backing-track',
-    name: 'Improvising Over a Backing Track',
+    name: { en: 'Improvising Over a Backing Track', vi: 'Ứng tấu trên nền Backing Track', ja: 'バッキングトラックでのアドリブ', zh: '配合伴奏音轨即兴演奏', es: 'Improvisar sobre una pista de acompañamiento' },
     category: 'improvisation',
-    description:
-      'Applying scales, phrasing and target notes in a real musical context by soloing freely over a backing track or looped chord progression.',
+    description: { en: 'Applying scales, phrasing and target notes in a real musical context by soloing freely over a backing track or looped chord progression.', vi: 'Áp dụng scale, phrasing và nốt mục tiêu trong một bối cảnh âm nhạc thực tế bằng cách solo tự do trên một backing track hoặc tiến trình hợp âm lặp lại.', ja: 'バッキングトラックやループしたコード進行の上で自由にソロを弾くことで、スケール、フレージング、ターゲットノートを実際の音楽的な文脈で活かす。', zh: '在真实的音乐语境中运用音阶、乐句处理和目标音，在伴奏音轨或循环和弦进行上自由独奏。', es: 'Aplicar escalas, fraseo y notas objetivo en un contexto musical real improvisando libremente sobre una pista de acompañamiento o una progresión de acordes en bucle.' },
     difficulty: 3,
     importance: 4,
     usefulness: 5,
@@ -659,25 +691,24 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 30,
     skillTags: ['improvisation', 'backing-track', 'application'],
     instructions: [
-      'Choose a backing track or loop in a key you know a scale for, and identify the scale/box position to use.',
-      'Play through the track focusing on one idea only (e.g. rhythm, or space, or a single scale position).',
-      'Record the take and listen back critically for phrasing, timing and note choices you would change.',
+      { en: 'Choose a backing track or loop in a key you know a scale for, and identify the scale/box position to use.', vi: 'Chọn một backing track hoặc loop ở một tông mà bạn biết scale phù hợp, và xác định scale/vị trí box sẽ dùng.', ja: '知っているスケールのキーのバッキングトラックやループを選び、使うスケール/ボックスポジションを見極める。', zh: '选一段你知道对应音阶的调性伴奏或循环，确定要使用的音阶／箱型把位。', es: 'Elige una pista de acompañamiento o un bucle en una tonalidad para la que conozcas una escala e identifica la escala/posición a usar.' },
+      { en: 'Play through the track focusing on one idea only (e.g. rhythm, or space, or a single scale position).', vi: 'Chơi xuyên suốt bản nhạc, chỉ tập trung vào một ý tưởng duy nhất (ví dụ nhịp điệu, hoặc khoảng lặng, hoặc một vị trí scale duy nhất).', ja: '1つのアイデアだけに集中してトラックを通しで弾く(例:リズムだけ、間だけ、あるいは1つのスケールポジションだけ)。', zh: '弹奏时只专注于一个要素（例如节奏、留白，或单一音阶把位）。', es: 'Toca sobre la pista centrándote en una sola idea (por ejemplo, el ritmo, el espacio o una sola posición de escala).' },
+      { en: 'Record the take and listen back critically for phrasing, timing and note choices you would change.', vi: 'Thu âm lượt chơi và nghe lại thật khắt khe về phrasing, timing và những lựa chọn nốt bạn muốn thay đổi.', ja: '演奏を録音し、フレージング、タイミング、変えたい音の選び方について批評的に聴き返す。', zh: '录下这次演奏并批判性地回放，留意乐句处理、节奏和音符选择上你想改进的地方。', es: 'Graba la toma y escúchala de forma crítica prestando atención al fraseo, el tiempo y las elecciones de notas que cambiarías.' },
     ],
     tips: [
-      'Limiting yourself to one string or one small area of the neck often produces more musical ideas than roaming freely.',
+      { en: 'Limiting yourself to one string or one small area of the neck often produces more musical ideas than roaming freely.', vi: 'Giới hạn bản thân trong một dây hoặc một vùng nhỏ trên cần đàn thường tạo ra ý tưởng âm nhạc hay hơn là lang thang tự do.', ja: '1本の弦、あるいはネックの狭い一部分に自分を制限すると、自由に弾き回るよりも音楽的なアイデアが生まれることが多い。', zh: '把自己限制在一根弦或指板上一小块区域内，往往比随意游走能产生更有音乐性的想法。', es: 'Limitarte a una sola cuerda o a una pequeña zona del mástil suele producir ideas más musicales que vagar libremente.' },
     ],
     commonMistakes: [
-      'Trying to use every scale and technique at once instead of focusing on one musical idea per pass.',
+      { en: 'Trying to use every scale and technique at once instead of focusing on one musical idea per pass.', vi: 'Cố dùng mọi scale và kỹ thuật cùng lúc thay vì tập trung vào một ý tưởng âm nhạc mỗi lượt chơi.', ja: '1回ごとに1つの音楽的アイデアに絞るのではなく、すべてのスケールとテクニックを一度に使おうとしてしまうこと。', zh: '试图一次性用上所有音阶和技巧，而不是每一遍只专注一个音乐想法。', es: 'Intentar usar todas las escalas y técnicas a la vez en lugar de centrarte en una sola idea musical por pasada.' },
     ],
   },
 
   // ------------------------------------------------------------ Song Practice
   {
     id: 'song-riff-breakdown',
-    name: 'Riff Breakdown Practice',
+    name: { en: 'Riff Breakdown Practice', vi: 'Luyện tách nhỏ Riff', ja: 'リフ分解練習', zh: 'Riff拆解练习', es: 'Práctica de desglose de riffs' },
     category: 'song',
-    description:
-      "Isolating a short riff from a song you're learning, slowing it down, and building it back up to speed in small, secure chunks.",
+    description: { en: 'Isolating a short riff from a song you\'re learning, slowing it down, and building it back up to speed in small, secure chunks.', vi: 'Tách một riff ngắn từ bài hát bạn đang học, làm chậm nó lại, rồi xây dựng dần lên đúng tốc độ qua từng đoạn nhỏ chắc chắn.', ja: '練習中の曲から短いリフを取り出し、スローダウンしてから、小さく確実な単位でテンポを戻していく。', zh: '从正在学的歌曲中挑出一段短riff，先放慢速度，再以小而稳固的片段逐步提速还原。', es: 'Aislar un riff corto de una canción que estés aprendiendo, ralentizarlo y volver a subirlo de tempo en fragmentos pequeños y seguros.' },
     difficulty: 3,
     importance: 4,
     usefulness: 4,
@@ -686,21 +717,22 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 25,
     skillTags: ['song', 'riff', 'learning-by-ear'],
     instructions: [
-      'Break the riff into 1-2 bar chunks and loop the hardest chunk first at a slow, comfortable tempo.',
-      'Once clean, connect it to the chunk before or after it, rather than practicing every chunk in isolation forever.',
-      'Raise the tempo in small steps only after three clean repetitions in a row.',
+      { en: 'Break the riff into 1-2 bar chunks and loop the hardest chunk first at a slow, comfortable tempo.', vi: 'Chia riff thành các đoạn 1-2 ô nhịp và lặp đoạn khó nhất trước, ở tempo chậm, thoải mái.', ja: 'リフを1〜2小節のかたまりに分割し、まず一番難しいかたまりをゆっくりで弾きやすいテンポでループする。', zh: '把riff拆成1到2小节的片段，先以慢速、舒适的速度循环练习最难的那一段。', es: 'Divide el riff en fragmentos de 1-2 compases y repite primero en bucle el fragmento más difícil a un tempo lento y cómodo.' },
+      { en: 'Once clean, connect it to the chunk before or after it, rather than practicing every chunk in isolation forever.', vi: 'Khi đã sạch, nối nó với đoạn trước hoặc sau, thay vì tập mãi từng đoạn riêng lẻ.', ja: 'クリーンに弾けたら、そのかたまりだけをずっと単独で練習し続けるのではなく、前後のかたまりとつなげる。', zh: '这一段弹干净后，把它和前后相邻的片段连接起来，而不是永远孤立地练每一段。', es: 'Una vez limpio, conéctalo con el fragmento anterior o siguiente, en lugar de practicar cada fragmento aislado para siempre.' },
+      { en: 'Raise the tempo in small steps only after three clean repetitions in a row.', vi: 'Tăng tempo từng bước nhỏ chỉ sau khi chơi sạch ba lần liên tiếp.', ja: '3回連続でクリーンに弾けてから、初めて小刻みにテンポを上げる。', zh: '只有连续弹对三遍之后，才小步提高速度。', es: 'Sube el tempo en pequeños pasos solo después de tres repeticiones limpias seguidas.' },
     ],
-    tips: ['It is normal and efficient to spend most of the time on the single hardest bar rather than the whole riff.'],
+    tips: [
+      { en: 'It is normal and efficient to spend most of the time on the single hardest bar rather than the whole riff.', vi: 'Dành phần lớn thời gian cho riêng ô nhịp khó nhất thay vì cả riff là điều bình thường và hiệu quả.', ja: 'リフ全体ではなく、一番難しい1小節に大半の時間を費やすのはごく普通で効率的なこと。', zh: '把大部分时间花在最难的那一小节上而不是整段riff，这是正常且高效的做法。', es: 'Es normal y eficiente pasar la mayor parte del tiempo en el único compás más difícil en lugar de en todo el riff.' },
+    ],
     commonMistakes: [
-      'Practicing the riff start-to-finish every time, which wastes time on parts that are already solid.',
+      { en: 'Practicing the riff start-to-finish every time, which wastes time on parts that are already solid.', vi: 'Lúc nào cũng tập riff từ đầu đến cuối, lãng phí thời gian vào những đoạn đã vững rồi.', ja: '毎回リフを最初から最後まで通して練習してしまい、すでに固まっている部分に時間を無駄にすること。', zh: '每次都从头到尾练整段riff，把时间浪费在早已弹熟的部分上。', es: 'Practicar el riff de principio a fin cada vez, lo que desperdicia tiempo en partes que ya están sólidas.' },
     ],
   },
   {
     id: 'song-solo-section',
-    name: 'Solo / Lead Section Practice',
+    name: { en: 'Solo / Lead Section Practice', vi: 'Luyện đoạn Solo / Lead', ja: 'ソロ/リードセクションの練習', zh: '独奏/主奏段落练习', es: 'Práctica de sección de solo / melodía principal' },
     category: 'song',
-    description:
-      'Working through a solo or lead break phrase by phrase, matching bends, vibrato and timing to the original rather than just the right notes.',
+    description: { en: 'Working through a solo or lead break phrase by phrase, matching bends, vibrato and timing to the original rather than just the right notes.', vi: 'Xử lý một đoạn solo hoặc lead break từng câu một, khớp bend, vibrato và timing với bản gốc chứ không chỉ đúng nốt.', ja: 'ソロやリードブレイクをフレーズごとに練習し、正しい音だけでなくベンドやビブラート、タイミングも原曲に合わせていく。', zh: '逐句攻克一段独奏或主奏段落，不仅要弹对音符，还要在推弦、揉弦和节奏上贴近原曲。', es: 'Trabajar un solo o una sección melódica principal frase por frase, igualando bends, vibrato y tiempo con el original, no solo las notas correctas.' },
     difficulty: 4,
     importance: 4,
     usefulness: 4,
@@ -709,22 +741,23 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 30,
     skillTags: ['song', 'solo', 'lead', 'learning-by-ear'],
     instructions: [
-      'Isolate a single phrase (2-4 seconds) of the solo and loop just that section, slowed down if possible.',
-      'Match not just the notes but the bends, slides and vibrato as closely as you can to the reference.',
-      'Once one phrase is solid, add the next phrase and practice the join between them.',
+      { en: 'Isolate a single phrase (2-4 seconds) of the solo and loop just that section, slowed down if possible.', vi: 'Tách riêng một câu nhạc (2-4 giây) của đoạn solo và lặp chỉ đúng đoạn đó, làm chậm lại nếu có thể.', ja: 'ソロの中から短い1フレーズ(2〜4秒)を取り出し、可能であればスローダウンしてその部分だけをループする。', zh: '从独奏中挑出单独一句（2到4秒），只循环这一段，条件允许的话放慢速度。', es: 'Aísla una sola frase (2-4 segundos) del solo y repite en bucle solo esa sección, ralentizada si es posible.' },
+      { en: 'Match not just the notes but the bends, slides and vibrato as closely as you can to the reference.', vi: 'Khớp không chỉ nốt nhạc mà cả bend, slide và vibrato sát nhất có thể so với bản tham chiếu.', ja: '音だけでなく、ベンド、スライド、ビブラートもできる限り原曲に近づける。', zh: '不只弹对音符，还要尽可能贴近参考版本的推弦、滑音和揉弦。', es: 'Iguala no solo las notas, sino también los bends, deslizamientos y vibratos lo más fielmente posible a la referencia.' },
+      { en: 'Once one phrase is solid, add the next phrase and practice the join between them.', vi: 'Khi một câu đã vững, thêm câu tiếp theo và luyện chỗ nối giữa chúng.', ja: '1つのフレーズが安定したら次のフレーズを加え、両者のつなぎ目を練習する。', zh: '一句弹稳后，加入下一句，并练习两句之间的衔接。', es: 'Una vez que una frase esté sólida, añade la siguiente frase y practica la unión entre ambas.' },
     ],
-    tips: ['Getting one phrase truly clean is more valuable than getting the whole solo "roughly" right.'],
+    tips: [
+      { en: 'Getting one phrase truly clean is more valuable than getting the whole solo "roughly" right.', vi: 'Làm sạch thật sự một câu nhạc có giá trị hơn là chơi "tạm ổn" cả đoạn solo.', ja: 'ソロ全体を『だいたい』正しく弾けるようになるより、1フレーズを本当にクリーンに仕上げる方が価値がある。', zh: '把一句真正弹干净，比把整段独奏「大致」弹对更有价值。', es: 'Dejar una frase realmente limpia es más valioso que tener todo el solo \'más o menos\' bien.' },
+    ],
     commonMistakes: [
-      'Focusing only on correct notes and skipping the expressive details (bends, vibrato, dynamics) that make the solo recognizable.',
+      { en: 'Focusing only on correct notes and skipping the expressive details (bends, vibrato, dynamics) that make the solo recognizable.', vi: 'Chỉ tập trung vào nốt đúng và bỏ qua các chi tiết biểu cảm (bend, vibrato, sắc thái) làm nên nét đặc trưng của đoạn solo.', ja: '正しい音だけに集中し、そのソロを印象的にしている表現面の細部(ベンド、ビブラート、ダイナミクス)を省いてしまうこと。', zh: '只关注音符是否正确，忽略了让这段独奏具有辨识度的表现细节（推弦、揉弦、力度变化）。', es: 'Centrarse solo en las notas correctas y saltarse los detalles expresivos (bends, vibrato, dinámica) que hacen reconocible el solo.' },
     ],
     recommendedBpm: { min: 60, max: 120 },
   },
   {
     id: 'song-full-run-through',
-    name: 'Full Song Run-Through',
+    name: { en: 'Full Song Run-Through', vi: 'Chơi trọn vẹn Bài hát', ja: '曲の通し練習', zh: '完整歌曲通奏练习', es: 'Interpretación completa de la canción' },
     category: 'song',
-    description:
-      "Playing a song you're learning from start to finish without stopping, to build performance stamina and glue the sections together musically.",
+    description: { en: 'Playing a song you\'re learning from start to finish without stopping, to build performance stamina and glue the sections together musically.', vi: 'Chơi một bài hát bạn đang học từ đầu đến cuối không dừng lại, để xây dựng sức bền biểu diễn và gắn kết các phần lại với nhau về mặt âm nhạc.', ja: '練習中の曲を止まらずに最初から最後まで通して弾き、演奏のスタミナを養い、各セクションを音楽的につなげる。', zh: '把正在学的歌曲从头到尾不间断地弹一遍，锻炼演奏耐力，把各个段落从音乐上真正衔接起来。', es: 'Tocar una canción que estés aprendiendo de principio a fin sin detenerte, para desarrollar resistencia escénica y unir las secciones de forma musical.' },
     difficulty: 2,
     importance: 3,
     usefulness: 4,
@@ -733,13 +766,15 @@ export const EXERCISES: Exercise[] = [
     maxDuration: 25,
     skillTags: ['song', 'performance', 'endurance'],
     instructions: [
-      'Play through the full song at a tempo where you can get through it without stopping, even if slower than the original.',
-      'If you make a mistake, keep going rather than restarting — recovering in time is its own skill.',
-      'Note the one or two spots that broke down, to target them in a future riff or solo-focused session.',
+      { en: 'Play through the full song at a tempo where you can get through it without stopping, even if slower than the original.', vi: 'Chơi trọn bài ở tempo mà bạn có thể đi hết không dừng, dù chậm hơn bản gốc.', ja: '原曲より遅くてもいいので、止まらずに最後まで通せるテンポで曲全体を弾く。', zh: '以一个即使比原曲慢、但能不间断弹完全曲的速度完整弹奏一遍。', es: 'Toca la canción completa a un tempo en el que puedas llegar hasta el final sin detenerte, aunque sea más lento que el original.' },
+      { en: 'If you make a mistake, keep going rather than restarting — recovering in time is its own skill.', vi: 'Nếu chơi sai, cứ tiếp tục thay vì chơi lại từ đầu — khả năng phục hồi kịp thời cũng là một kỹ năng riêng.', ja: 'ミスをしても弾き直さずに続けること――間に合ってリカバリーする力もそれ自体スキルの一つ。', zh: '如果弹错了，继续往下弹而不要重新开始——及时恢复本身就是一种能力。', es: 'Si cometes un error, sigue adelante en lugar de reiniciar: recuperarte a tiempo es una habilidad en sí misma.' },
+      { en: 'Note the one or two spots that broke down, to target them in a future riff or solo-focused session.', vi: 'Ghi lại một hoặc hai chỗ bị vấp, để tập trung xử lý ở buổi tập riff hoặc solo sau này.', ja: 'うまくいかなかった1、2箇所をメモしておき、後のリフやソロに特化したセッションでそこを狙う。', zh: '记下一两个卡壳的地方，留到之后针对riff或独奏的专项练习中处理。', es: 'Anota el uno o dos puntos donde te trabaste, para trabajarlos en una futura sesión centrada en el riff o en el solo.' },
     ],
-    tips: ['This exercise is about flow and recovery, not precision — save precision work for the breakdown exercises.'],
+    tips: [
+      { en: 'This exercise is about flow and recovery, not precision — save precision work for the breakdown exercises.', vi: 'Bài tập này là về sự trôi chảy và khả năng phục hồi, không phải độ chính xác — hãy để việc luyện chính xác cho các bài tập breakdown.', ja: 'この練習は精度ではなく流れとリカバリーがテーマ――精度を磨く作業は分解練習のために取っておくこと。', zh: '这个练习的重点是流畅度和恢复能力，而不是精准度——精准度留给拆解练习去解决。', es: 'Este ejercicio trata sobre la fluidez y la recuperación, no sobre la precisión: guarda el trabajo de precisión para los ejercicios de desglose.' },
+    ],
     commonMistakes: [
-      'Stopping and restarting at every small mistake, which never builds the ability to play through a full song.',
+      { en: 'Stopping and restarting at every small mistake, which never builds the ability to play through a full song.', vi: 'Dừng lại và chơi lại từ đầu ở mỗi lỗi nhỏ, khiến bạn không bao giờ xây dựng được khả năng chơi trọn một bài hát.', ja: '小さなミスのたびに止まって弾き直してしまい、曲を通して弾く力がいつまでも身につかないこと。', zh: '每次出小错都停下来重弹，这样永远练不出完整弹完一首歌的能力。', es: 'Detenerse y reiniciar en cada pequeño error, lo que nunca desarrolla la capacidad de tocar una canción completa.' },
     ],
   },
 ]

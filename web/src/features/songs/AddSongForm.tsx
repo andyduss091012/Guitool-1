@@ -1,5 +1,6 @@
 import { useMemo, useState, type FormEvent } from 'react'
 import type { Song, SongGenre } from '../../types/song'
+import type { LocalizableText } from '../../i18n/localizedText'
 import { SONG_GENRES } from '../../types/song'
 import { validateCustomSongInput, type CustomSongInput } from '../../services/songLibrary'
 import { buildSongLookupLinks } from '../../services/webLookup'
@@ -40,7 +41,7 @@ function blankForm(): FormState {
   }
 }
 
-function songToForm(song: Song): FormState {
+function songToForm(song: Song, l: (text: LocalizableText) => string): FormState {
   return {
     title: song.title,
     artist: song.artist,
@@ -49,7 +50,7 @@ function songToForm(song: Song): FormState {
     tuning: song.tuning,
     capo: song.capo ? String(song.capo) : '',
     keySignature: song.keySignature ?? '',
-    practiceNotes: song.practiceNotes,
+    practiceNotes: l(song.practiceNotes),
     tagsRaw: song.tags.join(', '),
   }
 }
@@ -102,8 +103,8 @@ export default function AddSongForm({
   onSubmit: (input: CustomSongInput) => void
   onDelete?: () => void
 }) {
-  const { t } = useLocale()
-  const [form, setForm] = useState<FormState>(() => (initial ? songToForm(initial) : blankForm()))
+  const { t, l } = useLocale()
+  const [form, setForm] = useState<FormState>(() => (initial ? songToForm(initial, l) : blankForm()))
   const [errors, setErrors] = useState<string[]>([])
 
   const update = <K extends keyof FormState>(key: K, value: FormState[K]) =>

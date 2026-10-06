@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { MusicConcept } from '../../types/musicConcept'
-import FretShapeDiagram from './FretShapeDiagram'
+import FretShapeDiagram, { shapeLabel } from './FretShapeDiagram'
 import { useLocale } from '../../hooks/useLocale'
 
 /**
@@ -46,7 +46,7 @@ export default function ConceptShapeBrowser({ concept }: { concept: MusicConcept
                   : 'chip !text-parchment-400/70 hover:!text-parchment-200'
               }
             >
-              {shape.label}
+              {shapeLabel(shape.label, t)}
             </button>
           ))}
         </div>
@@ -82,11 +82,12 @@ export default function ConceptShapeBrowser({ concept }: { concept: MusicConcept
 }
 
 function ConceptHeader({ concept }: { concept: MusicConcept }) {
+  const { l } = useLocale()
   return (
     <div className="flex items-start justify-between gap-3">
       <div>
-        <p className="font-display text-sm font-medium tracking-wide text-parchment-100">{concept.name}</p>
-        <p className="text-xs text-parchment-400/70">{concept.description}</p>
+        <p className="font-display text-sm font-medium tracking-wide text-parchment-100">{l(concept.name)}</p>
+        <p className="text-xs text-parchment-400/70">{l(concept.description)}</p>
       </div>
     </div>
   )

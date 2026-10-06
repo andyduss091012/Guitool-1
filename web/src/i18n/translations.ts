@@ -202,6 +202,20 @@ export type TranslationKey =
   | 'practice.removeFavorite'
   | 'practice.resume'
   | 'practice.sessionComplete'
+  | 'practice.shapeLabel.alternative'
+  | 'practice.shapeLabel.aShape'
+  | 'practice.shapeLabel.barre'
+  | 'practice.shapeLabel.cShape'
+  | 'practice.shapeLabel.dShape'
+  | 'practice.shapeLabel.eShape'
+  | 'practice.shapeLabel.gShape'
+  | 'practice.shapeLabel.open'
+  | 'practice.shapeLabel.position1'
+  | 'practice.shapeLabel.position2'
+  | 'practice.shapeLabel.position3'
+  | 'practice.shapeLabel.position4'
+  | 'practice.shapeLabel.position5'
+  | 'practice.shapeLabel.position'
   | 'practice.skip'
   | 'practice.skipped'
   | 'practice.startPractice'
@@ -303,6 +317,8 @@ export type TranslationKey =
   | 'songsChords.eyebrow'
   | 'songsChords.keyOf'
   | 'songsChords.libraryIntro'
+  | 'songsChords.noDiagram'
+  | 'songsChords.dataCredit'
   | 'songsChords.lyricsIntro'
   | 'songsChords.rootChordsHeading'
   | 'songsChords.shapeCount'
@@ -413,6 +429,20 @@ const en: Dictionary = {
   'practice.total': 'Total',
   'practice.startPractice': '▶ Start Practice',
   'practice.sessionComplete': 'Session complete',
+  'practice.shapeLabel.alternative': 'Alternative',
+  'practice.shapeLabel.aShape': 'A-shape',
+  'practice.shapeLabel.barre': 'Barre',
+  'practice.shapeLabel.cShape': 'C-shape',
+  'practice.shapeLabel.dShape': 'D-shape',
+  'practice.shapeLabel.eShape': 'E-shape',
+  'practice.shapeLabel.gShape': 'G-shape',
+  'practice.shapeLabel.open': 'Open',
+  'practice.shapeLabel.position1': 'Position 1',
+  'practice.shapeLabel.position2': 'Position 2',
+  'practice.shapeLabel.position3': 'Position 3',
+  'practice.shapeLabel.position4': 'Position 4',
+  'practice.shapeLabel.position5': 'Position 5',
+  'practice.shapeLabel.position': 'Position',
   'practice.nicePlaying': 'Nice playing.',
   'practice.exercisesCompleted': '{completed} of {total} exercises completed',
   'practice.skipped': 'Skipped',
@@ -574,6 +604,8 @@ const en: Dictionary = {
   'songsChords.chordLibraryTab': 'Chord Library',
   'songsChords.songLyricsTab': 'Song Lyrics',
   'songsChords.libraryIntro': 'Pick a root to see every chord type we\'ve got for it — major, minor, 7ths, 9ths, dim, aug and more — each with every hand position in the dataset.',
+  'songsChords.noDiagram': 'No verified diagram for {name} yet.',
+  'songsChords.dataCredit': 'Chord diagrams use the open-source chords-db dataset (MIT, © David Rubert and contributors). They show common voicings, not the only way to play a chord.',
   'songsChords.lyricsIntro': 'Pick a song to see its lyrics with the chords laid out above them — tap a chord to see how to play it.',
   'songsChords.chooseARoot': 'Choose a root',
   'songsChords.viewChordsFor': 'View chords for {root}',
@@ -713,6 +745,20 @@ const vi: PartialDictionary = {
   'practice.total': 'Tổng',
   'practice.startPractice': '▶ Bắt đầu luyện tập',
   'practice.sessionComplete': 'Hoàn thành buổi tập',
+  'practice.shapeLabel.alternative': 'Thay thế',
+  'practice.shapeLabel.aShape': 'Thế A',
+  'practice.shapeLabel.barre': 'Chặn',
+  'practice.shapeLabel.cShape': 'Thế C',
+  'practice.shapeLabel.dShape': 'Thế D',
+  'practice.shapeLabel.eShape': 'Thế E',
+  'practice.shapeLabel.gShape': 'Thế G',
+  'practice.shapeLabel.open': 'Mở',
+  'practice.shapeLabel.position1': 'Vị trí 1',
+  'practice.shapeLabel.position2': 'Vị trí 2',
+  'practice.shapeLabel.position3': 'Vị trí 3',
+  'practice.shapeLabel.position4': 'Vị trí 4',
+  'practice.shapeLabel.position5': 'Vị trí 5',
+  'practice.shapeLabel.position': 'Vị trí',
   'practice.nicePlaying': 'Chơi hay lắm.',
   'practice.exercisesCompleted': 'Đã hoàn thành {completed} trên {total} bài tập',
   'practice.skipped': 'Đã bỏ qua',
@@ -874,6 +920,8 @@ const vi: PartialDictionary = {
   'songsChords.chordLibraryTab': 'Thư viện hợp âm',
   'songsChords.songLyricsTab': 'Lời bài hát',
   'songsChords.libraryIntro': 'Chọn một âm gốc để xem mọi loại hợp âm chúng tôi có cho nó — trưởng, thứ, 7, 9, dim, aug và nhiều hơn nữa — mỗi loại kèm mọi thế bấm có trong bộ dữ liệu.',
+  'songsChords.noDiagram': 'Hiện chưa có sơ đồ đã kiểm chứng cho {name}.',
+  'songsChords.dataCredit': 'Sơ đồ hợp âm dùng bộ dữ liệu mã nguồn mở chords-db (MIT, © David Rubert và cộng sự). Đây là các thế bấm phổ biến, không phải cách bấm duy nhất.',
   'songsChords.lyricsIntro': 'Chọn một bài hát để xem lời với hợp âm được đặt phía trên — chạm vào hợp âm để xem cách bấm.',
   'songsChords.chooseARoot': 'Chọn âm gốc',
   'songsChords.viewChordsFor': 'Xem hợp âm cho {root}',
@@ -1013,6 +1061,20 @@ const ja: PartialDictionary = {
   'practice.total': '合計',
   'practice.startPractice': '▶ 練習を始める',
   'practice.sessionComplete': 'セッション完了',
+  'practice.shapeLabel.alternative': '代替',
+  'practice.shapeLabel.aShape': 'A形',
+  'practice.shapeLabel.barre': 'バレー',
+  'practice.shapeLabel.cShape': 'C形',
+  'practice.shapeLabel.dShape': 'D形',
+  'practice.shapeLabel.eShape': 'E形',
+  'practice.shapeLabel.gShape': 'G形',
+  'practice.shapeLabel.open': 'オープン',
+  'practice.shapeLabel.position1': 'ポジション1',
+  'practice.shapeLabel.position2': 'ポジション2',
+  'practice.shapeLabel.position3': 'ポジション3',
+  'practice.shapeLabel.position4': 'ポジション4',
+  'practice.shapeLabel.position5': 'ポジション5',
+  'practice.shapeLabel.position': 'ポジション',
   'practice.nicePlaying': 'お疲れさまでした。',
   'practice.exercisesCompleted': '{completed}/{total} エクササイズ完了',
   'practice.skipped': 'スキップ済み',
@@ -1174,6 +1236,8 @@ const ja: PartialDictionary = {
   'songsChords.chordLibraryTab': 'コードライブラリ',
   'songsChords.songLyricsTab': '曲の歌詞',
   'songsChords.libraryIntro': 'ルート音を選ぶと、メジャー、マイナー、7th、9th、dim、augなど、そのルートに対応する全コードタイプを、収録されているすべてのハンドポジションとともに確認できます。',
+  'songsChords.noDiagram': '{name}の確認済みダイアグラムはまだありません。',
+  'songsChords.dataCredit': 'コードダイアグラムはオープンソースのデータセット chords-db（MIT、© David Rubert ほか）を使用しています。一般的なフォームであり、唯一の押さえ方ではありません。',
   'songsChords.lyricsIntro': '曲を選ぶと、歌詞の上にコードが表示されます — コードをタップすると弾き方が確認できます。',
   'songsChords.chooseARoot': 'ルート音を選択',
   'songsChords.viewChordsFor': '{root}のコードを見る',
@@ -1313,6 +1377,20 @@ const zh: PartialDictionary = {
   'practice.total': '总计',
   'practice.startPractice': '▶ 开始练习',
   'practice.sessionComplete': '训练完成',
+  'practice.shapeLabel.alternative': '替代',
+  'practice.shapeLabel.aShape': 'A型',
+  'practice.shapeLabel.barre': '横按',
+  'practice.shapeLabel.cShape': 'C型',
+  'practice.shapeLabel.dShape': 'D型',
+  'practice.shapeLabel.eShape': 'E型',
+  'practice.shapeLabel.gShape': 'G型',
+  'practice.shapeLabel.open': '开放',
+  'practice.shapeLabel.position1': '把位1',
+  'practice.shapeLabel.position2': '把位2',
+  'practice.shapeLabel.position3': '把位3',
+  'practice.shapeLabel.position4': '把位4',
+  'practice.shapeLabel.position5': '把位5',
+  'practice.shapeLabel.position': '把位',
   'practice.nicePlaying': '弹得不错。',
   'practice.exercisesCompleted': '已完成 {completed} / {total} 个练习',
   'practice.skipped': '已跳过',
@@ -1474,6 +1552,8 @@ const zh: PartialDictionary = {
   'songsChords.chordLibraryTab': '和弦库',
   'songsChords.songLyricsTab': '歌词',
   'songsChords.libraryIntro': '选择一个根音，即可查看该根音下所有的和弦类型——大三和弦、小三和弦、七和弦、九和弦、减和弦、增和弦等——并附有数据库中的每一种指型。',
+  'songsChords.noDiagram': '暂无{name}的已验证指法图。',
+  'songsChords.dataCredit': '和弦图使用开源数据集 chords-db（MIT，© David Rubert 及贡献者）。这里展示的是常见指法，并非唯一的按法。',
   'songsChords.lyricsIntro': '选择一首歌曲，即可查看歌词，和弦会标注在对应歌词上方——点击和弦可查看指法。',
   'songsChords.chooseARoot': '选择根音',
   'songsChords.viewChordsFor': '查看 {root} 的和弦',
@@ -1613,6 +1693,20 @@ const es: PartialDictionary = {
   'practice.total': 'Total',
   'practice.startPractice': '▶ Empezar práctica',
   'practice.sessionComplete': 'Sesión completa',
+  'practice.shapeLabel.alternative': 'Alternativa',
+  'practice.shapeLabel.aShape': 'Forma A',
+  'practice.shapeLabel.barre': 'Cejilla',
+  'practice.shapeLabel.cShape': 'Forma C',
+  'practice.shapeLabel.dShape': 'Forma D',
+  'practice.shapeLabel.eShape': 'Forma E',
+  'practice.shapeLabel.gShape': 'Forma G',
+  'practice.shapeLabel.open': 'Abierta',
+  'practice.shapeLabel.position1': 'Posición 1',
+  'practice.shapeLabel.position2': 'Posición 2',
+  'practice.shapeLabel.position3': 'Posición 3',
+  'practice.shapeLabel.position4': 'Posición 4',
+  'practice.shapeLabel.position5': 'Posición 5',
+  'practice.shapeLabel.position': 'Posición',
   'practice.nicePlaying': 'Buen trabajo tocando.',
   'practice.exercisesCompleted': '{completed} de {total} ejercicios completados',
   'practice.skipped': 'Saltado',
@@ -1774,6 +1868,8 @@ const es: PartialDictionary = {
   'songsChords.chordLibraryTab': 'Biblioteca de acordes',
   'songsChords.songLyricsTab': 'Letra de la canción',
   'songsChords.libraryIntro': 'Elige una nota fundamental para ver todos los tipos de acorde que tenemos para ella — mayor, menor, séptimas, novenas, disminuidos, aumentados y más — cada uno con todas las posiciones de mano del conjunto de datos.',
+  'songsChords.noDiagram': 'Aún no hay un diagrama verificado para {name}.',
+  'songsChords.dataCredit': 'Los diagramas de acordes usan el conjunto de datos de código abierto chords-db (MIT, © David Rubert y colaboradores). Muestran digitaciones habituales, no la única forma de tocar un acorde.',
   'songsChords.lyricsIntro': 'Elige una canción para ver su letra con los acordes ubicados encima — toca un acorde para ver cómo se toca.',
   'songsChords.chooseARoot': 'Elige una nota fundamental',
   'songsChords.viewChordsFor': 'Ver acordes de {root}',

@@ -1,3 +1,4 @@
-*
-!.gitignore
-!README.md
+node_modules/
+# Guitar Pro files in the shared library are third-party, copyrighted tabs: never commit them.
+shared-tabs/*
+!shared-tabs/README.md

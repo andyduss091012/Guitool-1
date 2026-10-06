@@ -16,6 +16,8 @@
  * check rather than only discovered at runtime.
  */
 
+import type { LocalizableText } from '../i18n/localizedText'
+
 export type FingerNumber = 1 | 2 | 3 | 4
 export type StringNumber = 1 | 2 | 3 | 4 | 5 | 6
 
@@ -58,23 +60,30 @@ export interface FretShape {
   positions: FretPosition[]
   /**
    * Strings not played at all in this shape, shown with a "×" above the
-   * nut. Only meaningful when the shape includes the nut (startFret is 1)
-   * — there's no "×" once you're fretting up the neck on every string that
-   * matters; a shape that simply doesn't use a string further up the neck
-   * just omits it from `positions`.
+   * nut. Hand-authored shapes only list this when startFret is 1; shapes
+   * from the chord dataset list it at any position.
    */
   mutedStrings?: StringNumber[]
+  /**
+   * Strings played open (shown as "O" above the grid). When omitted, the
+   * diagram derives them for shapes that start at the nut (every string
+   * with no note and not muted). Dataset shapes higher up the neck can still
+   * have open strings (e.g. an open G string over a barre at fret 6), so
+   * they list them explicitly.
+   */
+  openStrings?: StringNumber[]
   /** Short note shown under the diagram, e.g. a fingering caveat. */
-  caption?: string
+  caption?: LocalizableText
 }
 
 interface MusicConceptBase {
   id: string
-  name: string
+  /** Musical/technical name (e.g. "E major (open)") — left untranslated by convention, but typed as `LocalizableText` for uniformity with the other content fields. */
+  name: LocalizableText
   /** Alternate names this concept is commonly known by (search/lookup aid). */
   aliases?: string[]
   /** One or two sentence summary of what this concept is and where it's used. */
-  description: string
+  description: LocalizableText
 }
 
 export type ChordCategory = 'open' | 'barre' | 'power' | 'seventh' | 'extended' | 'other'

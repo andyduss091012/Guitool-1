@@ -8,6 +8,8 @@
  * unreasonably short or long slot.
  */
 
+import type { LocalizableText } from '../i18n/localizedText'
+
 export type ExerciseCategory =
   | 'technique'
   | 'scales'
@@ -65,10 +67,11 @@ export interface FretboardDiagram {
 
 export interface Exercise {
   id: string
-  name: string
+  /** Musical/technical name (e.g. "Alternate Picking Fundamentals") — left untranslated by convention, but typed as `LocalizableText` for uniformity with the other content fields. */
+  name: LocalizableText
   category: ExerciseCategory
   /** One or two sentence summary of what the exercise is and why it matters. */
-  description: string
+  description: LocalizableText
 
   difficulty: Rating1to5
   importance: Rating1to5
@@ -85,10 +88,10 @@ export interface Exercise {
   skillTags: string[]
 
   /** Ordered, actionable steps to follow during the exercise. */
-  instructions: string[]
+  instructions: LocalizableText[]
 
-  tips?: string[]
-  commonMistakes?: string[]
+  tips?: LocalizableText[]
+  commonMistakes?: LocalizableText[]
   recommendedBpm?: BpmRange
 
   /**

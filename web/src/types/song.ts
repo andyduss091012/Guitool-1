@@ -1,4 +1,5 @@
 import type { Rating1to5 } from './exercise'
+import type { LocalizableText } from '../i18n/localizedText'
 
 /**
  * A song in Guitool's own catalog — metadata and original practice notes
@@ -51,7 +52,7 @@ export interface Song {
    * What to focus on technique-wise — written in our own words, never
    * copied tab/chord notation or lyrics.
    */
-  practiceNotes: string
+  practiceNotes: LocalizableText
 
   /** Free-form tags for search — technique, decade, mood, etc. */
   tags: string[]

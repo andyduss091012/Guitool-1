@@ -14,7 +14,7 @@ type View =
   | { mode: 'edit'; exercise: Exercise }
 
 export default function Library() {
-  const { t } = useLocale()
+  const { t, l } = useLocale()
   const { exercises, addCustomExercise, editCustomExercise, removeCustomExercise } = useGuitool()
   const [view, setView] = useState<View>({ mode: 'list' })
 
@@ -64,7 +64,7 @@ export default function Library() {
         </button>
         <div>
           <p className="label-eyebrow">{t('library.customExercise')}</p>
-          <h1 className="mt-1 text-3xl font-semibold text-parchment-100">{view.exercise.name}</h1>
+          <h1 className="mt-1 text-3xl font-semibold text-parchment-100">{l(view.exercise.name)}</h1>
         </div>
         <AddExerciseForm
           initial={view.exercise}

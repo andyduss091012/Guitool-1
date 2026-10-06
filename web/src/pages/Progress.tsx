@@ -16,7 +16,7 @@ import { useLocale } from '../hooks/useLocale'
 
 export default function Progress() {
   const { state, exercises } = useGuitool()
-  const { t } = useLocale()
+  const { t, l } = useLocale()
   const { progress } = state
 
   const weekMinutes = useMemo(() => formatHoursMinutes(thisWeekSeconds(progress)), [progress])
@@ -70,7 +70,7 @@ export default function Progress() {
               <p className="label-eyebrow mb-2">{t('progress.mostPracticed')}</p>
               {topExercise ? (
                 <>
-                  <p className="font-display text-lg text-parchment-100">{topExercise.exercise.name}</p>
+                  <p className="font-display text-lg text-parchment-100">{l(topExercise.exercise.name)}</p>
                   <p className="text-xs text-parchment-400/70">
                     {formatHoursMinutes(topExercise.totalSeconds)} ·{' '}
                     {t('progress.sessionsCount', { count: topExercise.timesPracticed })}
@@ -85,7 +85,7 @@ export default function Progress() {
               <p className="label-eyebrow mb-2">{t('progress.needsAttention')}</p>
               {attention ? (
                 <>
-                  <p className="font-display text-lg text-parchment-100">{attention.exercise.name}</p>
+                  <p className="font-display text-lg text-parchment-100">{l(attention.exercise.name)}</p>
                   <p className="text-xs text-parchment-400/70">
                     {t('progress.practicedTimesSoFar', { count: attention.timesPracticed })}
                   </p>
@@ -103,7 +103,7 @@ export default function Progress() {
                 {favorites.map((ex) => (
                   <span key={ex.id} className="chip gap-1">
                     <span aria-hidden>★</span>
-                    {ex.name}
+                    {l(ex.name)}
                   </span>
                 ))}
               </div>

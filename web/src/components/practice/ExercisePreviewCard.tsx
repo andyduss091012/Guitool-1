@@ -22,7 +22,7 @@ export default function ExercisePreviewCard({
   active,
   onClick,
 }: ExercisePreviewCardProps) {
-  const { t } = useLocale()
+  const { t, l } = useLocale()
   return (
     <button
       type="button"
@@ -44,7 +44,7 @@ export default function ExercisePreviewCard({
       </span>
       <div className="min-w-0 flex-1">
         <p className="truncate font-display text-base font-medium tracking-wide text-parchment-100">
-          {exercise.name}
+          {l(exercise.name)}
         </p>
         <div className="mt-1 flex flex-wrap items-center gap-2">
           <CategoryBadge category={exercise.category} />

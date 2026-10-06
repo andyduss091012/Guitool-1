@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { DEFAULT_LANGUAGE, LANGUAGES, type LanguageCode } from '../i18n/languages'
 import { TRANSLATIONS, type TranslationKey } from '../i18n/translations'
-import { localize, type LocalizedText } from '../i18n/localizedText'
+import { localize, type LocalizableText } from '../i18n/localizedText'
 
 const STORAGE_KEY = 'guitool:language'
 
@@ -26,8 +26,8 @@ interface LocaleContextValue {
    * → `"Shape 1 of 3"`) — a placeholder with no matching param is left as-is.
    */
   t: (key: TranslationKey, params?: Record<string, string | number>) => string
-  /** Resolves a content `LocalizedText` (see `i18n/localizedText.ts`) against the active language. */
-  l: (text: LocalizedText) => string
+  /** Resolves a content `LocalizedText` (see `i18n/localizedText.ts`) — or a plain string, returned unchanged — against the active language. */
+  l: (text: LocalizableText) => string
 }
 
 const LocaleContext = createContext<LocaleContextValue | null>(null)
@@ -67,7 +67,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     }
   }, [language])
 
-  const l = useCallback((text: LocalizedText) => localize(text, language), [language])
+  const l = useCallback((text: LocalizableText) => localize(text, language), [language])
 
   return <LocaleContext.Provider value={{ language, setLanguage, t, l }}>{children}</LocaleContext.Provider>
 }

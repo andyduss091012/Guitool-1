@@ -22,7 +22,7 @@ export default function ExerciseLibraryList({
   exercises: Exercise[]
   onEdit: (exercise: Exercise) => void
 }) {
-  const { t } = useLocale()
+  const { t, l } = useLocale()
   const [category, setCategory] = useState<ExerciseCategory | 'all'>('all')
   const [query, setQuery] = useState('')
 
@@ -30,10 +30,10 @@ export default function ExerciseLibraryList({
     const q = query.trim().toLowerCase()
     return exercises.filter((e) => {
       const matchesCategory = category === 'all' || e.category === category
-      const matchesQuery = !q || e.name.toLowerCase().includes(q) || e.skillTags.some((t) => t.toLowerCase().includes(q))
+      const matchesQuery = !q || l(e.name).toLowerCase().includes(q) || e.skillTags.some((t) => t.toLowerCase().includes(q))
       return matchesCategory && matchesQuery
     })
-  }, [exercises, category, query])
+  }, [exercises, category, query, l])
 
   return (
     <div className="flex flex-col gap-4">
@@ -78,7 +78,7 @@ export default function ExerciseLibraryList({
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-2">
                 <p className="truncate font-display text-base font-medium tracking-wide text-parchment-100">
-                  {exercise.name}
+                  {l(exercise.name)}
                 </p>
                 {exercise.isCustom && <span className="chip !py-0 !text-[10px]">{t('library.customBadge')}</span>}
               </div>

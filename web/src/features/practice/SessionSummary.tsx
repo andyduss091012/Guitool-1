@@ -13,7 +13,7 @@ export default function SessionSummary({
   getExercise: (id: string) => Exercise | undefined
   onDone: () => void
 }) {
-  const { t } = useLocale()
+  const { t, l } = useLocale()
   const totalSeconds = sessionMeaningfulSeconds(session)
   const completedCount = session.exercises.filter((e) => e.completed).length
 
@@ -40,7 +40,7 @@ export default function SessionSummary({
           if (!exercise) return null
           return (
             <div key={se.exerciseId} className="panel flex items-center justify-between px-4 py-3">
-              <span className="text-left text-sm text-parchment-200">{exercise.name}</span>
+              <span className="text-left text-sm text-parchment-200">{l(exercise.name)}</span>
               <span className="text-xs text-parchment-400/70">
                 {se.skipped ? t('practice.skipped') : t('common.minutesAbbrev', { minutes: Math.round(se.elapsedSeconds / 60) })}
               </span>

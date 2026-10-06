@@ -41,7 +41,7 @@ export default function ActiveExercise({
   isFavorite,
   onToggleFavorite,
 }: ActiveExerciseProps) {
-  const { t } = useLocale()
+  const { t, l } = useLocale()
   const totalSeconds = sessionExercise.plannedSeconds + sessionExercise.extraSecondsAdded
   const [elapsed, setElapsed] = useState(sessionExercise.elapsedSeconds)
   const [paused, setPaused] = useState(false)
@@ -133,7 +133,7 @@ export default function ActiveExercise({
           <CategoryBadge category={exercise.category} />
           <ExerciseTagBadge exercise={exercise} />
         </div>
-        <h1 className="text-3xl font-semibold text-parchment-100 sm:text-4xl">{exercise.name}</h1>
+        <h1 className="text-3xl font-semibold text-parchment-100 sm:text-4xl">{l(exercise.name)}</h1>
 
         <div className="font-mono text-6xl font-semibold tabular-nums text-parchment-100 sm:text-7xl">
           {formatMinutesSeconds(remaining)}
@@ -175,7 +175,7 @@ export default function ActiveExercise({
 
         {showDetails && (
           <div className="mt-4 flex flex-col gap-5">
-            <p className="text-sm text-parchment-300">{exercise.description}</p>
+            <p className="text-sm text-parchment-300">{l(exercise.description)}</p>
 
             {exercise.conceptIds && exercise.conceptIds.length > 0 ? (
               <div className="flex flex-col gap-3">
@@ -200,7 +200,7 @@ export default function ActiveExercise({
                   <span className="mt-0.5 shrink-0 font-display text-xs font-semibold text-brass-400">
                     {i + 1}
                   </span>
-                  <span>{step}</span>
+                  <span>{l(step)}</span>
                 </li>
               ))}
             </ol>
@@ -212,7 +212,7 @@ export default function ActiveExercise({
                   {exercise.tips.map((tip, i) => (
                     <li key={i} className="flex gap-2 text-sm text-parchment-300">
                       <span aria-hidden>💡</span>
-                      <span>{tip}</span>
+                      <span>{l(tip)}</span>
                     </li>
                   ))}
                 </ul>
@@ -228,7 +228,7 @@ export default function ActiveExercise({
                   {exercise.commonMistakes.map((m, i) => (
                     <li key={i} className="flex gap-2 text-sm text-parchment-300">
                       <span aria-hidden>⚠️</span>
-                      <span>{m}</span>
+                      <span>{l(m)}</span>
                     </li>
                   ))}
                 </ul>
@@ -242,7 +242,7 @@ export default function ActiveExercise({
         <span className="label-eyebrow">{t('practice.next')}</span>
         {nextExercise ? (
           <span className="text-sm text-parchment-200">
-            {nextExercise.name} — {t('common.minutesAbbrev', { minutes: nextMinutes ?? 0 })}
+            {l(nextExercise.name)} — {t('common.minutesAbbrev', { minutes: nextMinutes ?? 0 })}
           </span>
         ) : (
           <span className="text-sm text-parchment-400/70">{t('practice.lastExercise')}</span>

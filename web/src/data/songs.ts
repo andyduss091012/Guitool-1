@@ -24,8 +24,7 @@ export const SONGS: Song[] = [
     difficulty: 1,
     tuning: 'Standard (EADGBE)',
     keySignature: 'G major',
-    practiceNotes:
-      'A four-chord loop in open position — as gentle an introduction to changing chords in time as there is. Focus on landing each new shape cleanly on the beat rather than rushing the strum.',
+    practiceNotes: { en: 'A four-chord loop in open position — as gentle an introduction to changing chords in time as there is. Focus on landing each new shape cleanly on the beat rather than rushing the strum.', vi: 'Một vòng lặp bốn hợp âm ở vị trí mở — một cách nhập môn nhẹ nhàng cho việc đổi hợp âm đúng nhịp khó ai bằng. Tập trung vào việc đáp mỗi thế bấm mới thật sạch đúng phách hơn là vội vàng strum.', ja: 'オープンポジションでの4コードループ――タイミングよくコードを変える練習として、これ以上ないほど優しい入門曲。ストロークを急ぐより、新しい形を拍にぴったり合わせてクリーンに着地させることに集中しよう。', zh: '开放把位上的四和弦循环——几乎是学习卡准节拍换和弦最温和的入门曲目。重点是让每个新指型准确落在拍点上，而不是急着扫弦。', es: 'Un bucle de cuatro acordes en posición abierta: una introducción tan suave como pueda haber para cambiar de acordes con el tiempo. Concéntrate en aterrizar cada nueva forma con limpieza en el tiempo en lugar de apresurar el rasgueo.' },
     tags: ['open chords', 'first song', 'strumming'],
   },
   {
@@ -35,8 +34,7 @@ export const SONGS: Song[] = [
     genre: 'Reggae',
     difficulty: 1,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'Three open chords over a reggae skank — the strumming pattern (light upstrokes, muted downbeats) matters more than the chords here. Great for building a feel for off-beat rhythm.',
+    practiceNotes: { en: 'Three open chords over a reggae skank — the strumming pattern (light upstrokes, muted downbeats) matters more than the chords here. Great for building a feel for off-beat rhythm.', vi: 'Ba hợp âm mở trên nền reggae skank — mẫu strum (nhát lên nhẹ, phách mạnh bị chặn) quan trọng hơn bản thân hợp âm ở bài này. Rất tốt để xây dựng cảm giác về nhịp off-beat.', ja: 'レゲエのスキャンクの上で弾く3つのオープンコード――ここではコードそのものより、ストロークパターン(軽いアップストロークとミュートしたダウンビート)の方が重要。オフビートのリズム感覚を養うのに最適。', zh: '在雷鬼律动上弹三个开放和弦——这里扫弦节奏型（轻柔的上扫、闷住的强拍）比和弦本身更重要。非常适合培养反拍节奏感。', es: 'Tres acordes abiertos sobre un skank de reggae: aquí el patrón de rasgueo (upstrokes ligeros, tiempos fuertes silenciados) importa más que los acordes. Excelente para desarrollar el sentido del ritmo a contratiempo.' },
     tags: ['open chords', 'reggae strumming', 'rhythm'],
   },
   {
@@ -47,8 +45,7 @@ export const SONGS: Song[] = [
     difficulty: 1,
     tuning: 'Standard (EADGBE)',
     keySignature: 'E minor',
-    practiceNotes:
-      'Basically two chord shapes for the entire song. With the chord vocabulary out of the way, use it to drill clean, quiet string changes and a steady strumming hand.',
+    practiceNotes: { en: 'Basically two chord shapes for the entire song. With the chord vocabulary out of the way, use it to drill clean, quiet string changes and a steady strumming hand.', vi: 'Về cơ bản chỉ có hai thế hợp âm cho cả bài hát. Với vốn hợp âm đã giải quyết xong, hãy dùng nó để luyện đổi dây sạch, êm và một tay strum đều đặn.', ja: '曲全体を通してほぼ2つのコードの形だけで構成されている。コードの語彙で悩む必要がないので、クリーンで静かな弦移動と安定したストロークの手を鍛えるのに使おう。', zh: '全曲基本上只用两个和弦指型。和弦部分不成问题后，可以用它来打磨干净、安静的换弦动作和稳定的扫弦手。', es: 'Básicamente dos formas de acorde para toda la canción. Con el vocabulario de acordes resuelto, úsala para entrenar cambios de cuerda limpios y silenciosos y una mano de rasgueo estable.' },
     tags: ['open chords', 'two-chord song', 'beginner friendly'],
   },
   {
@@ -59,8 +56,7 @@ export const SONGS: Song[] = [
     difficulty: 2,
     tuning: 'Standard (EADGBE)',
     capo: 2,
-    practiceNotes:
-      'A repeating capo\'d chord sequence that shows up constantly in beginner songbooks for a reason — it builds strumming-pattern stamina and mid-song chord-shape recall at the same time.',
+    practiceNotes: { en: 'A repeating capo\'d chord sequence that shows up constantly in beginner songbooks for a reason — it builds strumming-pattern stamina and mid-song chord-shape recall at the same time.', vi: 'Một chuỗi hợp âm dùng capo lặp lại xuất hiện liên tục trong các songbook cho người mới bắt đầu, và có lý do chính đáng — nó xây dựng sức bền cho mẫu strum và khả năng nhớ thế hợp âm giữa bài cùng lúc.', ja: 'カポを使った繰り返しのコード進行で、初心者向け曲集に絶えず登場するのには理由がある――ストロークパターンのスタミナと、曲の途中でのコードの形の呼び出しを同時に鍛えられる。', zh: '一个反复出现、使用移调夹的和弦进行，之所以在初学者歌本中随处可见是有原因的——它能同时锻炼扫弦节奏的耐力和歌曲中途快速回忆和弦指型的能力。', es: 'Una secuencia de acordes repetitiva con cejilla que aparece constantemente en los cancioneros para principiantes por una razón: desarrolla a la vez la resistencia en el patrón de rasgueo y la memoria de las formas de acorde a mitad de canción.' },
     tags: ['capo', 'strumming pattern', '90s'],
   },
   {
@@ -70,8 +66,7 @@ export const SONGS: Song[] = [
     genre: 'Rock',
     difficulty: 2,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'A riff-driven rock rhythm alternating between a couple of open-chord shapes. Good practice for locking a rhythm part to an imaginary (or real) drummer rather than drifting tempo.',
+    practiceNotes: { en: 'A riff-driven rock rhythm alternating between a couple of open-chord shapes. Good practice for locking a rhythm part to an imaginary (or real) drummer rather than drifting tempo.', vi: 'Nhịp điệu rock dẫn dắt bằng riff, luân phiên giữa vài thế hợp âm mở. Bài tập tốt để giữ phần nhịp điệu khớp chặt với một tay trống tưởng tượng (hoặc thật) thay vì trôi tempo.', ja: 'いくつかのオープンコードの形を行き来する、リフ主体のロックリズム。想像上の(あるいは実際の)ドラマーとリズムパートをぴったり合わせる練習に最適で、テンポがぶれないようにする力が身につく。', zh: '一段由riff驱动的摇滚节奏，在几个开放和弦指型之间切换。很适合用来练习让节奏部分锁定在一个虚拟（或真实）鼓手的节奏上，而不是自己越弹越飘。', es: 'Un ritmo de rock guiado por un riff que alterna entre un par de formas de acorde abierto. Buena práctica para encajar una parte rítmica con un baterista imaginario (o real) en lugar de desviar el tempo.' },
     tags: ['open chords', 'rhythm guitar', 'classic rock'],
   },
   {
@@ -81,8 +76,7 @@ export const SONGS: Song[] = [
     genre: 'Folk',
     difficulty: 2,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'A folk-leaning progression that can be strummed or picked. A natural next step once basic chord changes feel comfortable and you want to start blending in some fingerpicking.',
+    practiceNotes: { en: 'A folk-leaning progression that can be strummed or picked. A natural next step once basic chord changes feel comfortable and you want to start blending in some fingerpicking.', vi: 'Một tiến trình mang màu sắc folk có thể strum hoặc picking. Một bước tiếp theo tự nhiên khi việc đổi hợp âm cơ bản đã thoải mái và bạn muốn bắt đầu pha thêm fingerpicking.', ja: 'ストロークでもピッキングでも弾けるフォーク寄りの進行。基本的なコードチェンジが快適になり、フィンガーピッキングを少し混ぜ始めたいときの自然なステップアップ。', zh: '一个偏民谣风格的和弦进行，既可以扫弦也可以指弹。当基本换和弦已经比较顺手、想开始融入一些指弹技巧时，这是很自然的下一步。', es: 'Una progresión de aire folk que puede rasguearse o puntearse. Un paso natural una vez que los cambios básicos de acorde se sientan cómodos y quieras empezar a incorporar fingerpicking.' },
     tags: ['open chords', 'fingerpicking intro'],
   },
   {
@@ -92,8 +86,7 @@ export const SONGS: Song[] = [
     genre: 'Country',
     difficulty: 2,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'A steady country "boom-chick" strum — alternating bass note, then a chord brush — over a simple progression. Great for practicing bass-note targeting with the thumb or pick before the strum.',
+    practiceNotes: { en: 'A steady country "boom-chick" strum — alternating bass note, then a chord brush — over a simple progression. Great for practicing bass-note targeting with the thumb or pick before the strum.', vi: 'Một mẫu strum "boom-chick" kiểu country đều đặn — nốt bass luân phiên, rồi một nhát chải hợp âm — trên nền một tiến trình đơn giản. Rất tốt để luyện nhắm nốt bass bằng ngón cái hoặc pick trước khi strum.', ja: 'シンプルな進行の上で弾く、安定したカントリーの『ブーム・チック』ストローク――ベース音を弾いてからコードをかき鳴らす。ストロークの前に、親指またはピックでベース音を狙う練習に最適。', zh: '一种稳定的乡村「砰-嚓」扫弦——先弹一个低音根音，再刷一下和弦——建立在一个简单的和弦进行上。很适合在扫弦之前先练习用拇指或拨片精准找到低音根音。', es: 'Un rasgueo country constante de "boom-chick": nota de bajo alternada seguida de un roce de acorde, sobre una progresión sencilla. Excelente para practicar la puntería de las notas de bajo con el pulgar o la púa antes del rasgueo.' },
     tags: ['boom-chick strum', 'country rhythm'],
   },
   {
@@ -103,8 +96,7 @@ export const SONGS: Song[] = [
     genre: 'Folk',
     difficulty: 3,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'A Travis-picking-style fingerpicked pattern with a steady alternating thumb. A good benchmark for keeping the thumb metronomic while the fingers pick out a melody on top.',
+    practiceNotes: { en: 'A Travis-picking-style fingerpicked pattern with a steady alternating thumb. A good benchmark for keeping the thumb metronomic while the fingers pick out a melody on top.', vi: 'Một mẫu fingerpicking kiểu Travis-picking với ngón cái luân phiên đều đặn. Một chuẩn mực tốt để giữ ngón cái ổn định như metronome trong khi các ngón khác khảy ra giai điệu phía trên.', ja: '安定した交互の親指を伴う、トラビスピッキングスタイルのフィンガーピッキングパターン。指が上でメロディーを弾く間、親指をメトロノームのように正確に保つための良い基準となる曲。', zh: '一种Travis指弹风格的指法型，拇指持续交替弹奏低音。是检验拇指是否能像节拍器一样稳定、同时手指在上方弹出旋律的很好基准。', es: 'Un patrón de fingerpicking al estilo Travis-picking con un pulgar alternante constante. Un buen punto de referencia para mantener el pulgar como un metrónomo mientras los dedos tocan una melodía por encima.' },
     tags: ['fingerpicking', 'travis picking', 'folk'],
   },
   {
@@ -114,8 +106,7 @@ export const SONGS: Song[] = [
     genre: 'Rock',
     difficulty: 3,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'A recognizable picked/strummed intro figure that opens into full chord strumming. Good practice for switching cleanly between a picking-hand texture and a full strum within the same song.',
+    practiceNotes: { en: 'A recognizable picked/strummed intro figure that opens into full chord strumming. Good practice for switching cleanly between a picking-hand texture and a full strum within the same song.', vi: 'Một đoạn intro picking/strum dễ nhận ra, mở ra thành strum hợp âm đầy đủ. Bài tập tốt để chuyển đổi sạch sẽ giữa kết cấu tay picking và strum trọn vẹn trong cùng một bài hát.', ja: '印象的なピッキング/ストロークのイントロフレーズから、フルのコードストロークへと展開していく。同じ曲の中で、ピッキングハンドの質感からフルストロークへときれいに切り替える練習に最適。', zh: '一段辨识度很高的指弹/扫弦前奏，随后展开为完整的和弦扫弦。很适合练习在同一首歌里干净地切换指弹音色和完整扫弦。', es: 'Una figura introductoria reconocible, mitad punteada mitad rasgueada, que se abre a un rasgueo completo de acordes. Buena práctica para cambiar con limpieza entre una textura de púa/dedos y un rasgueo completo dentro de la misma canción.' },
     tags: ['hybrid picking', 'intro riff', 'classic rock'],
   },
   {
@@ -126,8 +117,7 @@ export const SONGS: Song[] = [
     difficulty: 3,
     tuning: 'Standard (EADGBE)',
     keySignature: 'B minor',
-    practiceNotes:
-      'A minor-key arpeggiated progression with more chord shapes to remember than most beginner songs. Good for arpeggio consistency — picking each string clearly instead of blurring into a strum.',
+    practiceNotes: { en: 'A minor-key arpeggiated progression with more chord shapes to remember than most beginner songs. Good for arpeggio consistency — picking each string clearly instead of blurring into a strum.', vi: 'Một tiến trình arpeggio ở tông thứ với nhiều thế hợp âm cần nhớ hơn hầu hết các bài cho người mới. Tốt cho sự nhất quán arpeggio — gảy từng dây rõ ràng thay vì nhòe thành strum.', ja: 'マイナーキーのアルペジオ進行で、初心者向けの曲より覚えるコードの形が多い。ストロークにならないよう各弦をはっきりとピッキングする、アルペジオの一貫性を鍛えるのに良い。', zh: '一段小调琶音式和弦进行，需要记住的和弦指型比大多数初学曲目更多。很适合练习琶音的稳定性——每根弦都要清晰拨出，而不是糊成一片扫弦。', es: 'Una progresión arpegiada en tonalidad menor con más formas de acorde que memorizar que la mayoría de las canciones para principiantes. Buena para la consistencia del arpegio: tocar cada cuerda con claridad en lugar de difuminarla en un rasgueo.' },
     tags: ['arpeggios', 'minor key', 'fingerstyle'],
   },
   {
@@ -137,8 +127,7 @@ export const SONGS: Song[] = [
     genre: 'Rock',
     difficulty: 3,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'A fingerpicked pattern built around ringing open strings under a moving shape — a "drone string" technique. Slow it down with a metronome before bringing it up to tempo.',
+    practiceNotes: { en: 'A fingerpicked pattern built around ringing open strings under a moving shape — a "drone string" technique. Slow it down with a metronome before bringing it up to tempo.', vi: 'Một mẫu fingerpicking xây quanh các dây buông ngân vang bên dưới một thế bấm di chuyển — kỹ thuật "dây drone". Làm chậm lại với metronome trước khi đưa lên đúng tempo.', ja: '動くコードの形の下で開放弦を鳴らし続ける『ドローン弦』テクニックを使ったフィンガーピッキングパターン。テンポを上げる前に、まずメトロノームでゆっくり練習しよう。', zh: '一种建立在移动指型下方、持续鸣响的空弦音之上的指弹音型——即所谓的「持续低音弦（drone string）」技巧。先用节拍器放慢练习，再逐步提速。', es: 'Un patrón de fingerpicking construido alrededor de cuerdas al aire resonantes bajo una forma en movimiento: una técnica de "cuerda drone". Ralentízalo con un metrónomo antes de llevarlo al tempo original.' },
     tags: ['fingerpicking', 'drone strings', 'metal ballad'],
   },
   {
@@ -148,8 +137,7 @@ export const SONGS: Song[] = [
     genre: 'Rock',
     difficulty: 3,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'High-neck arpeggiated chord voicings, picked one string at a time. Good for clean single-note articulation inside a chord shape rather than strumming through it.',
+    practiceNotes: { en: 'High-neck arpeggiated chord voicings, picked one string at a time. Good for clean single-note articulation inside a chord shape rather than strumming through it.', vi: 'Các thế hợp âm arpeggio ở vị trí cao trên cần đàn, gảy từng dây một. Tốt cho việc phát âm rõ ràng từng nốt đơn bên trong một thế hợp âm thay vì strum qua nó.', ja: 'ハイポジションのアルペジオ・コードボイシングを、1弦ずつピッキングする。コードの形をストロークで弾き流すのではなく、その中の単音をクリーンに発音する練習に良い。', zh: '高把位的琶音和弦音型，一次拨一根弦。很适合练习在一个和弦指型内清晰地逐音演奏，而不是直接扫过去。', es: 'Digitaciones de acorde arpegiadas en el mástil agudo, tocadas cuerda por cuerda. Buena para una articulación limpia de notas individuales dentro de una forma de acorde en lugar de rasguearla.' },
     tags: ['arpeggios', 'high-neck voicings'],
   },
   {
@@ -160,8 +148,7 @@ export const SONGS: Song[] = [
     difficulty: 3,
     tuning: 'Standard (EADGBE)',
     keySignature: 'B minor',
-    practiceNotes:
-      'A slow minor-key blues built for expressive lead playing — bends, vibrato, and phrasing matter far more here than speed. Good for developing pitch-accurate string bending.',
+    practiceNotes: { en: 'A slow minor-key blues built for expressive lead playing — bends, vibrato, and phrasing matter far more here than speed. Good for developing pitch-accurate string bending.', vi: 'Một bản blues chậm ở tông thứ được xây dựng cho lối chơi lead giàu biểu cảm — bend, vibrato và phrasing quan trọng hơn tốc độ rất nhiều ở đây. Tốt để phát triển khả năng bend dây chuẩn cao độ.', ja: '表現力豊かなリードプレイのために作られたスローなマイナーキーのブルース――ここではスピードより、ベンド、ビブラート、フレージングの方がはるかに重要。音程の正確なチョーキングを磨くのに良い。', zh: '一首为富有表现力的主奏演奏而生的慢速小调蓝调曲目——这里推弦、揉弦和乐句处理远比速度重要。非常适合练习音准精确的推弦。', es: 'Un blues lento en tonalidad menor pensado para un toque expresivo: aquí los bends, el vibrato y el fraseo importan mucho más que la velocidad. Buena para desarrollar bends afinados con precisión.' },
     tags: ['blues', 'string bending', 'vibrato', 'lead guitar'],
   },
   {
@@ -171,8 +158,7 @@ export const SONGS: Song[] = [
     genre: 'Metal',
     difficulty: 4,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'A palm-muted, syncopated rock/metal riff. Practice the palm-muting hand separately at a slow tempo first — a loose mute is the most common thing that makes this riff sound sloppy.',
+    practiceNotes: { en: 'A palm-muted, syncopated rock/metal riff. Practice the palm-muting hand separately at a slow tempo first — a loose mute is the most common thing that makes this riff sound sloppy.', vi: 'Một riff rock/metal palm-muted, syncopate. Luyện riêng tay palm-muting ở tempo chậm trước — một cú chặn lỏng lẻo là nguyên nhân phổ biến nhất khiến riff này nghe cẩu thả.', ja: 'パームミュートを使ったシンコペーションのロック/メタルリフ。まずパームミュートの手だけを取り出してゆっくりしたテンポで練習しよう――緩いミュートがこのリフを雑に聞こえさせる最大の原因。', zh: '一段闷音、带切分节奏的摇滚/金属riff。先单独慢速练习闷音手的动作——闷音不到位是这段riff听起来凌乱的最常见原因。', es: 'Un riff de rock/metal sincopado con palm muting. Practica primero la mano de palm muting por separado a un tempo lento: un silenciado flojo es lo que más suele hacer que este riff suene descuidado.' },
     tags: ['palm muting', 'metal riff', 'rhythm guitar'],
   },
   {
@@ -182,8 +168,7 @@ export const SONGS: Song[] = [
     genre: 'Classical / Fingerstyle',
     difficulty: 4,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'A fingerstyle benchmark: a moving bass line under a melody, both played by the same picking hand. Isolate the bass line alone, then the melody alone, before combining them.',
+    practiceNotes: { en: 'A fingerstyle benchmark: a moving bass line under a melody, both played by the same picking hand. Isolate the bass line alone, then the melody alone, before combining them.', vi: 'Một chuẩn mực fingerstyle: một đường bass di chuyển bên dưới giai điệu, cả hai đều do cùng một tay gảy chơi. Tách riêng đường bass, rồi tách riêng giai điệu, trước khi ghép chúng lại.', ja: 'フィンガースタイルの基準となる曲――メロディーの下で動くベースラインを、同じピッキングハンドで両方弾く。ベースラインだけ、次にメロディーだけを別々に取り出してから、組み合わせよう。', zh: '一首指弹演奏的基准曲目：同一只拨弦手要同时弹出移动的低音线和旋律。先单独练低音线，再单独练旋律，最后再合并起来。', es: 'Un referente del fingerstyle: una línea de bajo en movimiento bajo una melodía, ambas tocadas por la misma mano de púa/dedos. Aísla primero la línea de bajo sola, luego la melodía sola, antes de combinarlas.' },
     tags: ['fingerstyle', 'independent bass line', 'classic'],
   },
   {
@@ -193,8 +178,7 @@ export const SONGS: Song[] = [
     genre: 'Classical / Fingerstyle',
     difficulty: 4,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'A classical piece adapted for solo fingerstyle guitar — a repeating bass progression under a sustained picking pattern. Good for endurance: keeping the pattern even over several minutes.',
+    practiceNotes: { en: 'A classical piece adapted for solo fingerstyle guitar — a repeating bass progression under a sustained picking pattern. Good for endurance: keeping the pattern even over several minutes.', vi: 'Một tác phẩm cổ điển được chuyển soạn cho guitar fingerstyle độc tấu — một tiến trình bass lặp lại bên dưới một mẫu picking liên tục. Tốt cho sức bền: giữ mẫu picking đều đặn suốt vài phút.', ja: 'ソロのフィンガースタイルギター用に編曲されたクラシック曲――持続するピッキングパターンの下で繰り返されるベース進行。数分間パターンを均一に保つ、持久力を鍛えるのに良い。', zh: '一首改编为独奏指弹吉他的古典曲目——持续的指弹音型下方是不断重复的低音进行。很适合锻炼耐力：让音型在几分钟内保持均匀稳定。', es: 'Una pieza clásica adaptada para guitarra solista fingerstyle: una progresión de bajo repetitiva bajo un patrón de púa/dedos sostenido. Buena para la resistencia: mantener el patrón uniforme durante varios minutos.' },
     tags: ['fingerstyle', 'classical', 'arpeggios'],
   },
   {
@@ -204,8 +188,7 @@ export const SONGS: Song[] = [
     genre: 'Blues',
     difficulty: 5,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'Fast pentatonic lead lines with legato phrasing (hammer-ons/pull-offs strung together at speed). A serious benchmark for lead-guitar speed and clean articulation — start well under tempo.',
+    practiceNotes: { en: 'Fast pentatonic lead lines with legato phrasing (hammer-ons/pull-offs strung together at speed). A serious benchmark for lead-guitar speed and clean articulation — start well under tempo.', vi: 'Các đoạn lead pentatonic nhanh với phrasing legato (hammer-on/pull-off nối liền ở tốc độ cao). Một chuẩn mực nghiêm túc cho tốc độ lead guitar và độ rõ ràng khi phát âm — bắt đầu ở tempo chậm hơn nhiều so với đích.', ja: 'レガートフレージング(ハンマリングオン/プリングオフを高速で連ねる)を使った速いペンタトニックのリードライン。リードギターのスピードとクリーンな発音力を試す本格的な基準曲――テンポよりかなり遅くから始めること。', zh: '快速的五声音阶主奏乐句，配合连奏处理（击弦/勾弦在高速下串联起来）。是检验主奏吉他速度与清晰度的重要基准曲目——务必从远低于原速开始练习。', es: 'Líneas melódicas pentatónicas rápidas con fraseo ligado (hammer-ons/pull-offs encadenados a gran velocidad). Un referente serio de velocidad y articulación limpia en la guitarra líder: empieza bastante por debajo del tempo.' },
     tags: ['lead guitar', 'legato', 'pentatonic', 'speed'],
   },
   {
@@ -215,8 +198,7 @@ export const SONGS: Song[] = [
     genre: 'Metal',
     difficulty: 5,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'Fast, palm-muted alternate picking on the low strings. A demanding endurance and precision benchmark for the picking hand — build it up gradually with a metronome rather than forcing full speed early.',
+    practiceNotes: { en: 'Fast, palm-muted alternate picking on the low strings. A demanding endurance and precision benchmark for the picking hand — build it up gradually with a metronome rather than forcing full speed early.', vi: 'Gảy luân phiên nhanh, palm-muted trên các dây trầm. Một chuẩn mực đòi hỏi cao về sức bền và độ chính xác cho tay gảy — xây dựng dần với metronome thay vì ép tốc độ tối đa quá sớm.', ja: '低音弦での速いパームミュートのオルタネイトピッキング。ピッキングハンドの持久力と精度を試す厳しい基準曲――早くからフルスピードを無理に出そうとせず、メトロノームで段階的に上げていこう。', zh: '在低音弦上进行的快速闷音交替拨弦。对拨弦手的耐力和精准度都是严峻考验——用节拍器循序渐进地提速，不要过早强求全速。', es: 'Púa alternada rápida y con palm muting en las cuerdas graves. Un exigente referente de resistencia y precisión para la mano de la púa: constrúyelo gradualmente con un metrónomo en lugar de forzar la velocidad máxima desde el principio.' },
     tags: ['alternate picking', 'palm muting', 'metal', 'speed'],
   },
   {
@@ -226,8 +208,7 @@ export const SONGS: Song[] = [
     genre: 'Metal',
     difficulty: 5,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'The piece that popularized two-hand tapping in rock guitar. A benchmark for tapping accuracy and legato control — isolate short tapped phrases before trying to link them together.',
+    practiceNotes: { en: 'The piece that popularized two-hand tapping in rock guitar. A benchmark for tapping accuracy and legato control — isolate short tapped phrases before trying to link them together.', vi: 'Tác phẩm đã phổ biến hóa kỹ thuật tapping hai tay trong guitar rock. Một chuẩn mực cho độ chính xác tapping và khả năng kiểm soát legato — tách riêng từng câu tapping ngắn trước khi thử nối chúng lại với nhau.', ja: 'ロックギターにおける両手タッピングを広めた曲。タッピングの正確さとレガートコントロールの基準曲――つなげようとする前に、まず短いタップフレーズを個別に練習しよう。', zh: '让双手点弦（tapping）在摇滚吉他中流行起来的经典曲目。是检验点弦准确度和连奏控制力的基准——先单独练习短的点弦乐句，再尝试把它们串联起来。', es: 'La pieza que popularizó el tapping a dos manos en la guitarra de rock. Un referente de precisión de tapping y control del ligado: aísla frases cortas de tapping antes de intentar enlazarlas.' },
     tags: ['tapping', 'legato', 'lead guitar', 'benchmark piece'],
   },
   {
@@ -237,8 +218,7 @@ export const SONGS: Song[] = [
     genre: 'Classical / Fingerstyle',
     difficulty: 5,
     tuning: 'Standard (EADGBE)',
-    practiceNotes:
-      'A fast fingerstyle instrumental that mixes strummed and picked passages. One of the more demanding fingerstyle benchmark pieces — worth breaking into short sections and looping each slowly.',
+    practiceNotes: { en: 'A fast fingerstyle instrumental that mixes strummed and picked passages. One of the more demanding fingerstyle benchmark pieces — worth breaking into short sections and looping each slowly.', vi: 'Một bản nhạc không lời fingerstyle nhanh pha trộn giữa các đoạn strum và picking. Một trong những tác phẩm chuẩn mực fingerstyle đòi hỏi cao nhất — đáng để chia thành các đoạn ngắn và lặp lại từng đoạn thật chậm.', ja: 'ストロークとピッキングのパッセージが入り混じる、速いフィンガースタイルのインストゥルメンタル曲。フィンガースタイルの中でも特に難易度の高い基準曲の1つ――短いセクションに分けて、それぞれをゆっくりループする価値がある。', zh: '一首快速的指弹器乐曲，混合了扫弦和拨奏段落。是要求较高的指弹基准曲目之一——值得拆成短小的段落，逐段慢速循环练习。', es: 'Un instrumental rápido de fingerstyle que mezcla pasajes rasgueados y punteados. Una de las piezas de referencia más exigentes del fingerstyle: vale la pena dividirla en secciones cortas y repetir cada una despacio en bucle.' },
     tags: ['fingerstyle', 'instrumental', 'speed', 'benchmark piece'],
   },
 ]

@@ -1,5 +1,6 @@
-import type { FretPositionRole, FretShape, StringNumber } from '../types/musicConcept'
-import { CHORD_FINGERS_RAW } from './chordFingersRaw'
+import type { FingerNumber, FretPositionRole, FretShape, StringNumber } from '../types/musicConcept'
+import { CHORD_ROOT_TO_KEY, CHORD_VOICINGS_RAW } from './chordVoicings.generated'
+import { CHORD_CONCEPTS } from './concepts/chords'
 
 /**
  * The Chord Library — sourced from the `chord-fingers.csv` dataset the user
@@ -147,57 +148,48 @@ export const CHORD_TYPE_LABELS: Record<ChordType, string> = {
 const NATURAL_PITCH_CLASS: Record<string, number> = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 }
 
 /** Pitch class (0–11) of any of the CSV's root spellings, naturals/sharps/flats alike — same accidental math used throughout this app. */
-function rootPitchClass(root: string): number {
-  const letter = root[0]
-  const base = NATURAL_PITCH_CLASS[letter] ?? 0
-  let adjust = 0
-  for (const ch of root.slice(1)) {
-    if (ch === '#') adjust += 1
-    else if (ch === 'b') adjust -= 1
-  }
-  return (((base + adjust) % 12) + 12) % 12
+/**
+ * WHERE THE DIAGRAMS COME FROM. The original `chord-fingers.csv` dataset stores FINGER numbers (0 = open, 1-4,
+ * x = muted), not fret numbers (open G is `2,1,0,0,0,3`, real frets 3-2-0-0-0-3), so it can't be drawn as frets and
+ * is no longer used for diagrams. Real fret data comes from @tombatossals/chords-db (MIT), converted and checked by
+ * `scripts/build-chord-voicings.mjs` into `chordVoicings.generated.ts` (absolute frets, per-position fingers, base
+ * fret). The hand-authored shapes in `concepts/chords.ts` are shown first, then the dataset voicings. A chord only
+ * appears in the library when it has at least one shape. Credit: THIRD-PARTY-NOTICES.md. The backend importer
+ * applies the same rules (see docs/agent-log/DECISIONS.md).
+ */
+const AUTHORED_CHORD_TARGETS: Record<string, { root: RootName; type: ChordType }> = {
+  'chord-open-a-major': { root: 'A', type: 'maj' },
+  'chord-open-a-minor': { root: 'A', type: 'm' },
+  'chord-open-c-major': { root: 'C', type: 'maj' },
+  'chord-open-d-major': { root: 'D', type: 'maj' },
+  'chord-open-e-major': { root: 'E', type: 'maj' },
+  'chord-open-e-minor': { root: 'E', type: 'm' },
+  'chord-open-g-major': { root: 'G', type: 'maj' },
+  'chord-caged-major-g': { root: 'G', type: 'maj' },
 }
 
-/** A fretted note's role relative to the chord's root, from the interval between their pitch classes — not from the CSV's own (frequently inconsistent) NOTE_NAMES/CHORD_STRUCTURE columns. */
-function roleForInterval(interval: number): FretPositionRole {
-  if (interval === 0) return 'root'
-  if (interval === 3 || interval === 4) return 'third'
-  if (interval === 6 || interval === 7 || interval === 8) return 'fifth'
-  return 'note'
+/** Frets per string (low E first): muted = -1, listed note = its fret, any other string = open (0). */
+function fretsOf(shape: FretShape): number[] {
+  const frets = [0, 0, 0, 0, 0, 0]
+  for (const s of shape.mutedStrings ?? []) frets[s - 1] = -1
+  for (const p of shape.positions) frets[p.string - 1] = p.fret
+  return frets
 }
 
-/** Every voicing in the dataset stays within the first four frets, so every diagram shows the nut and a fixed 4-fret window. */
-const FRET_COUNT = 4
-
-function buildShape(root: string, type: string, frets: string, voicingIndex: number): FretShape {
-  const rootPc = rootPitchClass(root)
-  const tokens = frets.split(',')
-  const positions: FretShape['positions'] = []
-  const mutedStrings: StringNumber[] = []
-
-  tokens.forEach((raw, i) => {
-    const string = (i + 1) as StringNumber
-    const token = raw.trim()
-    if (token === 'x') {
-      mutedStrings.push(string)
-      return
+function authoredShapesFor(root: RootName, type: ChordType): FretShape[] {
+  const seen = new Set<string>()
+  const shapes: FretShape[] = []
+  for (const [conceptId, target] of Object.entries(AUTHORED_CHORD_TARGETS)) {
+    if (target.root !== root || target.type !== type) continue
+    const concept = CHORD_CONCEPTS.find((c) => c.id === conceptId)
+    for (const shape of concept?.shapes ?? []) {
+      const signature = fretsOf(shape).join(',')
+      if (seen.has(signature)) continue // same fingering shown by two concepts (e.g. open G and the CAGED G-shape)
+      seen.add(signature)
+      shapes.push(shape)
     }
-    const fret = Number(token)
-    if (fret === 0) return // open string — FretShapeDiagram auto-marks it "O" since startFret is always 1 here.
-    const pitchClass = (OPEN_STRING_PITCH_CLASS[string] + fret) % 12
-    const interval = ((pitchClass - rootPc) % 12 + 12) % 12
-    positions.push({ string, fret, role: roleForInterval(interval) })
-  })
-
-  const typeIndex = TYPE_INDEX[type] ?? 0
-  return {
-    id: `csv-${root.replace('#', 'sharp')}-t${typeIndex}-${voicingIndex}`,
-    label: `Voicing ${voicingIndex + 1}`,
-    startFret: 1,
-    fretCount: FRET_COUNT,
-    positions,
-    mutedStrings,
   }
+  return shapes
 }
 
 export interface LibraryChord {
@@ -211,37 +203,156 @@ export interface LibraryChord {
   shapes: FretShape[]
 }
 
-/** How a chord type reads right after the root letter — blank for a plain major triad, the raw CSV code otherwise. */
+/** How a chord type reads right after the root letter — blank for a plain major triad, the type code otherwise. */
 function symbolFor(type: string): string {
   return type === 'maj' ? '' : type
 }
 
+function pitchClassOf(root: string): number {
+  const natural = NATURAL_PITCH_CLASS[root[0]]
+  const accidental = root.slice(1)
+  return (natural + (accidental === '#' ? 1 : accidental === 'b' ? -1 : 0) + 12) % 12
+}
+
+function roleFor(string: StringNumber, fret: number, rootPc: number): FretPositionRole {
+  const interval = (OPEN_STRING_PITCH_CLASS[string] + fret - rootPc + 120) % 12
+  if (interval === 0) return 'root'
+  if (interval === 3 || interval === 4) return 'third'
+  if (interval === 7) return 'fifth'
+  return 'note'
+}
+
+/**
+ * Diagram window for a set of absolute frets: shapes that fit in the first four frets show the nut (start at 1);
+ * anything higher starts at its lowest fretted note. (Matches chords-db's own `baseFret` for all 1,575 imported voicings.)
+ */
+export function windowStartFor(frets: readonly number[]): number {
+  const fretted = frets.filter((f) => f > 0)
+  if (fretted.length === 0 || Math.max(...fretted) <= 4) return 1
+  return Math.min(...fretted)
+}
+
+/** One chord shape from absolute frets (low E first; -1 muted, 0 open) and optional per-string fingers. Shared by the local data and the API data. */
+export function shapeFromFrets(
+  frets: readonly number[],
+  fingers: readonly number[] | null | undefined,
+  root: RootName,
+  id: string,
+  label: string,
+): FretShape {
+  const rootPc = pitchClassOf(root)
+  const positions: FretShape['positions'] = []
+  const mutedStrings: StringNumber[] = []
+  const openStrings: StringNumber[] = []
+  frets.forEach((fret, i) => {
+    const string = (i + 1) as StringNumber
+    if (fret < 0) mutedStrings.push(string)
+    else if (fret === 0) openStrings.push(string)
+    else {
+      const finger = fingers?.[i] ?? 0
+      positions.push({
+        string,
+        fret,
+        role: roleFor(string, fret, rootPc),
+        ...(finger >= 1 && finger <= 4 ? { finger: finger as FingerNumber } : {}),
+      })
+    }
+  })
+  return { id, label, startFret: windowStartFor(frets), fretCount: 4, positions, mutedStrings, openStrings }
+}
+
+/** Parses the compact `"frets/fingers@baseFret"` form emitted by the generator (x = muted). */
+function shapeFromRaw(raw: string, root: RootName, id: string, label: string): FretShape {
+  const [body] = raw.split('@')
+  const [fretText, fingerText] = body.split('/')
+  const frets = fretText.split(',').map((f) => (f === 'x' ? -1 : Number(f)))
+  const fingers = fingerText.split(',').map(Number)
+  return shapeFromFrets(frets, fingers, root, id, label)
+}
+
+/** Every dataset voicing for a root + type (enharmonic roots like A# / Bb share one set), converted to diagram shapes. */
+function datasetShapesFor(root: RootName, type: string, skip: Set<string>, numberFrom: number): FretShape[] {
+  const key = CHORD_ROOT_TO_KEY[root]
+  const entry = CHORD_VOICINGS_RAW.find(([k, quality]) => k === key && quality === type)
+  if (!entry) return []
+  const shapes: FretShape[] = []
+  entry[2].forEach((raw, i) => {
+    const shape = shapeFromRaw(raw, root, `${root}-${type}-db${i + 1}`, `Shape ${numberFrom + i}`)
+    const signature = fretsOf(shape).join(',')
+    if (skip.has(signature)) return
+    skip.add(signature)
+    shapes.push(shape)
+  })
+  return shapes
+}
+
+function libraryChord(root: RootName, type: ChordType, shapes: FretShape[]): LibraryChord {
+  const typeLabel = CHORD_TYPE_LABELS[type]
+  const name = `${root}${symbolFor(type)}`
+  return {
+    id: `${root.replace('#', 'sharp')}-t${TYPE_INDEX[type]}`,
+    root,
+    type,
+    typeLabel,
+    name,
+    description: `${shapes.length} verified hand position${shapes.length === 1 ? '' : 's'} for ${name} (${typeLabel}).`,
+    shapes,
+  }
+}
+
 function buildLibrary(): LibraryChord[] {
-  const grouped = new Map<string, { root: string; type: string; frets: string[] }>()
-  for (const [root, type, frets] of CHORD_FINGERS_RAW) {
-    const key = `${root}|${type}`
-    const entry = grouped.get(key)
-    if (entry) entry.frets.push(frets)
-    else grouped.set(key, { root, type, frets: [frets] })
-  }
-
   const chords: LibraryChord[] = []
-  for (const { root, type, frets } of grouped.values()) {
-    const shapes = frets.map((f, i) => buildShape(root, type, f, i))
-    const typeLabel = CHORD_TYPE_LABELS[type as ChordType] ?? type
-    const name = `${root}${symbolFor(type)}`
-    chords.push({
-      id: `${root.replace('#', 'sharp')}-t${TYPE_INDEX[type] ?? 0}`,
-      root: root as RootName,
-      type: type as ChordType,
-      typeLabel,
-      name,
-      description: `${shapes.length} hand position${shapes.length === 1 ? '' : 's'} for ${name} (${typeLabel}), from the chord-fingers dataset.`,
-      shapes,
-    })
+  for (const root of ROOT_ORDER) {
+    for (const type of TYPE_ORDER) {
+      const authored = authoredShapesFor(root, type)
+      const seen = new Set(authored.map((s) => fretsOf(s).join(',')))
+      const shapes = [...authored, ...datasetShapesFor(root, type, seen, authored.length + 1)]
+      if (shapes.length === 0) continue
+      chords.push(libraryChord(root, type, shapes))
+    }
   }
-
   return chords
+}
+
+/** A chord as the API serves it (see `services/api/types.ts`), reduced to what the library needs. */
+export interface ChordVoicingRow {
+  frets?: readonly number[] | null
+  fingers?: readonly number[] | null
+  label?: string | null
+}
+
+export interface ChordRow {
+  root: string
+  quality: string
+  voicings: readonly ChordVoicingRow[]
+}
+
+/**
+ * Builds the same `LibraryChord[]` the local data produces, from rows the API returns. Rows with an unknown root/quality or
+ * without any voicing that has six fret values are dropped; labelled voicings (hand-authored ones) come first, the rest are
+ * numbered "Shape N", identical frets are shown once.
+ */
+export function libraryFromRows(rows: readonly ChordRow[]): LibraryChord[] {
+  const chords: LibraryChord[] = []
+  for (const row of rows) {
+    if (!isRootName(row.root) || !(row.quality in TYPE_INDEX)) continue
+    const root = row.root
+    const type = row.quality as ChordType
+    const usable = row.voicings.filter((v) => v.frets?.length === 6)
+    const ordered = [...usable.filter((v) => v.label), ...usable.filter((v) => !v.label)]
+
+    const seen = new Set<string>()
+    const shapes: FretShape[] = []
+    ordered.forEach((v, i) => {
+      const signature = v.frets!.join(',')
+      if (seen.has(signature)) return
+      seen.add(signature)
+      const label = v.label ?? `Shape ${i + 1}`
+      shapes.push(shapeFromFrets(v.frets!, v.fingers, root, `${root}-${type}-api${i + 1}`, label))
+    })
+    if (shapes.length > 0) chords.push(libraryChord(root, type, shapes))
+  }
+  return chords.sort((a, b) => ROOT_ORDER.indexOf(a.root) - ROOT_ORDER.indexOf(b.root) || TYPE_INDEX[a.type] - TYPE_INDEX[b.type])
 }
 
 export const CHORD_LIBRARY: LibraryChord[] = buildLibrary()
@@ -251,11 +362,15 @@ export interface ChordRootGroup {
   chords: LibraryChord[]
 }
 
-/** The library grouped by root/tone (the top-level browsing unit — see `ChordLibraryGrid.tsx`), each root's chords ordered by `TYPE_ORDER`. */
-export const CHORD_LIBRARY_BY_ROOT: ChordRootGroup[] = ROOT_ORDER.map((root) => ({
-  root,
-  chords: CHORD_LIBRARY.filter((c) => c.root === root).sort((a, b) => TYPE_INDEX[a.type] - TYPE_INDEX[b.type]),
-}))
+/** Groups a library by root/tone (the top-level browsing unit — see `ChordLibraryGrid.tsx`), each root's chords ordered by `TYPE_ORDER`; roots without chords are hidden. */
+export function groupByRoot(library: readonly LibraryChord[]): ChordRootGroup[] {
+  return ROOT_ORDER.map((root) => ({
+    root,
+    chords: library.filter((c) => c.root === root).sort((a, b) => TYPE_INDEX[a.type] - TYPE_INDEX[b.type]),
+  })).filter((group) => group.chords.length > 0)
+}
+
+export const CHORD_LIBRARY_BY_ROOT: ChordRootGroup[] = groupByRoot(CHORD_LIBRARY)
 
 export function findLibraryChord(id: string): LibraryChord | undefined {
   return CHORD_LIBRARY.find((c) => c.id === id)
@@ -285,11 +400,16 @@ export function parseChordShorthand(raw: string): { root: RootName; type: string
   return { root: rootGuess, type }
 }
 
-/** Resolves a shorthand chord name (see `parseChordShorthand`) straight to its `LibraryChord`, when recognized. */
-export function findLibraryChordByName(name: string): LibraryChord | undefined {
+/** Resolves a shorthand chord name (see `parseChordShorthand`) within `library`, when recognized. */
+export function findChordByName(library: readonly LibraryChord[], name: string): LibraryChord | undefined {
   const parsed = parseChordShorthand(name)
   if (!parsed) return undefined
-  return CHORD_LIBRARY.find((c) => c.root === parsed.root && c.type === parsed.type)
+  return library.find((c) => c.root === parsed.root && c.type === parsed.type)
+}
+
+/** Same as `findChordByName`, against the local (built-in) library. */
+export function findLibraryChordByName(name: string): LibraryChord | undefined {
+  return findChordByName(CHORD_LIBRARY, name)
 }
 
 export { OPEN_STRING_PITCH_CLASS }

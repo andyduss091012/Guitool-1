@@ -23,7 +23,7 @@ export default function SongDetailView({
   onDuplicate?: () => void
   onDelete?: () => void
 }) {
-  const { t } = useLocale()
+  const { t, l } = useLocale()
   return (
     <div className="flex flex-col gap-6">
       <button className="btn-ghost self-start" onClick={onBack}>
@@ -62,7 +62,7 @@ export default function SongDetailView({
           {song.keySignature && <span className="chip">{t('songs.keyChip', { key: song.keySignature })}</span>}
         </div>
 
-        {song.practiceNotes && <p className="text-sm text-parchment-300">{song.practiceNotes}</p>}
+        {song.practiceNotes && <p className="text-sm text-parchment-300">{l(song.practiceNotes)}</p>}
 
         {song.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5">

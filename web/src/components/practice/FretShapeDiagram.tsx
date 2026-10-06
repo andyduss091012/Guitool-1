@@ -51,6 +51,38 @@ function roleClass(role: FretPositionRole | undefined) {
   return ROLE_FILL[role ?? 'note']
 }
 
+/**
+ * `FretShape.label` is a small closed set of values fixed by the data files
+ * (see `data/concepts/*.ts`) — 'Open', 'Barre', 'Alternative', the five
+ * CAGED shape names, and 'Shape 1'…'Shape 5' — so, like `CATEGORY_LABEL_KEYS`
+ * in `CategoryBadge.tsx`, it's translated via this id→`TranslationKey`
+ * lookup rather than by making the data field itself a `LocalizedText`. A
+ * label not in the map (e.g. future content) falls back to the raw string.
+ */
+const SHAPE_LABEL_KEYS: Record<string, TranslationKey> = {
+  Open: 'practice.shapeLabel.open',
+  Barre: 'practice.shapeLabel.barre',
+  Alternative: 'practice.shapeLabel.alternative',
+  'A-shape': 'practice.shapeLabel.aShape',
+  'C-shape': 'practice.shapeLabel.cShape',
+  'D-shape': 'practice.shapeLabel.dShape',
+  'E-shape': 'practice.shapeLabel.eShape',
+  'G-shape': 'practice.shapeLabel.gShape',
+  'Shape 1': 'practice.shapeLabel.position1',
+  'Shape 2': 'practice.shapeLabel.position2',
+  'Shape 3': 'practice.shapeLabel.position3',
+  'Shape 4': 'practice.shapeLabel.position4',
+  'Shape 5': 'practice.shapeLabel.position5',
+}
+
+/** Resolves a `FretShape.label` to its translated display text, falling back to the raw label for any value outside the known set. */
+export function shapeLabel(label: string, t: (key: TranslationKey) => string): string {
+  const key = SHAPE_LABEL_KEYS[label]
+  if (key) return t(key)
+  const numbered = /^Shape (\d+)$/.exec(label) // dataset voicings beyond the five translated positions
+  return numbered ? `${t('practice.shapeLabel.position')} ${numbered[1]}` : label
+}
+
 export type DiagramLabelMode = 'finger' | 'note' | 'interval'
 
 const ROLE_INTERVAL: Partial<Record<FretPositionRole, string>> = {
@@ -86,7 +118,10 @@ export default function FretShapeDiagram({
 }
 
 function ScaleLayout({ shape, labelMode }: { shape: FretShape; labelMode: DiagramLabelMode }) {
+  const { t, l } = useLocale()
   const { startFret, fretCount, positions, caption } = shape
+  const resolvedCaption = caption ? l(caption) : undefined
+  const resolvedLabel = shapeLabel(shape.label, t)
   const leftLabelWidth = 22
   const fretWidth = 52
   const topPad = 10
@@ -104,7 +139,7 @@ function ScaleLayout({ shape, labelMode }: { shape: FretShape; labelMode: Diagra
 
   return (
     <figure className="flex flex-col items-center gap-2">
-      <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="img" aria-label={caption ?? shape.label}>
+      <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="img" aria-label={resolvedCaption ?? resolvedLabel}>
         {([1, 2, 3, 4, 5, 6] as StringNumber[]).map((s) => (
           <line
             key={s}
@@ -171,13 +206,16 @@ function ScaleLayout({ shape, labelMode }: { shape: FretShape; labelMode: Diagra
         })}
       </svg>
       <Legend labelMode={labelMode} />
-      {caption && <figcaption className="text-center text-xs text-parchment-400/70">{caption}</figcaption>}
+      {resolvedCaption && <figcaption className="text-center text-xs text-parchment-400/70">{resolvedCaption}</figcaption>}
     </figure>
   )
 }
 
 function ChordLayout({ shape, labelMode }: { shape: FretShape; labelMode: DiagramLabelMode }) {
+  const { t, l } = useLocale()
   const { startFret, fretCount, positions, mutedStrings = [], caption } = shape
+  const resolvedCaption = caption ? l(caption) : undefined
+  const resolvedLabel = shapeLabel(shape.label, t)
   const topMarkerHeight = 20
   const leftPad = 24
   const stringGap = 26
@@ -196,13 +234,14 @@ function ChordLayout({ shape, labelMode }: { shape: FretShape; labelMode: Diagra
 
   const stringsWithNotes = new Set(positions.map((p) => p.string))
   const openStrings: StringNumber[] =
-    startFret === 1
+    shape.openStrings ??
+    (startFret === 1
       ? ([1, 2, 3, 4, 5, 6] as StringNumber[]).filter((s) => !stringsWithNotes.has(s) && !mutedStrings.includes(s))
-      : []
+      : [])
 
   return (
     <figure className="flex flex-col items-center gap-2">
-      <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="img" aria-label={caption ?? shape.label}>
+      <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="img" aria-label={resolvedCaption ?? resolvedLabel}>
         {startFret > 1 && (
           <text x={leftPad - 8} y={topMarkerHeight + 12} textAnchor="end" className="fill-parchment-400/70 text-[10px] font-medium">
             {startFret}fr
@@ -261,7 +300,7 @@ function ChordLayout({ shape, labelMode }: { shape: FretShape; labelMode: Diagra
         })}
       </svg>
       <Legend labelMode={labelMode} />
-      {caption && <figcaption className="text-center text-xs text-parchment-400/70">{caption}</figcaption>}
+      {resolvedCaption && <figcaption className="text-center text-xs text-parchment-400/70">{resolvedCaption}</figcaption>}
     </figure>
   )
 }

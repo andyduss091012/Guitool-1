@@ -16,7 +16,7 @@ export default function ExerciseDetailView({
   onBack: () => void
   onDuplicate: () => void
 }) {
-  const { t } = useLocale()
+  const { t, l } = useLocale()
   return (
     <div className="flex flex-col gap-6">
       <button className="btn-ghost self-start" onClick={onBack}>
@@ -28,8 +28,8 @@ export default function ExerciseDetailView({
           <CategoryBadge category={exercise.category} />
           <ExerciseTagBadge exercise={exercise} />
         </div>
-        <h1 className="text-2xl font-semibold text-parchment-100">{exercise.name}</h1>
-        <p className="text-sm text-parchment-300">{exercise.description}</p>
+        <h1 className="text-2xl font-semibold text-parchment-100">{l(exercise.name)}</h1>
+        <p className="text-sm text-parchment-300">{l(exercise.description)}</p>
 
         <div className="flex flex-wrap gap-2 text-xs text-parchment-400/70">
           <span className="chip">{t('library.difficultyValue', { value: exercise.difficulty })}</span>
@@ -65,7 +65,7 @@ export default function ExerciseDetailView({
           {exercise.instructions.map((step, i) => (
             <li key={i} className="flex gap-3 text-sm text-parchment-200">
               <span className="mt-0.5 shrink-0 font-display text-xs font-semibold text-brass-400">{i + 1}</span>
-              <span>{step}</span>
+              <span>{l(step)}</span>
             </li>
           ))}
         </ol>
@@ -77,7 +77,7 @@ export default function ExerciseDetailView({
               {exercise.tips.map((tip, i) => (
                 <li key={i} className="flex gap-2 text-sm text-parchment-300">
                   <span aria-hidden>💡</span>
-                  <span>{tip}</span>
+                  <span>{l(tip)}</span>
                 </li>
               ))}
             </ul>
@@ -93,7 +93,7 @@ export default function ExerciseDetailView({
               {exercise.commonMistakes.map((m, i) => (
                 <li key={i} className="flex gap-2 text-sm text-parchment-300">
                   <span aria-hidden>⚠️</span>
-                  <span>{m}</span>
+                  <span>{l(m)}</span>
                 </li>
               ))}
             </ul>
@@ -104,7 +104,7 @@ export default function ExerciseDetailView({
           <p className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-parchment-400/70">
             {t('library.readMoreAboutIt')}
           </p>
-          <LookupOnlineLinks links={buildLookupLinks(exercise.name)} />
+          <LookupOnlineLinks links={buildLookupLinks(l(exercise.name))} />
         </div>
       </section>
 

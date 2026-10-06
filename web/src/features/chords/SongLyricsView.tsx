@@ -76,6 +76,12 @@ export default function SongLyricsView() {
       {openChord && (
         <ShapeViewer concept={toConcept(openChord)} initialIndex={0} onClose={() => setOpenChordName(null)} />
       )}
+
+      {openChordName && !openChord && (
+        <p role="status" className="text-sm text-parchment-400/70">
+          {t('songsChords.noDiagram', { name: openChordName })}
+        </p>
+      )}
     </div>
   )
 }
