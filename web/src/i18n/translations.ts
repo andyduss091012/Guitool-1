@@ -319,6 +319,9 @@ export type TranslationKey =
   | 'songsChords.libraryIntro'
   | 'songsChords.noDiagram'
   | 'songsChords.dataCredit'
+  | 'data.loading'
+  | 'data.loadError'
+  | 'data.retry'
   | 'songsChords.lyricsIntro'
   | 'songsChords.rootChordsHeading'
   | 'songsChords.shapeCount'
@@ -606,6 +609,9 @@ const en: Dictionary = {
   'songsChords.libraryIntro': 'Pick a root to see every chord type we\'ve got for it — major, minor, 7ths, 9ths, dim, aug and more — each with every hand position in the dataset.',
   'songsChords.noDiagram': 'No verified diagram for {name} yet.',
   'songsChords.dataCredit': 'Chord diagrams use the open-source chords-db dataset (MIT, © David Rubert and contributors). They show common voicings, not the only way to play a chord.',
+  'data.loading': 'Loading from the server…',
+  'data.loadError': 'Couldn\'t load data from the API ({message}). Is the backend running?',
+  'data.retry': 'Try again',
   'songsChords.lyricsIntro': 'Pick a song to see its lyrics with the chords laid out above them — tap a chord to see how to play it.',
   'songsChords.chooseARoot': 'Choose a root',
   'songsChords.viewChordsFor': 'View chords for {root}',
@@ -922,6 +928,9 @@ const vi: PartialDictionary = {
   'songsChords.libraryIntro': 'Chọn một âm gốc để xem mọi loại hợp âm chúng tôi có cho nó — trưởng, thứ, 7, 9, dim, aug và nhiều hơn nữa — mỗi loại kèm mọi thế bấm có trong bộ dữ liệu.',
   'songsChords.noDiagram': 'Hiện chưa có sơ đồ đã kiểm chứng cho {name}.',
   'songsChords.dataCredit': 'Sơ đồ hợp âm dùng bộ dữ liệu mã nguồn mở chords-db (MIT, © David Rubert và cộng sự). Đây là các thế bấm phổ biến, không phải cách bấm duy nhất.',
+  'data.loading': 'Đang tải từ máy chủ…',
+  'data.loadError': 'Không tải được dữ liệu từ API ({message}). Backend có đang chạy không?',
+  'data.retry': 'Thử lại',
   'songsChords.lyricsIntro': 'Chọn một bài hát để xem lời với hợp âm được đặt phía trên — chạm vào hợp âm để xem cách bấm.',
   'songsChords.chooseARoot': 'Chọn âm gốc',
   'songsChords.viewChordsFor': 'Xem hợp âm cho {root}',
@@ -1238,6 +1247,9 @@ const ja: PartialDictionary = {
   'songsChords.libraryIntro': 'ルート音を選ぶと、メジャー、マイナー、7th、9th、dim、augなど、そのルートに対応する全コードタイプを、収録されているすべてのハンドポジションとともに確認できます。',
   'songsChords.noDiagram': '{name}の確認済みダイアグラムはまだありません。',
   'songsChords.dataCredit': 'コードダイアグラムはオープンソースのデータセット chords-db（MIT、© David Rubert ほか）を使用しています。一般的なフォームであり、唯一の押さえ方ではありません。',
+  'data.loading': 'サーバーから読み込み中…',
+  'data.loadError': 'APIからデータを読み込めませんでした（{message}）。バックエンドは起動していますか？',
+  'data.retry': '再試行',
   'songsChords.lyricsIntro': '曲を選ぶと、歌詞の上にコードが表示されます — コードをタップすると弾き方が確認できます。',
   'songsChords.chooseARoot': 'ルート音を選択',
   'songsChords.viewChordsFor': '{root}のコードを見る',
@@ -1554,6 +1566,9 @@ const zh: PartialDictionary = {
   'songsChords.libraryIntro': '选择一个根音，即可查看该根音下所有的和弦类型——大三和弦、小三和弦、七和弦、九和弦、减和弦、增和弦等——并附有数据库中的每一种指型。',
   'songsChords.noDiagram': '暂无{name}的已验证指法图。',
   'songsChords.dataCredit': '和弦图使用开源数据集 chords-db（MIT，© David Rubert 及贡献者）。这里展示的是常见指法，并非唯一的按法。',
+  'data.loading': '正在从服务器加载…',
+  'data.loadError': '无法从 API 加载数据（{message}）。后端是否已启动？',
+  'data.retry': '重试',
   'songsChords.lyricsIntro': '选择一首歌曲，即可查看歌词，和弦会标注在对应歌词上方——点击和弦可查看指法。',
   'songsChords.chooseARoot': '选择根音',
   'songsChords.viewChordsFor': '查看 {root} 的和弦',
@@ -1870,6 +1885,9 @@ const es: PartialDictionary = {
   'songsChords.libraryIntro': 'Elige una nota fundamental para ver todos los tipos de acorde que tenemos para ella — mayor, menor, séptimas, novenas, disminuidos, aumentados y más — cada uno con todas las posiciones de mano del conjunto de datos.',
   'songsChords.noDiagram': 'Aún no hay un diagrama verificado para {name}.',
   'songsChords.dataCredit': 'Los diagramas de acordes usan el conjunto de datos de código abierto chords-db (MIT, © David Rubert y colaboradores). Muestran digitaciones habituales, no la única forma de tocar un acorde.',
+  'data.loading': 'Cargando desde el servidor…',
+  'data.loadError': 'No se pudieron cargar los datos de la API ({message}). ¿Está en marcha el backend?',
+  'data.retry': 'Reintentar',
   'songsChords.lyricsIntro': 'Elige una canción para ver su letra con los acordes ubicados encima — toca un acorde para ver cómo se toca.',
   'songsChords.chooseARoot': 'Elige una nota fundamental',
   'songsChords.viewChordsFor': 'Ver acordes de {root}',

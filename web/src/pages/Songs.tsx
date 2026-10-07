@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useGuitool } from '../hooks/useGuitool'
+import DataStatus from '../components/DataStatus'
 import type { Song } from '../types/song'
 import type { CustomSongInput } from '../services/songLibrary'
 import SongLibraryList from '../features/songs/SongLibraryList'
@@ -15,7 +16,7 @@ type View =
 
 export default function Songs() {
   const { t } = useLocale()
-  const { songs, getSongProgress, addCustomSong, editCustomSong, removeCustomSong, setSongStatus, toggleSongFavorite } =
+  const { songs, songsStatus, songsError, reloadSongs, getSongProgress, addCustomSong, editCustomSong, removeCustomSong, setSongStatus, toggleSongFavorite } =
     useGuitool()
   const [view, setView] = useState<View>({ mode: 'list' })
 
@@ -102,6 +103,8 @@ export default function Songs() {
       </div>
 
       <p className="text-sm text-parchment-400/70">{t('songs.catalogIntro')}</p>
+
+      <DataStatus status={songsStatus} error={songsError} onRetry={reloadSongs} />
 
       <SongLibraryList
         songs={songs}

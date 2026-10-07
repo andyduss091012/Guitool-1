@@ -12,7 +12,7 @@
 | 1.5b chords-db real frets (web generator + web library + importer pass + `frets_source`) | **web: done, typecheck exit 0 + data sanity run on device; backend: written — awaiting local build/test + migration #3** |
 | 1.6 Read endpoints (songs, artists, tunings, chords + `/library`, scales, concepts) | **written — awaiting local build** (`Application/{Catalog,Reference}` contracts, `Infrastructure/Queries`, `Api/Controllers`) |
 | 1.7 API integration tests + `backend/Dockerfile` + compose `api` service | **written — awaiting local build/test** (`Api.Tests/ApiFixture.cs`, `ReadEndpointTests.cs`, Testcontainers; skipped without Docker) |
-| 1.8–1.9 Frontend data-access layer + `VITE_DATA_SOURCE` | **in progress** — foundation done (typecheck exit 0): `services/dataSource.ts`, `services/api/{client,types,catalogApi}.ts`, `chordLibrary.ts` refactor (`shapeFromFrets`, `libraryFromRows`, `groupByRoot`, `findChordByName`). **Not wired yet:** hooks, components, i18n keys, env typing, web Dockerfile ARGs |
-| 1.10 Parity script | not started |
+| 1.8–1.9 Frontend data-access layer + `VITE_DATA_SOURCE` | **written, typecheck exit 0; not yet tried against the real API.** `services/dataSource.ts`, `services/api/*`, `hooks/useChordLibrary.ts`, `hooks/useBuiltInSongs.ts`, `components/DataStatus.tsx`; chord browser, lyrics view and Songs page use them; loading/error text in 5 languages; `vite-env.d.ts`, `web/.env.example`, web Dockerfile/compose build args. In-process check: rows shaped like the API response rebuild the local chord library exactly (594 chords, every shape: frets, fingers, roles, window) |
+| 1.10 Parity script | **written** — `web/scripts/check-data-parity.mjs` (`npm run data:parity`); verified against a mock API (detects a changed title / missing chord); needs the real API |
 
 Backend tasks will be marked "written — awaiting local `dotnet build/test`" until you report results (Q2).

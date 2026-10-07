@@ -13,6 +13,14 @@ RUN npm ci
 # Copy source code
 COPY . .
 
+# Build-time settings read by Vite (import.meta.env.*). Pass with --build-arg or docker-compose `args:`.
+ARG VITE_TABS_SERVER_URL
+ARG VITE_DATA_SOURCE=local
+ARG VITE_API_URL=http://localhost:5080
+ENV VITE_TABS_SERVER_URL=$VITE_TABS_SERVER_URL \
+    VITE_DATA_SOURCE=$VITE_DATA_SOURCE \
+    VITE_API_URL=$VITE_API_URL
+
 # Build production files
 RUN npm run build
 

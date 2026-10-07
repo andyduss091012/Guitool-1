@@ -3,8 +3,9 @@ import type { Rating1to5 } from '../types/exercise'
 import type { Song, SongGenre } from '../types/song'
 import { generateId } from '../utils/id'
 
-export function buildSongLibrary(customSongs: Song[]): Song[] {
-  return [...SONGS, ...customSongs]
+/** Built-in songs (from the local data or the API, see `hooks/useBuiltInSongs.ts`) plus the user's own. */
+export function buildSongLibrary(customSongs: Song[], builtIn: Song[] = SONGS): Song[] {
+  return [...builtIn, ...customSongs]
 }
 
 export function findSong(library: Song[], id: string): Song | undefined {

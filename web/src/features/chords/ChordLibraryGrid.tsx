@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import type { ChordConcept } from '../../types/musicConcept'
-import { CHORD_LIBRARY_BY_ROOT, type LibraryChord } from '../../data/chordLibrary'
+import type { LibraryChord } from '../../data/chordLibrary'
+import DataStatus from '../../components/DataStatus'
+import { useChordLibrary } from '../../hooks/useChordLibrary'
 import ShapeViewer from '../../components/practice/ShapeViewer'
 import { useLocale } from '../../hooks/useLocale'
 
@@ -25,10 +27,11 @@ function toConcept(chord: LibraryChord): ChordConcept {
  */
 export default function ChordLibraryGrid() {
   const { t } = useLocale()
+  const { byRoot, status, error, reload } = useChordLibrary()
   const [openRoot, setOpenRoot] = useState<string | null>(null)
   const [openChordId, setOpenChordId] = useState<string | null>(null)
 
-  const rootGroup = openRoot ? CHORD_LIBRARY_BY_ROOT.find((g) => g.root === openRoot) : undefined
+  const rootGroup = openRoot ? byRoot.find((g) => g.root === openRoot) : undefined
   const openChord = openChordId ? rootGroup?.chords.find((c) => c.id === openChordId) : undefined
 
   if (!rootGroup) {
@@ -37,8 +40,9 @@ export default function ChordLibraryGrid() {
         <h2 className="font-display text-sm font-semibold uppercase tracking-wide text-brass-500">
           {t('songsChords.chooseARoot')}
         </h2>
+        <DataStatus status={status} error={error} onRetry={reload} />
         <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6">
-          {CHORD_LIBRARY_BY_ROOT.map((group) => (
+          {byRoot.map((group) => (
             <button
               key={group.root}
               type="button"

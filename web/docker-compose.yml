@@ -32,6 +32,9 @@ services:
       # Read from the browser, so this is the URL your host machine (not
       # the container) can reach — the tabs-server's published port below.
       - VITE_TABS_SERVER_URL=http://localhost:4001
+      # `local` = built-in data in src/data, `api` = the backend API (root docker-compose.yml). Set in web/.env.
+      - VITE_DATA_SOURCE=${VITE_DATA_SOURCE:-local}
+      - VITE_API_URL=${VITE_API_URL:-http://localhost:5080}
     stdin_open: true
     tty: true
     depends_on:
@@ -43,6 +46,8 @@ services:
       dockerfile: Dockerfile
       args:
         - VITE_TABS_SERVER_URL=http://localhost:4001
+        - VITE_DATA_SOURCE=${VITE_DATA_SOURCE:-local}
+        - VITE_API_URL=${VITE_API_URL:-http://localhost:5080}
     ports:
       - '8080:80'
     depends_on:

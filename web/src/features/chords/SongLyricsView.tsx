@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import type { ChordConcept } from '../../types/musicConcept'
 import { DEMO_SONGS, chordsUsedIn, type DemoSong } from '../../data/demoSongs'
-import { findLibraryChordByName, type LibraryChord } from '../../data/chordLibrary'
+import type { LibraryChord } from '../../data/chordLibrary'
+import DataStatus from '../../components/DataStatus'
+import { useChordLibrary } from '../../hooks/useChordLibrary'
 import { parseChordProLine } from '../../utils/chordpro'
 import ShapeViewer from '../../components/practice/ShapeViewer'
 import { useLocale } from '../../hooks/useLocale'
@@ -28,10 +30,11 @@ function toConcept(chord: LibraryChord): ChordConcept {
  */
 export default function SongLyricsView() {
   const { t } = useLocale()
+  const { find, status, error, reload } = useChordLibrary()
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [openChordName, setOpenChordName] = useState<string | null>(null)
   const song = selectedId ? DEMO_SONGS.find((s) => s.id === selectedId) : undefined
-  const openChord = openChordName ? findLibraryChordByName(openChordName) : undefined
+  const openChord = openChordName ? find(openChordName) : undefined
 
   if (!song) {
     return <SongPicker songs={DEMO_SONGS} onSelect={setSelectedId} />
@@ -52,6 +55,8 @@ export default function SongLyricsView() {
           {t('songsChords.artistKeyOf', { artist: song.artist, key: song.key })}
         </p>
       </div>
+
+      <DataStatus status={status} error={error} onRetry={reload} />
 
       {chordNames.length > 0 && (
         <div className="flex flex-wrap gap-1.5" role="group" aria-label={t('songsChords.chordsUsedInSong')}>
@@ -77,7 +82,7 @@ export default function SongLyricsView() {
         <ShapeViewer concept={toConcept(openChord)} initialIndex={0} onClose={() => setOpenChordName(null)} />
       )}
 
-      {openChordName && !openChord && (
+      {openChordName && !openChord && status === 'ready' && (
         <p role="status" className="text-sm text-parchment-400/70">
           {t('songsChords.noDiagram', { name: openChordName })}
         </p>

@@ -20,6 +20,8 @@ import {
   type CustomSongInput,
 } from '../services/songLibrary'
 import { todayKey } from '../utils/date'
+import { useBuiltInSongs } from './useBuiltInSongs'
+import type { LoadStatus } from './useChordLibrary'
 
 const DEFAULT_SONG_PROGRESS: SongProgressEntry = { status: 'want-to-learn', isFavorite: false }
 
@@ -43,6 +45,10 @@ interface GuitoolContextValue {
   setLevel: (level: PlayerLevel) => void
   /** Built-in songs plus everything the user has added themselves. */
   songs: Song[]
+  /** Whether the built-in catalog is still loading from the API (always 'ready' in local mode). */
+  songsStatus: LoadStatus
+  songsError?: string
+  reloadSongs: () => void
   getSong: (id: string) => Song | undefined
   /** This song's status/favorite, or the default ("want to learn", not favorited) if never touched. */
   getSongProgress: (id: string) => SongProgressEntry
@@ -67,7 +73,8 @@ export function GuitoolProvider({ children }: { children: ReactNode }) {
   const exerciseIndex = useMemo(() => new Map(exercises.map((e) => [e.id, e])), [exercises])
   const getExercise = useCallback((id: string) => exerciseIndex.get(id), [exerciseIndex])
 
-  const songs = useMemo(() => buildSongLibrary(state.customSongs), [state.customSongs])
+  const builtInSongs = useBuiltInSongs()
+  const songs = useMemo(() => buildSongLibrary(state.customSongs, builtInSongs.songs), [state.customSongs, builtInSongs.songs])
   const songIndex = useMemo(() => new Map(songs.map((s) => [s.id, s])), [songs])
   const getSong = useCallback((id: string) => songIndex.get(id), [songIndex])
   const getSongProgress = useCallback(
@@ -239,6 +246,9 @@ export function GuitoolProvider({ children }: { children: ReactNode }) {
       removeCustomExercise,
       setLevel,
       songs,
+      songsStatus: builtInSongs.status,
+      songsError: builtInSongs.error,
+      reloadSongs: builtInSongs.reload,
       getSong,
       getSongProgress,
       addCustomSong,
@@ -263,6 +273,9 @@ export function GuitoolProvider({ children }: { children: ReactNode }) {
       removeCustomExercise,
       setLevel,
       songs,
+      builtInSongs.status,
+      builtInSongs.error,
+      builtInSongs.reload,
       getSong,
       getSongProgress,
       addCustomSong,
